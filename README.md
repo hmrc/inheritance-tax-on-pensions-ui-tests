@@ -2,22 +2,22 @@
 
 # inheritance-tax-on-pensions-ui-tests
 
-<SERVICE_NAME> UI journey tests.
+Inheritance tax on pensions UI journey tests.
 
 ## Pre-requisites
 
 ### Services
 
-Start Mongo Docker container as follows:
+If you haven't got mongo running already, start Mongo Docker container as follows:
 
 ```bash
 docker run --rm -d -p 27017:27017 --name mongo percona/percona-server-mongodb:6.0
 ```
 
-Start `<SERVICE_MANAGER_PROFILE>` services as follows:
+Start IHTP services as follows:
 
 ```bash
-sm2 --start <SERVICE_MANAGER_PROFILE>
+sm2 --start IHTP_ALL
 ```
 
 ## Tests
