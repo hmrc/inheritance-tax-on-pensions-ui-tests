@@ -56,12 +56,11 @@ trait BasePage extends Matchers with PageObject {
       isElementPresent(By.linkText("Rhestr o Wasanaethau Cymraeg"))
 
   def verifyLanguageToggle(): Boolean =
-      getPageSource.contains("Cymraeg")
+    getPageSource.contains("Cymraeg")
 
-  def verifySignOutLinkText(): Boolean = {
+  def verifySignOutLinkText(): Boolean =
     isElementPresent(By.linkText("Sign out"))
-  }
-  
+
   def goTo(page: BasePage): Unit = navigateTo(page.pageUrl)
 
   /** Can be expanded to include more if necessary * */

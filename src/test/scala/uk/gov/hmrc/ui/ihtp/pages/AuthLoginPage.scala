@@ -23,8 +23,6 @@ import uk.gov.hmrc.ui.ihtp.conf.TestConfiguration
 
 object AuthLoginPage extends BasePage {
   override val pageUrl: String = TestConfiguration.url("auth-login-stub") + "/gg-sign-in"
-  //override val pageUrl: String = TestConfiguration.url("") + "/gg-sign-in"
-
 
   private val redirectionUrlById: By = By.id("redirectionUrl")
   private val affinityGroupById: By  = By.id("affinityGroupSelect")

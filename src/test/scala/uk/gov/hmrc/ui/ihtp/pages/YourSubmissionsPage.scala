@@ -17,8 +17,9 @@
 package uk.gov.hmrc.ui.ihtp.pages
 
 object YourSubmissionsPage extends BasePage {
-  val pageUrl: String = s"$baseUrl/S2400000001/submission-list"
-  val pageTitle: String = "Your submissions - inheritance-tax-on-pensions-frontend - GOV.UK"
+  val pageUrl: String     = s"$baseUrl/submission-list"
+  val mpsPageUrl: String  = "http://localhost:8204/manage-pension-schemes/you-need-to-register"
+  val pageTitle: String   = "Your submissions - inheritance-tax-on-pensions-frontend - GOV.UK"
   val pageHeading: String = "Your submissions"
 
   def verifyPageUrl(): Boolean =
@@ -31,13 +32,13 @@ object YourSubmissionsPage extends BasePage {
     getPageSource.contains(pageHeading)
 
   def verifyRegistrationReminderPage(): Boolean = {
-    val mainHeading = "You need to register as a pension scheme administrator or practitioner"
-    val linkAdmin = "Register as an administrator or recover your administrator details"
+    val mainHeading      = "You need to register as a pension scheme administrator or practitioner"
+    val linkAdmin        = "Register as an administrator or recover your administrator details"
     val linkPractitioner = "Register as a practitioner or recover your practitioner details"
 
     // Check if all key elements are present on the page
     getPageSource.contains(mainHeading) &&
-      getPageSource.contains(linkAdmin) &&
-      getPageSource.contains(linkPractitioner)
+    getPageSource.contains(linkAdmin) &&
+    getPageSource.contains(linkPractitioner)
   }
 }

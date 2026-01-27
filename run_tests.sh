@@ -1,4 +1,4 @@
-qq#!/usr/bin/env bash
+#!/usr/bin/env bash
 
 BROWSER=$1
 ENVIRONMENT=$2

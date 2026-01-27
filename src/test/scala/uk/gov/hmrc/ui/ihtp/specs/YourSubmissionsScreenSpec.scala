@@ -22,7 +22,7 @@ class YourSubmissionsScreenSpec extends BaseSpec {
 
   Feature("Your Submissions page") {
 
-    Scenario("Verify user can access the Your Submissions page") {
+    Scenario("1. Verify user can access the Your Submissions page") {
 
       Given("the user is logged in as an organisation user")
       AuthLoginPage.loginAsOrgUserWithEnrolment()
@@ -52,12 +52,12 @@ class YourSubmissionsScreenSpec extends BaseSpec {
       AuthLoginPage.verifySignOutLinkText() shouldBe true
     }
 
-    Scenario("User without enrolment cannot access the Your Submissions page") {
+    Scenario("2. User without enrolment cannot access the Your Submissions page") {
       Given("the user is logged in as an organisation user without enrolment")
       AuthLoginPage.loginAsOrgUserWithoutEnrolment()
 
       When("the user tries to navigate to the Your Submissions page")
-      AuthLoginPage.navigateTo(YourSubmissionsPage.pageUrl)
+      AuthLoginPage.navigateTo(YourSubmissionsPage.mpsPageUrl)
 
       Then("the user should see the registration page for pension scheme administrators or practitioners")
       YourSubmissionsPage.verifyRegistrationReminderPage() shouldBe true
