@@ -32,6 +32,8 @@ object AuthLoginPage extends BasePage {
   private val identifierValueLocator = "input-0-0-value"
   private val confidenceLevelLocator = "select[name=confidenceLevel]"
   private val enrolmentKey           = "HMRC-PODS-ORG"
+  private val psaEnrolmentKey        = "HMRC-PODS-ORG"
+  private val pspEnrolmentKey        = "HMRC-PODSPP-ORG"
   private val identifierName         = "PsaID"
   private val identifierValue        = "A2100005"
   private val confidenceLevel        = "50"
@@ -56,27 +58,33 @@ object AuthLoginPage extends BasePage {
     submitAuthPage()
   }
 
-  private def submitAuthWithEnrolment(affinityGroup: String): Unit = {
+  private def submitAuthWithEnrolment(
+    affinityGroup: String,
+    enrolmentKey: String
+  ): Unit = {
     loadPage
     sendKeys(redirectionUrlById, redirectUrl)
     selectByVisibleText(affinityGroupById, affinityGroup)
     enterNINO()
     enterConfidenceLevel(confidenceLevel)
-    enterPsaEnrolment()
+    enterEnrolment(enrolmentKey)
     submitAuthPage()
   }
 
-  def enterPsaEnrolment(): Unit = {
+  def enterEnrolment(enrolmentKey: String): Unit = {
     inputId(enrolmentKeyLocator, enrolmentKey)
     inputId(identifierNameLocator, identifierName)
     inputId(identifierValueLocator, identifierValue)
   }
 
+  def loginAsOrgUserWithPsaEnrolment(): Unit =
+    submitAuthWithEnrolment("Organisation", psaEnrolmentKey)
+
+  def loginAsOrgUserWithPspEnrolment(): Unit =
+    submitAuthWithEnrolment("Organisation", pspEnrolmentKey)
+
   def loginAsOrgUserWithoutEnrolment(): Unit =
     submitAuthWithoutEnrolment("Organisation")
-
-  def loginAsOrgUserWithEnrolment(): Unit =
-    submitAuthWithEnrolment("Organisation")
 
   def enterConfidenceLevel(level: String): Unit = {
     val confidenceLevel = new Select(Driver.instance.findElement(By.cssSelector(confidenceLevelLocator)))

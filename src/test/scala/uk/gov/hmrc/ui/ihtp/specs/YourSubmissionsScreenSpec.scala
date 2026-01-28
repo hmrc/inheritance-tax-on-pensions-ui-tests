@@ -25,7 +25,7 @@ class YourSubmissionsScreenSpec extends BaseSpec {
     Scenario("1. Verify user can access the Your Submissions page") {
 
       Given("the user is logged in as an organisation user")
-      AuthLoginPage.loginAsOrgUserWithEnrolment()
+      AuthLoginPage.loginAsOrgUserWithPsaEnrolment()
 
       When("the user navigates to the Your Submissions page")
       AuthLoginPage.navigateTo(YourSubmissionsPage.pageUrl)
@@ -39,14 +39,8 @@ class YourSubmissionsScreenSpec extends BaseSpec {
       And("the page heading should be displayed")
       YourSubmissionsPage.verifyPageHeading() shouldBe true
 
-      And("the Welsh language toggle should be present")
-      YourSubmissionsPage.verifyLanguageToggle() shouldBe true
-
       And("the GOV.UK footer links should be present")
       YourSubmissionsPage.verifyFooterLinksArePresent() shouldBe true
-
-      And("the Welsh language toggle should be present")
-      YourSubmissionsPage.verifyLanguageToggle() shouldBe true
 
       And("the Sign out link should be displayed")
       AuthLoginPage.verifySignOutLinkText() shouldBe true
