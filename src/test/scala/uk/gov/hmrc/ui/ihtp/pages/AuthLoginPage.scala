@@ -31,7 +31,6 @@ object AuthLoginPage extends BasePage {
   private val identifierNameLocator  = "input-0-0-name"
   private val identifierValueLocator = "input-0-0-value"
   private val confidenceLevelLocator = "select[name=confidenceLevel]"
-  private val enrolmentKey           = "HMRC-PODS-ORG"
   private val psaEnrolmentKey        = "HMRC-PODS-ORG"
   private val pspEnrolmentKey        = "HMRC-PODSPP-ORG"
   private val identifierName         = "PsaID"
