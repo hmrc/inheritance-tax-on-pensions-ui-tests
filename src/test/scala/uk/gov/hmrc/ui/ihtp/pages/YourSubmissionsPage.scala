@@ -19,7 +19,7 @@ package uk.gov.hmrc.ui.ihtp.pages
 object YourSubmissionsPage extends BasePage {
   val pageUrl: String     = s"$baseUrl/submission-list"
   val mpsPageUrl: String  = "http://localhost:8204/manage-pension-schemes/you-need-to-register"
-  val pageTitle: String   = "Your submissions - inheritance-tax-on-pensions-frontend - GOV.UK"
+  val pageTitle: String   = "Your submissions - Report inheritance tax on a pension - GOV.UK"
   val pageHeading: String = "Your submissions"
 
   def verifyPageUrl(): Boolean =
