@@ -29,7 +29,8 @@ import scala.util.Try
 
 trait BasePage extends Matchers with PageObject {
 
-  val pageUrl: String
+  val pageUrl: String 
+  val newUrl: String   = ""  
   val baseUrl: String = TestConfiguration.url("inheritance-tax-on-pensions")
 
   private def fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
@@ -72,10 +73,33 @@ trait BasePage extends Matchers with PageObject {
 
   def inputCss(css: String, value: String): Unit = input(By.cssSelector(css), value)
 
+  def checkURL: Unit =
+    if (pageUrl.contains("...")) {
+      fluentWait.until(ExpectedConditions.urlMatches(pageUrl.replace("...", "") + ".*"))
+    } else {
+      fluentWait.until(ExpectedConditions.urlToBe(pageUrl))
+    }
+
+    def checkNewDynamicURL(urlSuffix: String): Unit = {
+      val expectedUrl = newUrl + urlSuffix
+      fluentWait.until(ExpectedConditions.urlToBe(expectedUrl))
+    }
+
+//  def clickSaveAndContinueButton(): Unit = click(By.cssSelector("button[type='submit']"))
+
+  def clickSaveAndContinueButton(): Unit = {
+    click(By.cssSelector(".govuk-button"))
+  }
+
+  def enterText(id: String, textToEnter: String): Unit =
+    sendKeys(By.id(id), textToEnter)
+
   /** Input methods * */
   private def input(by: By, value: String): Unit = {
     fluentWait.until(ExpectedConditions.presenceOfElementLocated(by))
     Driver.instance.findElement(by).clear()
     Driver.instance.findElement(by).sendKeys(value)
+
+
   }
 }
