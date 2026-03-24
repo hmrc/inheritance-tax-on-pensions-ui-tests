@@ -80,8 +80,6 @@ trait BasePage extends Matchers with PageObject {
       fluentWait.until(ExpectedConditions.urlToBe(pageUrl))
     }
 
-
-
   def clickSaveAndContinueButton(): Unit =
     click(By.cssSelector(".govuk-button"))
 
