@@ -19,13 +19,12 @@ package uk.gov.hmrc.ui.ihtp.pages
 import org.openqa.selenium.By
 
 object CheckYourAnswersPage extends BasePage {
-  val pageUrl: String = s"$baseUrl/check-your-answers"
-  val pageTitle: String = "Check and submit the report - Report inheritance tax on a pension - GOV.UK"
+  val pageUrl: String     = s"$baseUrl/check-your-answers"
+  val pageTitle: String   = "Check and submit the report - Report inheritance tax on a pension - GOV.UK"
   val pageHeading: String = "Check and submit the report"
 
   def verifyPageUrl(): Boolean =
     getCurrentUrl == pageUrl
-
 
   def verifyPageTitle(): Boolean =
     getTitle == pageTitle
@@ -38,11 +37,7 @@ object CheckYourAnswersPage extends BasePage {
     clickSaveAndContinueButton()
   }
 
-  def ClickChangeLink(): Unit = {
+  def ClickChangeLink(): Unit =
     click(By.cssSelector("dd[class='govuk-summary-list__actions'] a[class='govuk-link']"))
-  }
-
-
-  
 
 }

@@ -19,4 +19,3 @@ package uk.gov.hmrc.ui.ihtp.specs.tags
 import org.scalatest.Tag
 
 object AllTests extends Tag("test")
-

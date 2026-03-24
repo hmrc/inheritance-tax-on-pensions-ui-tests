@@ -17,19 +17,16 @@
 package uk.gov.hmrc.ui.ihtp.pages
 
 object EnterTheInheritanceTaxReferenceNumberPage extends BasePage {
-  val pageUrl: String = s"$baseUrl/enter-inheritance-tax-reference"
+  val pageUrl: String         = s"$baseUrl/enter-inheritance-tax-reference"
   override val newUrl: String = s"$baseUrl/change-inheritance-tax-reference"
-  val pageTitle: String = "Enter the Inheritance Tax reference number - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String = "Enter the Inheritance Tax reference number"
+  val pageTitle: String       = "Enter the Inheritance Tax reference number - Report inheritance tax on a pension - GOV.UK"
+  val pageHeading: String     = "Enter the Inheritance Tax reference number"
 
-  def verifyPageUrl(): Boolean = {
+  def verifyPageUrl(): Boolean =
+    getCurrentUrl == pageUrl
 
-  getCurrentUrl == pageUrl
-}
-
-    def verifyNewUrl(): Boolean = {
-      getCurrentUrl == newUrl
-    }
+  def verifyNewUrl(): Boolean =
+    getCurrentUrl == newUrl
 
   def verifyPageTitle(): Boolean =
     getTitle == pageTitle
@@ -37,13 +34,12 @@ object EnterTheInheritanceTaxReferenceNumberPage extends BasePage {
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
 
-  def SaveAndContinueButton(): Unit = {
+  def SaveAndContinueButton(): Unit =
+    clickSaveAndContinueButton()
+
+  def enterReferenceNumber(textToEnter: String): Unit = {
+    checkURL
+    enterText("value", textToEnter)
     clickSaveAndContinueButton()
   }
-
-     def enterReferenceNumber(textToEnter: String): Unit = {
-      checkURL
-      enterText("value", textToEnter)
-      clickSaveAndContinueButton()
-    }
-  }
+}

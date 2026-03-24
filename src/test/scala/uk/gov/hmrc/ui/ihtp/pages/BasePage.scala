@@ -29,8 +29,8 @@ import scala.util.Try
 
 trait BasePage extends Matchers with PageObject {
 
-  val pageUrl: String 
-  val newUrl: String   = ""  
+  val pageUrl: String
+  val newUrl: String  = ""
   val baseUrl: String = TestConfiguration.url("inheritance-tax-on-pensions")
 
   private def fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
@@ -80,16 +80,10 @@ trait BasePage extends Matchers with PageObject {
       fluentWait.until(ExpectedConditions.urlToBe(pageUrl))
     }
 
-    def checkNewDynamicURL(urlSuffix: String): Unit = {
-      val expectedUrl = newUrl + urlSuffix
-      fluentWait.until(ExpectedConditions.urlToBe(expectedUrl))
-    }
 
-//  def clickSaveAndContinueButton(): Unit = click(By.cssSelector("button[type='submit']"))
 
-  def clickSaveAndContinueButton(): Unit = {
+  def clickSaveAndContinueButton(): Unit =
     click(By.cssSelector(".govuk-button"))
-  }
 
   def enterText(id: String, textToEnter: String): Unit =
     sendKeys(By.id(id), textToEnter)
@@ -99,7 +93,6 @@ trait BasePage extends Matchers with PageObject {
     fluentWait.until(ExpectedConditions.presenceOfElementLocated(by))
     Driver.instance.findElement(by).clear()
     Driver.instance.findElement(by).sendKeys(value)
-
 
   }
 }

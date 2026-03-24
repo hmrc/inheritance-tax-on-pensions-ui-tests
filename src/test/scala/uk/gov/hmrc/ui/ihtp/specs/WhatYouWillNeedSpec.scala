@@ -48,18 +48,17 @@ class WhatYouWillNeedSpec extends BaseSpec {
       WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
 
       And("User is on the Enter the Inheritance Tax reference number Page")
-      EnterTheInheritanceTaxReferenceNumberPage.verifyPageUrl() shouldBe true
-      EnterTheInheritanceTaxReferenceNumberPage.verifyPageTitle() shouldBe true
+      EnterTheInheritanceTaxReferenceNumberPage.verifyPageUrl()     shouldBe true
+      EnterTheInheritanceTaxReferenceNumberPage.verifyPageTitle()   shouldBe true
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Tax reference number")
       EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("A123456/25A")
 
-
       When("user click On save and Continue navigates to the Check and submit the report page")
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
-      CheckYourAnswersPage.verifyPageUrl() shouldBe true
-      CheckYourAnswersPage.verifyPageTitle() shouldBe true
+      CheckYourAnswersPage.verifyPageUrl()     shouldBe true
+      CheckYourAnswersPage.verifyPageTitle()   shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
       Then("User should be able to click on Change Link Button")
@@ -79,10 +78,9 @@ class WhatYouWillNeedSpec extends BaseSpec {
 
       And("User should be able to Navigates to Submission Page")
       CheckYourAnswersPage.navigateTo(YourSubmissionsPage.pageUrl)
-      YourSubmissionsPage.verifyPageUrl() shouldBe true
-      YourSubmissionsPage.verifyPageTitle() shouldBe true
+      YourSubmissionsPage.verifyPageUrl()     shouldBe true
+      YourSubmissionsPage.verifyPageTitle()   shouldBe true
       YourSubmissionsPage.verifyPageHeading() shouldBe true
-
 
       And("the GOV.UK footer links should be present")
       YourSubmissionsPage.verifyFooterLinksArePresent() shouldBe true
@@ -91,8 +89,6 @@ class WhatYouWillNeedSpec extends BaseSpec {
       AuthLoginPage.verifySignOutLinkText() shouldBe true
     }
 
-
   }
-
 
 }

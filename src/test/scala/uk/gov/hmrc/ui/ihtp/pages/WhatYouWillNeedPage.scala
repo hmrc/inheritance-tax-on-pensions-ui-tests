@@ -17,8 +17,8 @@
 package uk.gov.hmrc.ui.ihtp.pages
 
 object WhatYouWillNeedPage extends BasePage {
-  val pageUrl: String = s"$baseUrl/start-report-you-will-need"
-  val pageTitle: String = "What you will need - Report inheritance tax on a pension - GOV.UK"
+  val pageUrl: String     = s"$baseUrl/start-report-you-will-need"
+  val pageTitle: String   = "What you will need - Report inheritance tax on a pension - GOV.UK"
   val pageHeading: String = "What you will need"
 
   def verifyPageUrl(): Boolean =
@@ -35,10 +35,4 @@ object WhatYouWillNeedPage extends BasePage {
     clickSaveAndContinueButton()
   }
 
- 
-  
-  
 }
-  
-  
-

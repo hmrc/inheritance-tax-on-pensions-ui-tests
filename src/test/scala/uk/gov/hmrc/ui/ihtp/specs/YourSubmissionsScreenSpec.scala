@@ -18,7 +18,6 @@ package uk.gov.hmrc.ui.ihtp.specs
 
 import uk.gov.hmrc.ui.ihtp.pages.*
 
-
 class YourSubmissionsScreenSpec extends BaseSpec {
 
   Feature("Your Submissions page") {
