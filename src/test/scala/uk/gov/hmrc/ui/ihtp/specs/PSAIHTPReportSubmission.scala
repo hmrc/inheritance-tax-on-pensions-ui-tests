@@ -20,11 +20,11 @@ import uk.gov.hmrc.ui.ihtp.specs.tags.AllTests
 
 import uk.gov.hmrc.ui.ihtp.pages.*
 
-class WhatYouWillNeedSpec extends BaseSpec {
+class PSAIHTPReportSubmission extends BaseSpec {
 
-  Feature("What you will need page") {
+  Feature("PSA IHTP Report Submission") {
 
-    Scenario("1. User Can access the What you will need Page") {
+    Scenario("1. PSA User Can Submit IHTP Application") {
 
       Given("the user is logged in as an organisation user")
       AuthLoginPage.loginAsOrgUserWithPsaEnrolment()
@@ -76,14 +76,24 @@ class WhatYouWillNeedSpec extends BaseSpec {
       Then("User click on Save and Continue button on the Check and submit the report page ")
       CheckYourAnswersPage.SaveAndContinueButton()
 
+      And("User should be able to Navigates to Psa-Declaration Page")
+      CheckYourAnswersPage.navigateTo(PSADeclarationPage.pageUrl)
+      PSADeclarationPage.verifyPageUrl()     shouldBe true
+      PSADeclarationPage.verifyPageTitle()   shouldBe true
+      PSADeclarationPage.verifyPageHeading() shouldBe true
+
+      And("User should be click on Agree and Submit Button on Psa-Declaration Page")
+      PSADeclarationPage.AgreeAndSubmitButton()
+
       And("User should be able to Navigates to Submission Page")
-      CheckYourAnswersPage.navigateTo(YourSubmissionsPage.pageUrl)
-      YourSubmissionsPage.verifyPageUrl()     shouldBe true
-      YourSubmissionsPage.verifyPageTitle()   shouldBe true
-      YourSubmissionsPage.verifyPageHeading() shouldBe true
+      PSADeclarationPage.navigateTo(ReportSubmittedPage.pageUrl)
+      ReportSubmittedPage.verifyPageUrl() shouldBe true
+      ReportSubmittedPage.verifyPageTitle() shouldBe true
+      ReportSubmittedPage.verifyPageHeading() shouldBe true
+
 
       And("the GOV.UK footer links should be present")
-      YourSubmissionsPage.verifyFooterLinksArePresent() shouldBe true
+      ReportSubmittedPage.verifyFooterLinksArePresent() shouldBe true
 
       And("the Sign out link should be displayed")
       AuthLoginPage.verifySignOutLinkText() shouldBe true

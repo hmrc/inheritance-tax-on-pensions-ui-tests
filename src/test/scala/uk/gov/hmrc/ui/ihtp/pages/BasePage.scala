@@ -80,8 +80,13 @@ trait BasePage extends Matchers with PageObject {
       fluentWait.until(ExpectedConditions.urlToBe(pageUrl))
     }
 
+    def clickAgreeAndSubmitButton(): Unit = {
+      click(By.cssSelector(".govuk-button"))
+    }
+
   def clickSaveAndContinueButton(): Unit =
     click(By.cssSelector(".govuk-button"))
+  
 
   def enterText(id: String, textToEnter: String): Unit =
     sendKeys(By.id(id), textToEnter)
