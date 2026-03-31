@@ -87,10 +87,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User should be able to Navigates to Submission Page")
       PSADeclarationPage.navigateTo(ReportSubmittedPage.pageUrl)
-      ReportSubmittedPage.verifyPageUrl() shouldBe true
-      ReportSubmittedPage.verifyPageTitle() shouldBe true
+      ReportSubmittedPage.verifyPageUrl()     shouldBe true
+      ReportSubmittedPage.verifyPageTitle()   shouldBe true
       ReportSubmittedPage.verifyPageHeading() shouldBe true
-
 
       And("the GOV.UK footer links should be present")
       ReportSubmittedPage.verifyFooterLinksArePresent() shouldBe true
@@ -99,7 +98,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       AuthLoginPage.verifySignOutLinkText() shouldBe true
     }
 
-    Scenario("2. PSA User able to submit IHTP Report Submission with Reference number Leading and trailing white space ") {
+    Scenario(
+      "2. PSA User able to submit IHTP Report Submission with Reference number Leading and trailing white space "
+    ) {
 
       Given("the user is logged in as an organisation user")
       AuthLoginPage.loginAsOrgUserWithPsaEnrolment()
@@ -123,8 +124,8 @@ class PSAIHTPReportSubmission extends BaseSpec {
       WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
 
       And("User is on the Enter the Inheritance Tax reference number Page")
-      EnterTheInheritanceTaxReferenceNumberPage.verifyPageUrl() shouldBe true
-      EnterTheInheritanceTaxReferenceNumberPage.verifyPageTitle() shouldBe true
+      EnterTheInheritanceTaxReferenceNumberPage.verifyPageUrl()     shouldBe true
+      EnterTheInheritanceTaxReferenceNumberPage.verifyPageTitle()   shouldBe true
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Tax reference number")
@@ -132,8 +133,8 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       When("user click On save and Continue navigates to the Check and submit the report page")
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
-      CheckYourAnswersPage.verifyPageUrl() shouldBe true
-      CheckYourAnswersPage.verifyPageTitle() shouldBe true
+      CheckYourAnswersPage.verifyPageUrl()     shouldBe true
+      CheckYourAnswersPage.verifyPageTitle()   shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
       When("user click On save and Continue it navigates to the Check and submit the report page")
@@ -146,8 +147,8 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User should be able to Navigates to Psa-Declaration Page")
       CheckYourAnswersPage.navigateTo(PSADeclarationPage.pageUrl)
-      PSADeclarationPage.verifyPageUrl() shouldBe true
-      PSADeclarationPage.verifyPageTitle() shouldBe true
+      PSADeclarationPage.verifyPageUrl()     shouldBe true
+      PSADeclarationPage.verifyPageTitle()   shouldBe true
       PSADeclarationPage.verifyPageHeading() shouldBe true
 
       And("User should be click on Agree and Submit Button on Psa-Declaration Page")
@@ -155,10 +156,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User should be able to Navigates to Submission Page")
       PSADeclarationPage.navigateTo(ReportSubmittedPage.pageUrl)
-      ReportSubmittedPage.verifyPageUrl() shouldBe true
-      ReportSubmittedPage.verifyPageTitle() shouldBe true
+      ReportSubmittedPage.verifyPageUrl()     shouldBe true
+      ReportSubmittedPage.verifyPageTitle()   shouldBe true
       ReportSubmittedPage.verifyPageHeading() shouldBe true
-
 
       And("the GOV.UK footer links should be present")
       ReportSubmittedPage.verifyFooterLinksArePresent() shouldBe true

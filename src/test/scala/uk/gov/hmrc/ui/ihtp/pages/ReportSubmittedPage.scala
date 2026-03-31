@@ -29,6 +29,5 @@ object ReportSubmittedPage extends BasePage {
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
-  
 
 }
