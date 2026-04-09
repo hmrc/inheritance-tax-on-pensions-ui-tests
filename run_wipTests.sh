@@ -9,5 +9,4 @@ echo "Browser:              ${BROWSER}"
 echo "Env:                  local"
 echo "Journey:              ${JOURNEY}"
 echo "=========================================="
-
-sbt clean -Dbrowser="${BROWSER:=chrome}" -Denvironment="${ENVIRONMENT:=local}" test testReport
+sbt clean -Dbrowser="${BROWSER}" -Denvironment=local "testOnly specs.* -- -n WIP" testReport

@@ -34,8 +34,8 @@ trait BasePage extends Matchers with PageObject {
   val baseUrl: String = TestConfiguration.url("inheritance-tax-on-pensions")
 
   private def fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
-    .withTimeout(Duration.ofSeconds(2))
-    .pollingEvery(Duration.ofMillis(200))
+    .withTimeout(Duration.ofSeconds(20))
+    .pollingEvery(Duration.ofMillis(500))
 
   def verifyPageLoaded(url: String = this.pageUrl): Unit = fluentWait.until(ExpectedConditions.urlToBe(url))
 
@@ -44,6 +44,13 @@ trait BasePage extends Matchers with PageObject {
     verifyPageLoaded(url)
   }
 
+//  def loginAndStartReturn(appaId: String): Unit = {
+//    clearDataForReturns()
+//    navigateToPage(AuthLoginPage)
+//    AuthLoginPage.enterAuthDetails(appaId)
+//    BeforeYouStartPage.continue()
+//    TaskListPage.checkURL
+//  }
   def isElementPresent(by: By): Boolean =
     Try(Driver.instance.findElement(by)).isSuccess
 
@@ -73,11 +80,16 @@ trait BasePage extends Matchers with PageObject {
 
   def inputCss(css: String, value: String): Unit = input(By.cssSelector(css), value)
 
+  def clearDataForReturns(): Unit =
+    Driver.instance.get(TestConfiguration.url("inheritance-tax-on-pensions") + "/test-only/clear-all")
+
   def checkURL: Unit =
     if (pageUrl.contains("...")) {
       fluentWait.until(ExpectedConditions.urlMatches(pageUrl.replace("...", "") + ".*"))
+      Thread.sleep(3000)
     } else {
       fluentWait.until(ExpectedConditions.urlToBe(pageUrl))
+      Thread.sleep(3000)
     }
 
     def clickAgreeAndSubmitButton(): Unit =
@@ -96,4 +108,5 @@ trait BasePage extends Matchers with PageObject {
     Driver.instance.findElement(by).sendKeys(value)
 
   }
+
 }

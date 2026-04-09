@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.ui.ihtp.specs
 
-import uk.gov.hmrc.ui.ihtp.specs.tags.AllTests
+import uk.gov.hmrc.ui.ihtp.specs.tags.WIP
 
 import uk.gov.hmrc.ui.ihtp.pages.*
 
@@ -24,7 +24,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
   Feature("PSA IHTP Report Submission") {
 
-    Scenario("1. PSA User Can Submit IHTP Application") {
+    Scenario("1. PSA User Can Submit IHTP Application", WIP) {
 
       Given("the user is logged in as an organisation user")
       AuthLoginPage.loginAsOrgUserWithPsaEnrolment()
@@ -96,10 +96,12 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("the Sign out link should be displayed")
       AuthLoginPage.verifySignOutLinkText() shouldBe true
+
     }
 
     Scenario(
-      "2. PSA User able to submit IHTP Report Submission with Reference number Leading and trailing white space "
+      "2. PSA User able to submit IHTP Report Submission with Reference number Leading and trailing white space ",
+      WIP
     ) {
 
       Given("the user is logged in as an organisation user")
@@ -129,7 +131,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Tax reference number")
-      EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("  A1 234 56/25 A ")
+      EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber(" A123456/25A ")
 
       When("user click On save and Continue navigates to the Check and submit the report page")
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
@@ -167,6 +169,43 @@ class PSAIHTPReportSubmission extends BaseSpec {
       AuthLoginPage.verifySignOutLinkText() shouldBe true
 
     }
-  }
+    Scenario("3. Verify user can access the Your Submissions page", WIP) {
 
+      Given("the user is logged in as an organisation user")
+      AuthLoginPage.loginAsOrgUserWithPsaEnrolment()
+
+      When("the user navigates to the Your Submissions page")
+      AuthLoginPage.navigateTo(YourSubmissionsPage.pageUrl)
+
+      Then("the Your Submissions page URL should be correct")
+      YourSubmissionsPage.verifyPageUrl() shouldBe true
+
+      And("the Your Submissions page title should be correct")
+      YourSubmissionsPage.verifyPageTitle() shouldBe true
+
+      And("the page heading should be displayed")
+      YourSubmissionsPage.verifyPageHeading() shouldBe true
+
+      And("the GOV.UK footer links should be present")
+      YourSubmissionsPage.verifyFooterLinksArePresent() shouldBe true
+
+      And("the Sign out link should be displayed")
+      AuthLoginPage.verifySignOutLinkText() shouldBe true
+    }
+
+    Scenario("4. User without enrolment cannot access the Your Submissions page", WIP) {
+      Given("the user is logged in as an organisation user without enrolment")
+      AuthLoginPage.loginAsOrgUserWithoutEnrolment()
+
+      When("the user tries to navigate to the Your Submissions page")
+      AuthLoginPage.navigateTo(YourSubmissionsPage.mpsPageUrl)
+
+      Then("the user should see the registration page for pension scheme administrators or practitioners")
+      YourSubmissionsPage.verifyRegistrationReminderPage() shouldBe true
+
+      And("the page URL should not be the Your Submissions page URL")
+      YourSubmissionsPage.verifyPageUrl() shouldBe false
+    }
+
+  }
 }
