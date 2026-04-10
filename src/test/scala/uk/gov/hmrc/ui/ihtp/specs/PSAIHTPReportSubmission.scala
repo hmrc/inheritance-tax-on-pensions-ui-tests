@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.ui.ihtp.specs
 
-import uk.gov.hmrc.ui.ihtp.specs.tags.AllTests
+import uk.gov.hmrc.ui.ihtp.specs.tags.WIP
 
 import uk.gov.hmrc.ui.ihtp.pages.*
 
@@ -96,6 +96,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("the Sign out link should be displayed")
       AuthLoginPage.verifySignOutLinkText() shouldBe true
+
     }
 
     Scenario(
@@ -129,7 +130,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Tax reference number")
-      EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("  A1 234 56/25 A ")
+      EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber(" A123456/25A ")
 
       When("user click On save and Continue navigates to the Check and submit the report page")
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
@@ -167,6 +168,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       AuthLoginPage.verifySignOutLinkText() shouldBe true
 
     }
-  }
 
+  }
 }

@@ -61,6 +61,7 @@ object AuthLoginPage extends BasePage {
     affinityGroup: String,
     enrolmentKey: String
   ): Unit = {
+    clearDataForReturns()
     loadPage
     sendKeys(redirectionUrlById, redirectUrl)
     selectByVisibleText(affinityGroupById, affinityGroup)
@@ -92,4 +93,5 @@ object AuthLoginPage extends BasePage {
 
   def enterNINO(): Unit =
     inputId(NINOLocator, NINO)
+
 }
