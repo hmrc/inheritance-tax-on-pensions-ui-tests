@@ -10,4 +10,4 @@ echo "Env:                  local"
 echo "Journey:              ${JOURNEY}"
 echo "=========================================="
 
-sbt clean -Dbrowser="${BROWSER:=chrome}" -Denvironment="${ENVIRONMENT:=local}" test testReport
+sbt clean -Dbrowser="${BROWSER:=chrome}" -Denvironment="${ENVIRONMENT:=local}" -Dbrowser.usePreviousVersion=true test testReport

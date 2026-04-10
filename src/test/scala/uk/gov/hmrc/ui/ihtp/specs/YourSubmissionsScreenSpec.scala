@@ -16,10 +16,8 @@
 
 package uk.gov.hmrc.ui.ihtp.specs
 
-import org.scalatest.Ignore
 import uk.gov.hmrc.ui.ihtp.pages.*
 
-@Ignore
 class YourSubmissionsScreenSpec extends BaseSpec {
 
   Feature("Your Submissions page") {
