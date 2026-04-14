@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
-
 import auth.JourneyType
 import auth.JourneyType.{InheritanceTaxService, viewSubmissions}
 import org.openqa.selenium.By
@@ -34,31 +33,29 @@ object AuthLoginPage extends BasePage {
         redirectUrl(
           TestConfiguration.url("inheritance-tax-on-pensions") + "/start-report-you-will-need"
         )
-      case viewSubmissions =>
+      case viewSubmissions       =>
         redirectUrl(
           TestConfiguration.url("inheritance-tax-on-pensions") + "/submission-list"
-          
         )
     }
 
   private val redirectionUrlById: By = By.id("redirectionUrl")
-  private val affinityGroupById: By = By.id("affinityGroupSelect")
-  private val authSubmitById: By = By.id("submit-top")
-  private val enrolmentKeyLocator = "enrolment[0].name"
-  private val identifierNameLocator = "input-0-0-name"
+  private val affinityGroupById: By  = By.id("affinityGroupSelect")
+  private val authSubmitById: By     = By.id("submit-top")
+  private val enrolmentKeyLocator    = "enrolment[0].name"
+  private val identifierNameLocator  = "input-0-0-name"
   private val identifierValueLocator = "input-0-0-value"
   private val confidenceLevelLocator = "select[name=confidenceLevel]"
-  private val psaEnrolmentKey = "HMRC-PODS-ORG"
-  private val pspEnrolmentKey = "HMRC-PODSPP-ORG"
-  private val identifierName = "PsaID"
-  private val identifierValue = "A2100005"
-  private val pspidentifierName = "PspID"
-  private val pspidentifierValue = "21000005"
-  private val confidenceLevel = "50"
-  private val NINOLocator = "nino"
-  private val NINO = ""
+  private val psaEnrolmentKey        = "HMRC-PODS-ORG"
+  private val pspEnrolmentKey        = "HMRC-PODSPP-ORG"
+  private val identifierName         = "PsaID"
+  private val identifierValue        = "A2100005"
+  private val pspidentifierName      = "PspID"
+  private val pspidentifierValue     = "21000005"
+  private val confidenceLevel        = "50"
+  private val NINOLocator            = "nino"
+  private val NINO                   = ""
 //  private val redirectUrl: String = TestConfiguration.url("inheritance-tax-on-pensions") + "/start-report-you-will-need"
-
 
   def redirectUrl(url: String): Unit =
     sendKeys(By.cssSelector("#redirectionUrl"), url)
@@ -71,7 +68,7 @@ object AuthLoginPage extends BasePage {
 
   private def submitAuthPage(): Unit = click(authSubmitById)
 
-  private def submitAuthWithoutEnrolment(affinityGroup: String,typeOfJourney: JourneyType = viewSubmissions): Unit = {
+  private def submitAuthWithoutEnrolment(affinityGroup: String, typeOfJourney: JourneyType = viewSubmissions): Unit = {
     loadPage
 //    sendKeys(redirectionUrlById, redirectUrl)
     redirectUrl {
@@ -83,7 +80,11 @@ object AuthLoginPage extends BasePage {
     submitAuthPage()
   }
 
-  private def submitAuthWithPsaEnrolment(affinityGroup: String, typeOfJourney: JourneyType = InheritanceTaxService, enrolmentKey: String): Unit = {
+  private def submitAuthWithPsaEnrolment(
+    affinityGroup: String,
+    typeOfJourney: JourneyType = InheritanceTaxService,
+    enrolmentKey: String
+  ): Unit = {
     loadPage
     redirectUrl {
       typeOfJourney
@@ -105,8 +106,11 @@ object AuthLoginPage extends BasePage {
   //    submitAuthPage()
   //  }
 
-
-  private def submitAuthWithPspEnrolment(affinityGroup: String, typeOfJourney: JourneyType = InheritanceTaxService, enrolmentKey: String): Unit = {
+  private def submitAuthWithPspEnrolment(
+    affinityGroup: String,
+    typeOfJourney: JourneyType = InheritanceTaxService,
+    enrolmentKey: String
+  ): Unit = {
     loadPage
     redirectUrl {
       typeOfJourney
@@ -130,17 +134,14 @@ object AuthLoginPage extends BasePage {
     inputId(identifierValueLocator, pspidentifierValue)
   }
 
-  def loginAsPsaOrgUserForSubmission(): Unit = {
+  def loginAsPsaOrgUserForSubmission(): Unit =
+    submitAuthWithPsaEnrolment("Organisation", viewSubmissions, psaEnrolmentKey)
 
-  submitAuthWithPsaEnrolment("Organisation", viewSubmissions, psaEnrolmentKey)
-}
-    
-    def loginAsOrgUserWithPsaEnrolment(): Unit = {
-      submitAuthWithPsaEnrolment("Organisation",InheritanceTaxService, psaEnrolmentKey)
-    }
+  def loginAsOrgUserWithPsaEnrolment(): Unit =
+    submitAuthWithPsaEnrolment("Organisation", InheritanceTaxService, psaEnrolmentKey)
 
   def loginAsOrgUserWithPspEnrolment(): Unit =
-    submitAuthWithPspEnrolment("Organisation",InheritanceTaxService,pspEnrolmentKey)
+    submitAuthWithPspEnrolment("Organisation", InheritanceTaxService, pspEnrolmentKey)
 
   def loginAsOrgUserWithoutEnrolment(): Unit =
     submitAuthWithoutEnrolment("Organisation")
@@ -152,7 +153,6 @@ object AuthLoginPage extends BasePage {
 
   def enterNINO(): Unit =
     inputId(NINOLocator, NINO)
-
 
   //  def loginAsOrgUserWithPsaEnrolment(): Unit =
   //    submitAuthWithEnrolment("Organisation", psaEnrolmentKey)

@@ -27,7 +27,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Given("the user is logged in as an organisation user")
       AuthLoginPage.loginAsOrgUserWithPsaEnrolment()
-      
+
       When("the user navigates to the What You will need page")
       AuthLoginPage.navigateTo(WhatYouWillNeedPage.pageUrl)
 
@@ -128,7 +128,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Tax reference number")
-      EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("  A1 234 56/25 A ")
+      EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber(" A123456/25A ")
 
       When("user click On save and Continue navigates to the Check and submit the report page")
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)

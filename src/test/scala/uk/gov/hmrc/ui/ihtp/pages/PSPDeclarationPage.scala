@@ -17,8 +17,8 @@
 package uk.gov.hmrc.ui.ihtp.pages
 
 object PSPDeclarationPage extends BasePage {
-  val pageUrl: String = s"$baseUrl/pspDeclaration"
-  val pageTitle: String = "Declaration - Report inheritance tax on a pension - GOV.UK"
+  val pageUrl: String     = s"$baseUrl/pspDeclaration"
+  val pageTitle: String   = "Declaration - Report inheritance tax on a pension - GOV.UK"
   val pageHeading: String = "Declaration"
 
   def verifyPageUrl(): Boolean =
@@ -35,8 +35,7 @@ object PSPDeclarationPage extends BasePage {
     clickSaveAndContinueButton()
   }
 
-  def enterAdministratorId(textToEnter: String): Unit = {
+  def enterAdministratorId(textToEnter: String): Unit =
     enterText("value", textToEnter)
-  }
 
 }
