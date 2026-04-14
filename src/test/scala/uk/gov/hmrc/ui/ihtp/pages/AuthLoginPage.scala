@@ -54,8 +54,8 @@ object AuthLoginPage extends BasePage {
   private val pspidentifierValue     = "21000005"
   private val confidenceLevel        = "50"
 
-//  def redirectUrl(url: String): Unit =
-//    sendKeys(By.cssSelector("#redirectionUrl"), url)
+  def redirectUrl(url: String): Unit =
+    sendKeys(By.cssSelector("#redirectionUrl"), url)
 
   private def loadPage: this.type = {
     get(pageUrl)
@@ -67,12 +67,10 @@ object AuthLoginPage extends BasePage {
 
   private def submitAuthWithoutEnrolment(affinityGroup: String, typeOfJourney: JourneyType = viewSubmissions): Unit = {
     loadPage
-//    sendKeys(redirectionUrlById, redirectUrl)
     redirectUrl {
       typeOfJourney
     }
     selectByVisibleText(affinityGroupById, affinityGroup)
-    enterNINO()
     enterConfidenceLevel(confidenceLevel)
     submitAuthPage()
   }
@@ -87,9 +85,23 @@ object AuthLoginPage extends BasePage {
       typeOfJourney
     }
     selectByVisibleText(affinityGroupById, affinityGroup)
-    enterNINO()
     enterConfidenceLevel(confidenceLevel)
     enterEnrolment(enrolmentKey)
+    submitAuthPage()
+  }
+
+  private def submitAuthWithPspEnrolment(
+    affinityGroup: String,
+    typeOfJourney: JourneyType = InheritanceTaxService,
+    enrolmentKey: String
+  ): Unit = {
+    loadPage
+    redirectUrl {
+      typeOfJourney
+    }
+    selectByVisibleText(affinityGroupById, affinityGroup)
+    enterConfidenceLevel(confidenceLevel)
+    enterPspEnrolment(enrolmentKey)
     submitAuthPage()
   }
 
@@ -102,22 +114,6 @@ object AuthLoginPage extends BasePage {
   //    enterEnrolment(enrolmentKey)
   //    submitAuthPage()
   //  }
-
-  private def submitAuthWithPspEnrolment(
-    affinityGroup: String,
-    typeOfJourney: JourneyType = InheritanceTaxService,
-    enrolmentKey: String
-  ): Unit = {
-    loadPage
-    redirectUrl {
-      typeOfJourney
-    }
-    selectByVisibleText(affinityGroupById, affinityGroup)
-    enterNINO()
-    enterConfidenceLevel(confidenceLevel)
-    enterPspEnrolment(enrolmentKey)
-    submitAuthPage()
-  }
 
   def enterEnrolment(enrolmentKey: String): Unit = {
     inputId(enrolmentKeyLocator, enrolmentKey)
@@ -148,9 +144,4 @@ object AuthLoginPage extends BasePage {
     confidenceLevel.selectByVisibleText(level)
   }
 
-  def enterNINO(): Unit =
-    inputId(NINOLocator, NINO)
-
-  //  def loginAsOrgUserWithPsaEnrolment(): Unit =
-  //    submitAuthWithEnrolment("Organisation", psaEnrolmentKey)
 }
