@@ -86,10 +86,8 @@ trait BasePage extends Matchers with PageObject {
   def checkURL: Unit =
     if (pageUrl.contains("...")) {
       fluentWait.until(ExpectedConditions.urlMatches(pageUrl.replace("...", "") + ".*"))
-      Thread.sleep(3000)
     } else {
       fluentWait.until(ExpectedConditions.urlToBe(pageUrl))
-      Thread.sleep(3000)
     }
 
     def clickAgreeAndSubmitButton(): Unit =
