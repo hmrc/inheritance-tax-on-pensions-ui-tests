@@ -17,7 +17,6 @@
 package uk.gov.hmrc.ui.ihtp.specs
 
 import uk.gov.hmrc.ui.ihtp.specs.tags.AllTests
-
 import uk.gov.hmrc.ui.ihtp.pages.*
 
 class PSAIHTPReportSubmission extends BaseSpec {
@@ -28,7 +27,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Given("the user is logged in as an organisation user")
       AuthLoginPage.loginAsOrgUserWithPsaEnrolment()
-
+      
       When("the user navigates to the What You will need page")
       AuthLoginPage.navigateTo(WhatYouWillNeedPage.pageUrl)
 
