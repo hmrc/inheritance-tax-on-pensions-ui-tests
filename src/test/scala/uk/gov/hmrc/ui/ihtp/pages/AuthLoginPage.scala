@@ -53,12 +53,9 @@ object AuthLoginPage extends BasePage {
   private val pspidentifierName      = "PspID"
   private val pspidentifierValue     = "21000005"
   private val confidenceLevel        = "50"
-  private val NINOLocator            = "nino"
-  private val NINO                   = ""
-//  private val redirectUrl: String = TestConfiguration.url("inheritance-tax-on-pensions") + "/start-report-you-will-need"
 
-  def redirectUrl(url: String): Unit =
-    sendKeys(By.cssSelector("#redirectionUrl"), url)
+//  def redirectUrl(url: String): Unit =
+//    sendKeys(By.cssSelector("#redirectionUrl"), url)
 
   private def loadPage: this.type = {
     get(pageUrl)
