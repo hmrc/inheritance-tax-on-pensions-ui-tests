@@ -16,8 +16,7 @@
 
 package uk.gov.hmrc.ui.ihtp.specs
 
-import uk.gov.hmrc.ui.ihtp.specs.tags.WIP
-
+import uk.gov.hmrc.ui.ihtp.specs.tags.AllTests
 import uk.gov.hmrc.ui.ihtp.pages.*
 
 class PSAIHTPReportSubmission extends BaseSpec {
@@ -96,7 +95,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("the Sign out link should be displayed")
       AuthLoginPage.verifySignOutLinkText() shouldBe true
-
     }
 
     Scenario(
@@ -168,6 +166,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       AuthLoginPage.verifySignOutLinkText() shouldBe true
 
     }
-
   }
+
 }

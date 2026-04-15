@@ -25,7 +25,7 @@ class YourSubmissionsScreenSpec extends BaseSpec {
     Scenario("1. Verify user can access the Your Submissions page") {
 
       Given("the user is logged in as an organisation user")
-      AuthLoginPage.loginAsOrgUserWithPsaEnrolment()
+      AuthLoginPage.loginAsPsaOrgUserForSubmission()
 
       When("the user navigates to the Your Submissions page")
       AuthLoginPage.navigateTo(YourSubmissionsPage.pageUrl)
