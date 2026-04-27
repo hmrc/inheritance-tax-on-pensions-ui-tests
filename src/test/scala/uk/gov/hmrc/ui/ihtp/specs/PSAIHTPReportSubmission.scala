@@ -54,6 +54,31 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Tax reference number")
       EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("A123456/25A")
 
+      And("User Should be able to see and Click Save and Continue Button")
+      EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
+
+      // Deceased name page
+      And("User should be able to Navigate to Deceased Name Page ")
+      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
+//
+      And("User is on the Deceased Name Page")
+      DeceasedNamePage.verifyPageUrl()     shouldBe true
+      DeceasedNamePage.verifyPageTitle()   shouldBe true
+      DeceasedNamePage.verifyPageHeading() shouldBe true
+
+      And("User is able to enter Details of the Deceased")
+      DeceasedNamePage.enterDeceasedDetails(
+        "Mr",
+        "ABC",
+        "P",
+        "XYZ"
+      )
+
+      And("User Should be able to see and Click Save and Continue Button")
+      DeceasedNamePage.SaveAndContinueButton()
+
+      // End
+
       When("user click On save and Continue navigates to the Check and submit the report page")
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageUrl()     shouldBe true
