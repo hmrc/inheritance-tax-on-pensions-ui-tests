@@ -17,13 +17,12 @@
 package uk.gov.hmrc.ui.ihtp.pages
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.ui.ihtp.pages.EnterBirthDeathPage.{checkURL, clickSaveAndContinueButton}
 
-object NationalInsuranceNumberPage extends BasePage {
-  val pageUrl: String   = s"$baseUrl/enter-national-insurance-number"
+object LPRTypePage extends BasePage {
+  val pageUrl: String   = s"$baseUrl/lpr-individual-or-organisation"
   val pageTitle: String =
-    "Does the deceased have a National Insurance number? - Report inheritance tax on a pension - GOV.UK"
-//  val pageHeading: String = ""
+    "Is the legal personal representative (LPR) an individual or a member of an organisation? - Report inheritance tax on a pension - GOV.UK"
+  // val pageHeading: String = "Enter the full name of the deceased person"
 
   def verifyPageUrl(): Boolean =
     getCurrentUrl == pageUrl
@@ -32,7 +31,7 @@ object NationalInsuranceNumberPage extends BasePage {
     getTitle == pageTitle
 
   // def verifyPageHeading(): Boolean =
-  //   getPageSource.contains(pageHeading)
+  //  getPageSource.contains(pageHeading)
 
   def SaveAndContinueButton(): Unit = {
     checkURL
@@ -41,21 +40,8 @@ object NationalInsuranceNumberPage extends BasePage {
 
   def clickRadioButton(text: String): Unit =
     text match {
-      case "Yes" => click(By.id("value_0"))
-      case "No"  => click(By.id("value_1"))
+      case "Individual"   => click(By.id("value_0"))
+      case "Organisation" => click(By.id("value_1"))
     }
-
-  def addNino(adding: Boolean): Unit = {
-    checkURL
-    if (adding) clickRadioButton("Yes")
-    else clickRadioButton("No")
-    clickSaveAndContinueButton()
-  }
-
-  def enterReason(textToEnter: String): Unit = {
-    checkURL
-    enterText("reasonForNoNino", textToEnter)
-    clickSaveAndContinueButton()
-  }
 
 }
