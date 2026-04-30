@@ -60,7 +60,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       // Deceased name page
       And("User should be able to Navigate to Deceased Name Page ")
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
-//
+
       And("User is on the Deceased Name Page")
       DeceasedNamePage.verifyPageUrl()     shouldBe true
       DeceasedNamePage.verifyPageTitle()   shouldBe true
@@ -77,10 +77,28 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User Should be able to see and Click Save and Continue Button")
       DeceasedNamePage.SaveAndContinueButton()
 
-      // End
+      Then("User should be able to Navigate to National Insurance Number Page")
+      DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
+      NationalInsuranceNumberPage.verifyPageUrl()   shouldBe true
+      NationalInsuranceNumberPage.verifyPageTitle() shouldBe true
+
+      And("User selects No for Does User has National Number")
+      NationalInsuranceNumberPage.clickRadioButton("No")
+
+      Then("User Enter Reason for no National Insurance Number and continue")
+      NationalInsuranceNumberPage.enterReason("Test")
+
+      Then("User should be on Enter the birth and death dates of the user")
+      NationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
+      EnterBirthDeathPage.verifyPageUrl()   shouldBe true
+      EnterBirthDeathPage.verifyPageTitle() shouldBe true
+
+      And("User should be able to enter Date of Birth and Death Date")
+      EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
+      EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
       When("user click On save and Continue navigates to the Check and submit the report page")
-      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
+      EnterBirthDeathPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageUrl()     shouldBe true
       CheckYourAnswersPage.verifyPageTitle()   shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
