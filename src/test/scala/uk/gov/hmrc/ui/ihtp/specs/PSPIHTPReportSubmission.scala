@@ -104,6 +104,29 @@ class PSPIHTPReportSubmission extends BaseSpec {
       And("User selects Individual for Does User has National Number")
       LPRTypePage.clickRadioButton("Individual")
 
+      // LPR Name (individual)
+
+      And("User should be able to Navigate to LPR Name Page")
+      LPRTypePage.navigateTo(LPRNamePage.pageUrl)
+
+      And("User is on the LPR Name Page")
+      LPRNamePage.verifyPageUrl()     shouldBe true
+      LPRNamePage.verifyPageTitle()   shouldBe true
+      LPRNamePage.verifyPageHeading() shouldBe true
+
+      And("User is able to enter Details of the LPR")
+      LPRNamePage.enterLPRDetails(
+        "Mr",
+        "ABC",
+        "P",
+        "XYZ"
+      )
+
+      And("User Should be able to see and Click Save and Continue Button")
+      LPRNamePage.SaveAndContinueButton()
+
+      //
+
       When("user click On save and Continue navigates to the Check and submit the report page")
       LPRTypePage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageUrl()     shouldBe true
