@@ -16,12 +16,12 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
-import uk.gov.hmrc.ui.ihtp.pages.EnterTheInheritanceTaxReferenceNumberPage.clickSaveAndContinueButton
+import uk.gov.hmrc.ui.ihtp.pages.EnterTheInheritanceTaxReferenceNumberPage.{checkURL, clickSaveAndContinueButton, enterText}
 
-object DeceasedNamePage extends BasePage {
-  val pageUrl: String     = s"$baseUrl/name-of-deceased"
-  val pageTitle: String   = "Enter the full name of the deceased person - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String = "Enter the full name of the deceased person"
+object NameOfTheOrganisationPage extends BasePage {
+  val pageUrl: String     = s"$baseUrl/enter-name-organisation"
+  val pageTitle: String   = "Enter the name of the organisation - Report inheritance tax on a pension - GOV.UK"
+  val pageHeading: String = "Enter the name of the organisation"
 
   def verifyPageUrl(): Boolean =
     getCurrentUrl == pageUrl
@@ -37,12 +37,10 @@ object DeceasedNamePage extends BasePage {
     clickSaveAndContinueButton()
   }
 
-  def enterDeceasedDetails(title: String, firstForename: String, secondForename: String, surname: String): Unit = {
+  def enterOrganisationName(textToEnter: String): Unit = {
     checkURL
-    enterText("title", title)
-    enterText("firstForename", firstForename)
-    enterText("secondForename", secondForename)
-    enterText("surname", surname)
+    enterText("value", textToEnter)
     clickSaveAndContinueButton()
   }
+
 }

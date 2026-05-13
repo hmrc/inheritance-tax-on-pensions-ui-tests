@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.ui.ihtp.specs
 
-import uk.gov.hmrc.ui.ihtp.specs.tags.AllTests
 import uk.gov.hmrc.ui.ihtp.pages.*
 
 class PSAIHTPReportSubmission extends BaseSpec {
@@ -54,9 +53,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Tax reference number")
       EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("A123456/25A")
 
-      And("User Should be able to see and Click Save and Continue Button")
-      EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
-
       // Deceased name page
       And("User should be able to Navigate to Deceased Name Page ")
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
@@ -73,9 +69,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
         "P",
         "XYZ"
       )
-
-      And("User Should be able to see and Click Save and Continue Button")
-      DeceasedNamePage.SaveAndContinueButton()
 
       Then("User should be able to Navigate to National Insurance Number Page")
       DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
@@ -123,11 +116,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
         "P",
         "XYZ"
       )
-
-      And("User Should be able to see and Click Save and Continue Button")
-      LPRNamePage.SaveAndContinueButton()
-
-      //
 
       When("user click On save and Continue navigates to the Check and submit the report page")
       LPRTypePage.navigateTo(CheckYourAnswersPage.pageUrl)
@@ -203,9 +191,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Tax reference number")
       EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("A123456/25A")
 
-      And("User Should be able to see and Click Save and Continue Button")
-      EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
-
       // Deceased name page
       And("User should be able to Navigate to Deceased Name Page ")
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
@@ -222,9 +207,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
         "P",
         "XYZ"
       )
-
-      And("User Should be able to see and Click Save and Continue Button")
-      DeceasedNamePage.SaveAndContinueButton()
 
       Then("User should be able to Navigate to National Insurance Number Page")
       DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
@@ -250,13 +232,23 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.navigateTo(LPRTypePage.pageUrl)
       LPRTypePage.verifyPageUrl()   shouldBe true
       LPRTypePage.verifyPageTitle() shouldBe true
-      // CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
-      And("User selects Individual for Does User has National Number")
+      And("User selects Individual for LPR Type")
       LPRTypePage.clickRadioButton("Organisation")
 
+      And("User should be able to Navigate to Organisation Page")
+      LPRTypePage.navigateTo(NameOfTheOrganisationPage.pageUrl)
+
+      And("User is on the LPR Name Page")
+      NameOfTheOrganisationPage.verifyPageUrl()     shouldBe true
+      NameOfTheOrganisationPage.verifyPageTitle()   shouldBe true
+      NameOfTheOrganisationPage.verifyPageHeading() shouldBe true
+
+      And("User is able to enter Organisation name")
+      NameOfTheOrganisationPage.enterOrganisationName("Test")
+
       When("user click On save and Continue navigates to the Check and submit the report page")
-      LPRTypePage.navigateTo(CheckYourAnswersPage.pageUrl)
+      NameOfTheOrganisationPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageUrl()     shouldBe true
       CheckYourAnswersPage.verifyPageTitle()   shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
@@ -367,6 +359,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       AuthLoginPage.verifySignOutLinkText() shouldBe true
 
     }
+
   }
 
 }

@@ -43,5 +43,6 @@ object LPRTypePage extends BasePage {
       case "Individual"   => click(By.id("value_0"))
       case "Organisation" => click(By.id("value_1"))
     }
+    clickSaveAndContinueButton()
 
 }

@@ -69,9 +69,6 @@ class PSPIHTPReportSubmission extends BaseSpec {
         "XYZ"
       )
 
-      And("User Should be able to see and Click Save and Continue Button")
-      DeceasedNamePage.SaveAndContinueButton()
-
       Then("User should be able to Navigate to National Insurance Number Page")
       DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
 
@@ -99,13 +96,11 @@ class PSPIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.navigateTo(LPRTypePage.pageUrl)
       LPRTypePage.verifyPageUrl()   shouldBe true
       LPRTypePage.verifyPageTitle() shouldBe true
-      // CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
       And("User selects Individual for LPR Type")
       LPRTypePage.clickRadioButton("Individual")
 
       // LPR Name (individual)
-
       And("User should be able to Navigate to LPR Name Page")
       LPRTypePage.navigateTo(LPRNamePage.pageUrl)
 
@@ -121,11 +116,6 @@ class PSPIHTPReportSubmission extends BaseSpec {
         "P",
         "XYZ"
       )
-
-      And("User Should be able to see and Click Save and Continue Button")
-      LPRNamePage.SaveAndContinueButton()
-
-      //
 
       When("user click On save and Continue navigates to the Check and submit the report page")
       LPRTypePage.navigateTo(CheckYourAnswersPage.pageUrl)
@@ -226,9 +216,6 @@ class PSPIHTPReportSubmission extends BaseSpec {
         "XYZ"
       )
 
-      And("User Should be able to see and Click Save and Continue Button")
-      DeceasedNamePage.SaveAndContinueButton()
-
       Then("User should be able to Navigate to National Insurance Number Page")
       DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
       NationalInsuranceNumberPage.verifyPageUrl()   shouldBe true
@@ -253,19 +240,23 @@ class PSPIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.navigateTo(LPRTypePage.pageUrl)
       LPRTypePage.verifyPageUrl()   shouldBe true
       LPRTypePage.verifyPageTitle() shouldBe true
-      // CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
-      And("User selects Individual for Does User has National Number")
+      And("User selects Individual for LPR Type")
       LPRTypePage.clickRadioButton("Organisation")
 
-      When("user click On save and Continue navigates to the Check and submit the report page")
-      LPRTypePage.navigateTo(CheckYourAnswersPage.pageUrl)
-      CheckYourAnswersPage.verifyPageUrl()     shouldBe true
-      CheckYourAnswersPage.verifyPageTitle()   shouldBe true
-      CheckYourAnswersPage.verifyPageHeading() shouldBe true
+      And("User should be able to Navigate to Organisation Page")
+      LPRTypePage.navigateTo(NameOfTheOrganisationPage.pageUrl)
+
+      And("User is on the LPR Name Page")
+      NameOfTheOrganisationPage.verifyPageUrl()     shouldBe true
+      NameOfTheOrganisationPage.verifyPageTitle()   shouldBe true
+      NameOfTheOrganisationPage.verifyPageHeading() shouldBe true
+
+      And("User is able to enter Organisation name")
+      NameOfTheOrganisationPage.enterOrganisationName("Test")
 
       When("user click On save and Continue navigates to the Check and submit the report page")
-      EnterBirthDeathPage.navigateTo(CheckYourAnswersPage.pageUrl)
+      NameOfTheOrganisationPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageUrl()     shouldBe true
       CheckYourAnswersPage.verifyPageTitle()   shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
