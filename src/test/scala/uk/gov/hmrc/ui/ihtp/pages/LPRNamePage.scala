@@ -44,4 +44,5 @@ object LPRNamePage extends BasePage {
     enterText("surname", surname)
   }
 
+  SaveAndContinueButton()
 }

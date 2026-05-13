@@ -22,7 +22,6 @@ import org.openqa.selenium.By
 import org.openqa.selenium.support.ui.Select
 import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.ui.ihtp.conf.TestConfiguration
-import uk.gov.hmrc.ui.ihtp.pages.BasePage
 
 object AuthLoginPage extends BasePage {
   override val pageUrl: String = TestConfiguration.url("auth-login-stub") + "/gg-sign-in"
