@@ -19,7 +19,7 @@ package uk.gov.hmrc.ui.ihtp.pages
 import uk.gov.hmrc.ui.ihtp.pages.EnterTheInheritanceTaxReferenceNumberPage.{checkURL, clickSaveAndContinueButton, enterText}
 
 object NameOfTheOrganisationPage extends BasePage {
-  val pageUrl: String     = s"$baseUrl/enter-name-organisation"
+  val pageUrl: String     = s"$baseUrl/enter-organisation-name"
   val pageTitle: String   = "Enter the name of the organisation - Report inheritance tax on a pension - GOV.UK"
   val pageHeading: String = "Enter the name of the organisation"
 
