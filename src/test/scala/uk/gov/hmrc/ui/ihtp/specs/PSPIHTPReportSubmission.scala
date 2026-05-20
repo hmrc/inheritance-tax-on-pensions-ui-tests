@@ -30,11 +30,8 @@ class PSPIHTPReportSubmission extends BaseSpec {
       When("the user navigates to the What You will need page")
       AuthLoginPage.navigateTo(WhatYouWillNeedPage.pageUrl)
 
-      Then("the What You will need page URL should be correct")
-      WhatYouWillNeedPage.verifyPageUrl() shouldBe true
-
-      And("the What You will need page title should be correct")
-      WhatYouWillNeedPage.verifyPageTitle() shouldBe true
+      Then("the What You will need page details should be correct")
+      WhatYouWillNeedPage.verifyPageDetails() shouldBe true
 
       And("the page heading should be displayed")
       WhatYouWillNeedPage.verifyPageHeading() shouldBe true
@@ -46,8 +43,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
       WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
 
       And("User is on the Enter the Inheritance Tax reference number Page")
-      EnterTheInheritanceTaxReferenceNumberPage.verifyPageUrl()     shouldBe true
-      EnterTheInheritanceTaxReferenceNumberPage.verifyPageTitle()   shouldBe true
+      EnterTheInheritanceTaxReferenceNumberPage.verifyPageDetails() shouldBe true
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Tax reference number")
@@ -57,8 +53,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
 
       And("User is on the Deceased Name Page")
-      DeceasedNamePage.verifyPageUrl()     shouldBe true
-      DeceasedNamePage.verifyPageTitle()   shouldBe true
+      DeceasedNamePage.verifyPageDetails() shouldBe true
       DeceasedNamePage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Details of the Deceased")
@@ -73,8 +68,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
       DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
 
       And("User is on the National Insurance Number Page")
-      NationalInsuranceNumberPage.verifyPageUrl()   shouldBe true
-      NationalInsuranceNumberPage.verifyPageTitle() shouldBe true
+      NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
       // NationalInsuranceNumberPage.verifyPageHeading() shouldBe true
 
       And("User selects No for Does User has National Number")
@@ -85,8 +79,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
 
       Then("User should be on Enter the birth and death dates of the user")
       NationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
-      EnterBirthDeathPage.verifyPageUrl()   shouldBe true
-      EnterBirthDeathPage.verifyPageTitle() shouldBe true
+      EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
       And("User should be able to enter Date of Birth and Death Date")
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
@@ -94,8 +87,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
 
       When("user click On save and Continue navigates to the LPR Type page")
       EnterBirthDeathPage.navigateTo(LPRTypePage.pageUrl)
-      LPRTypePage.verifyPageUrl()   shouldBe true
-      LPRTypePage.verifyPageTitle() shouldBe true
+      LPRTypePage.verifyPageDetails() shouldBe true
 
       And("User selects Individual for LPR Type")
       LPRTypePage.clickRadioButton("Individual")
@@ -105,8 +97,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
       LPRTypePage.navigateTo(LPRNamePage.pageUrl)
 
       And("User is on the LPR Name Page")
-      LPRNamePage.verifyPageUrl()     shouldBe true
-      LPRNamePage.verifyPageTitle()   shouldBe true
+      LPRNamePage.verifyPageDetails() shouldBe true
       LPRNamePage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Details of the LPR")
@@ -119,14 +110,12 @@ class PSPIHTPReportSubmission extends BaseSpec {
 
       When("user click On save and Continue navigates to the Check and submit the report page")
       LPRTypePage.navigateTo(CheckYourAnswersPage.pageUrl)
-      CheckYourAnswersPage.verifyPageUrl()     shouldBe true
-      CheckYourAnswersPage.verifyPageTitle()   shouldBe true
+      CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
       When("user click On save and Continue navigates to the Check and submit the report page")
       EnterBirthDeathPage.navigateTo(CheckYourAnswersPage.pageUrl)
-      CheckYourAnswersPage.verifyPageUrl()     shouldBe true
-      CheckYourAnswersPage.verifyPageTitle()   shouldBe true
+      CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
       Then("User should be able to click on Change Link Button")
@@ -139,15 +128,14 @@ class PSPIHTPReportSubmission extends BaseSpec {
       When("user click On save and Continue it navigates to the Check and submit the report page")
       EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
-      CheckYourAnswersPage.verifyPageUrl() shouldBe true
+      CheckYourAnswersPage.verifyPageDetails() shouldBe true
 
       Then("User click on Save and Continue button on the Check and submit the report page ")
       CheckYourAnswersPage.SaveAndContinueButton()
 
       And("User should be able to Navigates to Psp-Declaration Page")
       CheckYourAnswersPage.navigateTo(PSPDeclarationPage.pageUrl)
-      PSPDeclarationPage.verifyPageUrl()     shouldBe true
-      PSPDeclarationPage.verifyPageTitle()   shouldBe true
+      PSPDeclarationPage.verifyPageDetails() shouldBe true
       PSPDeclarationPage.verifyPageHeading() shouldBe true
 
       And(" User should be enter Administrator's id on Psp-Declaration Page")
@@ -158,8 +146,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
 
       And("User should be able to Navigates to Submission Page")
       PSPDeclarationPage.navigateTo(ReportSubmittedPage.pageUrl)
-      ReportSubmittedPage.verifyPageUrl()     shouldBe true
-      ReportSubmittedPage.verifyPageTitle()   shouldBe true
+      ReportSubmittedPage.verifyPageDetails() shouldBe true
       ReportSubmittedPage.verifyPageHeading() shouldBe true
 
       And("the GOV.UK footer links should be present")
@@ -177,11 +164,8 @@ class PSPIHTPReportSubmission extends BaseSpec {
       When("the user navigates to the What You will need page")
       AuthLoginPage.navigateTo(WhatYouWillNeedPage.pageUrl)
 
-      Then("the What You will need page URL should be correct")
-      WhatYouWillNeedPage.verifyPageUrl() shouldBe true
-
-      And("the What You will need page title should be correct")
-      WhatYouWillNeedPage.verifyPageTitle() shouldBe true
+      Then("the What You will need page details should be correct")
+      WhatYouWillNeedPage.verifyPageDetails() shouldBe true
 
       And("the page heading should be displayed")
       WhatYouWillNeedPage.verifyPageHeading() shouldBe true
@@ -193,8 +177,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
       WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
 
       And("User is on the Enter the Inheritance Tax reference number Page")
-      EnterTheInheritanceTaxReferenceNumberPage.verifyPageUrl()     shouldBe true
-      EnterTheInheritanceTaxReferenceNumberPage.verifyPageTitle()   shouldBe true
+      EnterTheInheritanceTaxReferenceNumberPage.verifyPageDetails() shouldBe true
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Tax reference number")
@@ -204,8 +187,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
 
       And("User is on the Deceased Name Page")
-      DeceasedNamePage.verifyPageUrl()     shouldBe true
-      DeceasedNamePage.verifyPageTitle()   shouldBe true
+      DeceasedNamePage.verifyPageDetails() shouldBe true
       DeceasedNamePage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Details of the Deceased")
@@ -218,8 +200,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
 
       Then("User should be able to Navigate to National Insurance Number Page")
       DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
-      NationalInsuranceNumberPage.verifyPageUrl()   shouldBe true
-      NationalInsuranceNumberPage.verifyPageTitle() shouldBe true
+      NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
 
       And("User selects No for Does User has National Number")
       NationalInsuranceNumberPage.clickRadioButton("No")
@@ -229,8 +210,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
 
       Then("User should be on Enter the birth and death dates of the user")
       NationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
-      EnterBirthDeathPage.verifyPageUrl()   shouldBe true
-      EnterBirthDeathPage.verifyPageTitle() shouldBe true
+      EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
       And("User should be able to enter Date of Birth and Death Date")
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
@@ -238,8 +218,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
 
       When("user click On save and Continue navigates to the LPR Type page")
       EnterBirthDeathPage.navigateTo(LPRTypePage.pageUrl)
-      LPRTypePage.verifyPageUrl()   shouldBe true
-      LPRTypePage.verifyPageTitle() shouldBe true
+      LPRTypePage.verifyPageDetails() shouldBe true
 
       And("User selects Individual for LPR Type")
       LPRTypePage.clickRadioButton("Organisation")
@@ -248,8 +227,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
       LPRTypePage.navigateTo(NameOfTheOrganisationPage.pageUrl)
 
       And("User is on the LPR Name Page")
-      NameOfTheOrganisationPage.verifyPageUrl()     shouldBe true
-      NameOfTheOrganisationPage.verifyPageTitle()   shouldBe true
+      NameOfTheOrganisationPage.verifyPageDetails() shouldBe true
       NameOfTheOrganisationPage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Organisation name")
@@ -257,8 +235,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
 
       When("user click On save and Continue navigates to the Check and submit the report page")
       NameOfTheOrganisationPage.navigateTo(CheckYourAnswersPage.pageUrl)
-      CheckYourAnswersPage.verifyPageUrl()     shouldBe true
-      CheckYourAnswersPage.verifyPageTitle()   shouldBe true
+      CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
       Then("User should be able to click on Change Link Button")
@@ -271,15 +248,14 @@ class PSPIHTPReportSubmission extends BaseSpec {
       When("user click On save and Continue it navigates to the Check and submit the report page")
       EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
-      CheckYourAnswersPage.verifyPageUrl() shouldBe true
+      CheckYourAnswersPage.verifyPageDetails() shouldBe true
 
       Then("User click on Save and Continue button on the Check and submit the report page ")
       CheckYourAnswersPage.SaveAndContinueButton()
 
       And("User should be able to Navigates to Psp-Declaration Page")
       CheckYourAnswersPage.navigateTo(PSPDeclarationPage.pageUrl)
-      PSPDeclarationPage.verifyPageUrl()     shouldBe true
-      PSPDeclarationPage.verifyPageTitle()   shouldBe true
+      PSPDeclarationPage.verifyPageDetails() shouldBe true
       PSPDeclarationPage.verifyPageHeading() shouldBe true
 
       And(" User should be enter Administrator's id on Psp-Declaration Page")
@@ -290,8 +266,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
 
       And("User should be able to Navigates to Submission Page")
       PSPDeclarationPage.navigateTo(ReportSubmittedPage.pageUrl)
-      ReportSubmittedPage.verifyPageUrl()     shouldBe true
-      ReportSubmittedPage.verifyPageTitle()   shouldBe true
+      ReportSubmittedPage.verifyPageDetails() shouldBe true
       ReportSubmittedPage.verifyPageHeading() shouldBe true
 
       And("the GOV.UK footer links should be present")

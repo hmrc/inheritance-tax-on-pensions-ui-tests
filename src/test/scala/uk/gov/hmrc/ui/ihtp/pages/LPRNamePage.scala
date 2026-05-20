@@ -17,16 +17,10 @@
 package uk.gov.hmrc.ui.ihtp.pages
 
 object LPRNamePage extends BasePage {
-  val pageUrl: String     = s"$baseUrl/enter-name-lpr"
-  val pageTitle: String   =
+  override val pageUrl: String   = s"$baseUrl/enter-name-lpr"
+  override val pageTitle: String =
     "Enter the full name of the person managing the estate - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String = "Enter the full name of the person managing the estate"
-
-  def verifyPageUrl(): Boolean =
-    getCurrentUrl == pageUrl
-
-  def verifyPageTitle(): Boolean =
-    getTitle == pageTitle
+  val pageHeading: String        = "Enter the full name of the person managing the estate"
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
