@@ -20,16 +20,10 @@ import org.openqa.selenium.By
 import uk.gov.hmrc.ui.ihtp.pages.EnterBirthDeathPage.{checkURL, clickSaveAndContinueButton}
 
 object NationalInsuranceNumberPage extends BasePage {
-  val pageUrl: String   = s"$baseUrl/enter-national-insurance-number"
-  val pageTitle: String =
+  override val pageUrl: String   = s"$baseUrl/enter-national-insurance-number"
+  override val pageTitle: String =
     "Does the deceased have a National Insurance number? - Report inheritance tax on a pension - GOV.UK"
 //  val pageHeading: String = ""
-
-  def verifyPageUrl(): Boolean =
-    getCurrentUrl == pageUrl
-
-  def verifyPageTitle(): Boolean =
-    getTitle == pageTitle
 
   // def verifyPageHeading(): Boolean =
   //   getPageSource.contains(pageHeading)

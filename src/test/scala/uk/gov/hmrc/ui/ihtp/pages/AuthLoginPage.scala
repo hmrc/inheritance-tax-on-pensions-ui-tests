@@ -38,7 +38,7 @@ object AuthLoginPage extends BasePage {
         )
     }
 
-  private val redirectionUrlById: By = By.id("redirectionUrl")
+  // private val redirectionUrlById: By = By.id("redirectionUrl")
   private val affinityGroupById: By  = By.id("affinityGroupSelect")
   private val authSubmitById: By     = By.id("submit-top")
   private val enrolmentKeyLocator    = "enrolment[0].name"

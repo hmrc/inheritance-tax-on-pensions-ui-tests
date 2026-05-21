@@ -17,19 +17,10 @@
 package uk.gov.hmrc.ui.ihtp.pages
 
 object EnterBirthDeathPage extends BasePage {
-  val pageUrl: String     = s"$baseUrl/enter-birth-death-date"
-  val pageTitle: String   =
-    "Enter the birth and death dates of the deceased - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String = "Enter the birth and death dates of A A"
-
-  def verifyPageUrl(): Boolean =
-    getCurrentUrl == pageUrl
-
-  def verifyPageTitle(): Boolean =
-    getTitle == pageTitle
-
-  def verifyPageHeading(): Boolean =
-    getPageSource.contains(pageHeading)
+  override val pageUrl: String   = s"$baseUrl/enter-birth-death-date"
+  override val pageTitle: String =
+    "Enter the date of birth and date of death of the deceased - Report inheritance tax on a pension - GOV.UK"
+  val pageHeading: String        = "Enter the date of birth and date of death of A A"
 
   def SaveAndContinueButton(): Unit = {
     checkURL

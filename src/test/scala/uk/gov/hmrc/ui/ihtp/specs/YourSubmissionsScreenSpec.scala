@@ -30,11 +30,8 @@ class YourSubmissionsScreenSpec extends BaseSpec {
       When("the user navigates to the Your Submissions page")
       AuthLoginPage.navigateTo(YourSubmissionsPage.pageUrl)
 
-      Then("the Your Submissions page URL should be correct")
-      YourSubmissionsPage.verifyPageUrl() shouldBe true
-
-      And("the Your Submissions page title should be correct")
-      YourSubmissionsPage.verifyPageTitle() shouldBe true
+      Then("the Your Submissions page details should be correct")
+      YourSubmissionsPage.verifyPageDetails() shouldBe true
 
       And("the page heading should be displayed")
       YourSubmissionsPage.verifyPageHeading() shouldBe true
@@ -56,8 +53,8 @@ class YourSubmissionsScreenSpec extends BaseSpec {
       Then("the user should see the registration page for pension scheme administrators or practitioners")
       YourSubmissionsPage.verifyRegistrationReminderPage() shouldBe true
 
-      And("the page URL should not be the Your Submissions page URL")
-      YourSubmissionsPage.verifyPageUrl() shouldBe false
+      And("the page details should not be the Your Submissions page details")
+      YourSubmissionsPage.verifyPageDetails() shouldBe false
     }
   }
 }

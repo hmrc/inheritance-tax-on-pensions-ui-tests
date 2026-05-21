@@ -17,15 +17,9 @@
 package uk.gov.hmrc.ui.ihtp.pages
 
 object PSPDeclarationPage extends BasePage {
-  val pageUrl: String     = s"$baseUrl/pspDeclaration"
-  val pageTitle: String   = "Declaration - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String = "Declaration"
-
-  def verifyPageUrl(): Boolean =
-    getCurrentUrl == pageUrl
-
-  def verifyPageTitle(): Boolean =
-    getTitle == pageTitle
+  override val pageUrl: String   = s"$baseUrl/pspDeclaration"
+  override val pageTitle: String = "Declaration - Report inheritance tax on a pension - GOV.UK"
+  val pageHeading: String        = "Declaration"
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)

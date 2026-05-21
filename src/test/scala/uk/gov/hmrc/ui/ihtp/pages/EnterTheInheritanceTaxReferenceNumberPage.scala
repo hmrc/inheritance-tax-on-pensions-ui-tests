@@ -17,19 +17,14 @@
 package uk.gov.hmrc.ui.ihtp.pages
 
 object EnterTheInheritanceTaxReferenceNumberPage extends BasePage {
-  val pageUrl: String         = s"$baseUrl/enter-inheritance-tax-reference"
-  override val newUrl: String = s"$baseUrl/change-inheritance-tax-reference"
-  val pageTitle: String       = "Enter the Inheritance Tax reference number - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String     = "Enter the Inheritance Tax reference number"
-
-  def verifyPageUrl(): Boolean =
-    getCurrentUrl == pageUrl
+  override val pageUrl: String   = s"$baseUrl/enter-inheritance-tax-reference"
+  override val newUrl: String    = s"$baseUrl/change-inheritance-tax-reference"
+  override val pageTitle: String =
+    "Enter the Inheritance Tax reference number - Report inheritance tax on a pension - GOV.UK"
+  val pageHeading: String        = "Enter the Inheritance Tax reference number"
 
   def verifyNewUrl(): Boolean =
     getCurrentUrl == newUrl
-
-  def verifyPageTitle(): Boolean =
-    getTitle == pageTitle
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)

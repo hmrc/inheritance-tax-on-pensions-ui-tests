@@ -30,14 +30,18 @@ import scala.util.Try
 trait BasePage extends Matchers with PageObject {
 
   val pageUrl: String
-  val newUrl: String  = ""
-  val baseUrl: String = TestConfiguration.url("inheritance-tax-on-pensions")
+  val pageTitle: String = ""
+  val newUrl: String    = ""
+  val baseUrl: String   = TestConfiguration.url("inheritance-tax-on-pensions")
 
   private def fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
     .withTimeout(Duration.ofSeconds(20))
     .pollingEvery(Duration.ofMillis(500))
 
   def verifyPageLoaded(url: String = this.pageUrl): Unit = fluentWait.until(ExpectedConditions.urlToBe(url))
+
+  def verifyPageDetails(): Boolean =
+    getCurrentUrl == pageUrl // && getTitle == pageTitle - uncomment this when titles are stable
 
   def navigateTo(url: String): Unit = {
     Driver.instance.get(url)

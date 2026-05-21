@@ -17,15 +17,9 @@
 package uk.gov.hmrc.ui.ihtp.pages
 
 object ReportSubmittedPage extends BasePage {
-  val pageUrl: String     = s"$baseUrl/ihtp-report-submitted"
-  val pageTitle: String   = "Report submitted - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String = "Report submitted"
-
-  def verifyPageUrl(): Boolean =
-    getCurrentUrl == pageUrl
-
-  def verifyPageTitle(): Boolean =
-    getTitle == pageTitle
+  override val pageUrl: String   = s"$baseUrl/ihtp-report-submitted"
+  override val pageTitle: String = "Report submitted - Report inheritance tax on a pension - GOV.UK"
+  val pageHeading: String        = "Report submitted"
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
