@@ -21,8 +21,8 @@ import uk.gov.hmrc.ui.ihtp.pages.EnterTheInheritanceTaxReferenceNumberPage.click
 object DeceasedNamePage extends BasePage {
   override val pageUrl: String   = s"$baseUrl/name-of-deceased"
   override val pageTitle: String =
-    "Enter the full name of the deceased person - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String        = "Enter the full name of the deceased person"
+    "Enter the full name of the deceased - Report inheritance tax on a pension - GOV.UK"
+  val pageHeading: String        = "Enter the full name of the deceased"
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
