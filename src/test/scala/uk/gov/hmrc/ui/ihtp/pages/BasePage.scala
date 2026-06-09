@@ -27,12 +27,13 @@ import uk.gov.hmrc.ui.ihtp.pages.YourSubmissionsPage.getPageSource
 import java.time.Duration
 import scala.util.Try
 
-trait BasePage extends Matchers with PageObject {
+  trait BasePage extends Matchers with PageObject {
 
-  val pageUrl: String
-  val pageTitle: String = ""
-  val newUrl: String    = ""
-  val baseUrl: String   = TestConfiguration.url("inheritance-tax-on-pensions")
+    val pageUrl: String   = ""
+    val pageTitle: String = ""
+    val newUrl: String    = ""
+    val baseUrl: String   = TestConfiguration.url("inheritance-tax-on-pensions")
+
 
   private def fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
     .withTimeout(Duration.ofSeconds(20))
@@ -99,6 +100,9 @@ trait BasePage extends Matchers with PageObject {
 
   def clickSaveAndContinueButton(): Unit =
     click(By.cssSelector(".govuk-button"))
+    
+  def clickConfirmAdressButton(): Unit =
+      click(By.id("continue"))
 
   def enterText(id: String, textToEnter: String): Unit =
     sendKeys(By.id(id), textToEnter)
