@@ -16,6 +16,7 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
+import uk.gov.hmrc.ui.ihtp.pages.CountryPickerPage.clickSubmitButton
 import uk.gov.hmrc.ui.ihtp.pages.EnterTheInheritanceTaxReferenceNumberPage.clickSaveAndContinueButton
 
 object LookUpPostcodePage extends BasePage {
@@ -23,19 +24,17 @@ object LookUpPostcodePage extends BasePage {
 //  override val pageTitle: String =
 //    "Enter the full name of the deceased - Report inheritance tax on a pension - GOV.UK"
 
-    def verifyPage(): Unit = {
-      getCurrentUrl should include("/lookup")
-    }
+  override val pageUrl: String =
+    ".*/lookup-address/.../lookup"
+  def verifyPage(): Unit       =
+    verifyPageLoadedContains("/lookup")
 
-  def SaveAndContinueButton(): Unit = {
-    checkURL
+  def SaveAndContinueButton(): Unit =
     clickSaveAndContinueButton()
-  }
 
   def enterPostcode(textToEnter: String): Unit = {
-    checkURL
     enterText("postcode", textToEnter)
-    clickSaveAndContinueButton()
+    clickSubmitButton()
   }
 
 }

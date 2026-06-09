@@ -27,19 +27,21 @@ import uk.gov.hmrc.ui.ihtp.pages.YourSubmissionsPage.getPageSource
 import java.time.Duration
 import scala.util.Try
 
-  trait BasePage extends Matchers with PageObject {
+trait BasePage extends Matchers with PageObject {
 
-    val pageUrl: String   = ""
-    val pageTitle: String = ""
-    val newUrl: String    = ""
-    val baseUrl: String   = TestConfiguration.url("inheritance-tax-on-pensions")
-
+  val pageUrl: String   = ""
+  val pageTitle: String = ""
+  val newUrl: String    = ""
+  val baseUrl: String   = TestConfiguration.url("inheritance-tax-on-pensions")
 
   private def fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
     .withTimeout(Duration.ofSeconds(20))
     .pollingEvery(Duration.ofMillis(500))
 
   def verifyPageLoaded(url: String = this.pageUrl): Unit = fluentWait.until(ExpectedConditions.urlToBe(url))
+
+  def verifyPageLoadedContains(urlFragment: String): Unit =
+    fluentWait.until(ExpectedConditions.urlContains(urlFragment))
 
   def verifyPageDetails(): Boolean =
     getCurrentUrl == pageUrl // && getTitle == pageTitle - uncomment this when titles are stable
@@ -49,13 +51,7 @@ import scala.util.Try
     verifyPageLoaded(url)
   }
 
-//  def loginAndStartReturn(appaId: String): Unit = {
-//    clearDataForReturns()
-//    navigateToPage(AuthLoginPage)
-//    AuthLoginPage.enterAuthDetails(appaId)
-//    BeforeYouStartPage.continue()
-//    TaskListPage.checkURL
-//  }
+  
   def isElementPresent(by: By): Boolean =
     Try(Driver.instance.findElement(by)).isSuccess
 
@@ -90,19 +86,19 @@ import scala.util.Try
 
   def checkURL: Unit =
     if (pageUrl.contains("...")) {
-      fluentWait.until(ExpectedConditions.urlMatches(pageUrl.replace("...", "") + ".*"))
+      fluentWait.until(ExpectedConditions.urlMatches(pageUrl.replace("...", "[^/]+")))
     } else {
       fluentWait.until(ExpectedConditions.urlToBe(pageUrl))
     }
 
-//    def clickAgreeAndSubmitButton(): Unit =
-//      click(By.cssSelector(".govuk-button"))
-
   def clickSaveAndContinueButton(): Unit =
     click(By.cssSelector(".govuk-button"))
-    
-  def clickConfirmAdressButton(): Unit =
-      click(By.id("continue"))
+
+  def clickSubmitButton(): Unit =
+    click(By.id("continue"))
+
+  def clickConfirmAddressButton(): Unit =
+    click(By.id("continue"))
 
   def enterText(id: String, textToEnter: String): Unit =
     sendKeys(By.id(id), textToEnter)

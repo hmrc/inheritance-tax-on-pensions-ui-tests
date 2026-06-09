@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
-import uk.gov.hmrc.ui.ihtp.pages.EnterTheInheritanceTaxReferenceNumberPage.clickSaveAndContinueButton
+import uk.gov.hmrc.ui.ihtp.pages.CountryPickerPage.verifyPageLoadedContains
 
 object ReviewAndConfirmPage extends BasePage {
 
@@ -26,22 +26,15 @@ object ReviewAndConfirmPage extends BasePage {
     getPageSource.contains(pageHeading)
 
   override val pageTitle: String =
-      "Review and confirm - Report inheritance tax on a pension - GOV.UK"
+    "Review and confirm - Report inheritance tax on a pension - GOV.UK"
 
-  def verifyPage(): Unit = {
-    getCurrentUrl should include("/confirm")
-  }
-  
-    
-  def confirmAddressButton(): Unit = {
-    checkURL
-    clickConfirmAdressButton()
-  }
+  override val pageUrl: String =
+    ".*/lookup-address/.../confirm"
 
-  def enterPostcode(textToEnter: String): Unit = {
-    checkURL
-    enterText("postcode", textToEnter)
-    clickSaveAndContinueButton()
-  }
+  def verifyPage(): Unit =
+    verifyPageLoadedContains("/confirm")
+
+  def confirmAddressButton(): Unit =
+    clickConfirmAddressButton()
 
 }

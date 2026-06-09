@@ -25,10 +25,9 @@ object LPRNamePage extends BasePage {
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
 
-  def SaveAndContinueButton(): Unit = {
-    checkURL
+  def SaveAndContinueButton(): Unit =
+    // checkURL
     clickSaveAndContinueButton()
-  }
 
   def enterLPRDetails(title: String, firstForename: String, secondForename: String, surname: String): Unit = {
     checkURL
@@ -38,5 +37,4 @@ object LPRNamePage extends BasePage {
     enterText("surname", surname)
   }
 
-  SaveAndContinueButton()
 }

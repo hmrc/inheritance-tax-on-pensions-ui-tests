@@ -16,22 +16,24 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
+import uk.gov.hmrc.selenium.webdriver.Driver
+import org.openqa.selenium.Keys
+
 import org.openqa.selenium.By
-import uk.gov.hmrc.ui.ihtp.pages.EnterBirthDeathPage.{checkURL, clickSaveAndContinueButton}
 
 object CountryPickerPage extends BasePage {
+
+  override val pageUrl: String =
+    ".*/lookup-address/.../country-picker"
+
+  def verifyPage(): Unit =
+    verifyPageLoadedContains("/country-picker")
 
   override val pageTitle: String =
     "Select the country or territory - Report inheritance tax on a pension - GOV.UK"
 
-  def verifyPage(): Unit = {
-    getCurrentUrl should include("/country-picker")
-  }
-
-  def SaveAndContinueButton(): Unit = {
-    checkURL
+  def SaveAndContinueButton(): Unit =
     clickSaveAndContinueButton()
-  }
 
   def clickRadioButton(text: String): Unit =
     text match {
@@ -40,9 +42,14 @@ object CountryPickerPage extends BasePage {
     }
 
   def enterCountry(textToEnter: String): Unit = {
-    checkURL
-    enterText("countryCode", textToEnter)
-    clickSaveAndContinueButton()
+
+    val input = Driver.instance.findElement(By.id("countryCode"))
+
+    input.clear()
+    input.sendKeys(textToEnter)
+
+    input.sendKeys(Keys.DOWN)
+    input.sendKeys(Keys.ENTER)
   }
 
 }

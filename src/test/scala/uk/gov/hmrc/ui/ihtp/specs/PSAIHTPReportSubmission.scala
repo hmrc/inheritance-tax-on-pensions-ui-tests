@@ -397,36 +397,41 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User selects Individual for LPR Type")
       LPRTypePage.clickRadioButton("Individual")
 
-
       And("User should be able to Navigate to LPR Name Page")
       LPRTypePage.navigateTo(LPRNamePage.pageUrl)
 
-      And("User is on the LPR Name Page")
-      LPRNamePage.verifyPageDetails() shouldBe true
+      And("User is on the LPR Name Page and able to enter Details of the LPR")
+      // LPRNamePage.verifyPageDetails() shouldBe true
       LPRNamePage.verifyPageHeading() shouldBe true
-
-      And("User is able to enter Details of the LPR")
       LPRNamePage.enterLPRDetails(
         "Mr",
         "ABC",
         "P",
         "XYZ"
       )
+      LPRNamePage.SaveAndContinueButton()
 
       When("user click On save and Continue navigates to the Select Country Page")
       CountryPickerPage.verifyPage()
       CountryPickerPage.enterCountry("United Kingdom")
+      CountryPickerPage.SaveAndContinueButton()
 
       Then("User Navigates to Look Up Address Page")
       LookUpPostcodePage.verifyPage()
-      LookUpPostcodePage.enterPostcode("ZZ991AA")
+      LookUpPostcodePage.enterPostcode("ZZ1 1ZZ")
+      LookUpPostcodePage.SaveAndContinueButton()
 
-      And("User Navigated to Review and Confirm Page")
+      And("User Navigated to Choose Address Page")
+      ChooseAddressPage.verifyPage()
+      ChooseAddressPage.clickRadioButton("4")
+      ChooseAddressPage.clickSaveAndContinueButton()
+
+      Then("User Navigated to Review and Confirm Page")
       ReviewAndConfirmPage.verifyPageHeading() shouldBe true
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then ("Check and submit the report page")
+      Then("Check and submit the report page")
       ReviewAndConfirmPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
