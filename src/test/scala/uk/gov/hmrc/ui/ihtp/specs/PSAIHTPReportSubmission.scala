@@ -355,7 +355,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User is able to enter Tax reference number")
       EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("A123456/25A")
-      
+
       And("User should be able to Navigate to Deceased Name Page ")
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
 
