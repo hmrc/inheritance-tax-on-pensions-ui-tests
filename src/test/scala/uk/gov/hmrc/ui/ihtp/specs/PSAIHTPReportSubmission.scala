@@ -355,8 +355,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User is able to enter Tax reference number")
       EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("A123456/25A")
-
-      // Deceased name page
+      
       And("User should be able to Navigate to Deceased Name Page ")
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
 
@@ -401,7 +400,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       LPRTypePage.navigateTo(LPRNamePage.pageUrl)
 
       And("User is on the LPR Name Page and able to enter Details of the LPR")
-      // LPRNamePage.verifyPageDetails() shouldBe true
       LPRNamePage.verifyPageHeading() shouldBe true
       LPRNamePage.enterLPRDetails(
         "Mr",
