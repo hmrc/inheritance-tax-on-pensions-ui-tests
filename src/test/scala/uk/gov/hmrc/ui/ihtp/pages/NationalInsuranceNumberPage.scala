@@ -46,6 +46,12 @@ object NationalInsuranceNumberPage extends BasePage {
     clickSaveAndContinueButton()
   }
 
+  def enterNINO(textToEnter: String): Unit = {
+    checkURL
+    enterText("nino", textToEnter)
+    clickSaveAndContinueButton()
+  }
+
   def enterReason(textToEnter: String): Unit = {
     checkURL
     enterText("reasonForNoNino", textToEnter)

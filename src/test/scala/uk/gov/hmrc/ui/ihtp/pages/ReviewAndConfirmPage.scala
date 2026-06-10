@@ -16,24 +16,25 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
-object LPRNamePage extends BasePage {
-  override val pageUrl: String   = s"$baseUrl/enter-name-lpr"
-  override val pageTitle: String =
-    "Enter the full name of the person managing the estate - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String        = "Enter the full name of the person managing the estate"
+import uk.gov.hmrc.ui.ihtp.pages.CountryPickerPage.verifyPageLoadedContains
+
+object ReviewAndConfirmPage extends BasePage {
+
+  val pageHeading: String = "Review and confirm"
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
 
-  def SaveAndContinueButton(): Unit =
-    clickSaveAndContinueButton()
+  override val pageTitle: String =
+    "Review and confirm - Report inheritance tax on a pension - GOV.UK"
 
-  def enterLPRDetails(title: String, firstForename: String, secondForename: String, surname: String): Unit = {
-    checkURL
-    enterText("title", title)
-    enterText("firstForename", firstForename)
-    enterText("secondForename", secondForename)
-    enterText("surname", surname)
-  }
+  override val pageUrl: String =
+    ".*/lookup-address/.../confirm"
+
+  def verifyPage(): Unit =
+    verifyPageLoadedContains("/confirm")
+
+  def confirmAddressButton(): Unit =
+    clickConfirmAddressButton()
 
 }

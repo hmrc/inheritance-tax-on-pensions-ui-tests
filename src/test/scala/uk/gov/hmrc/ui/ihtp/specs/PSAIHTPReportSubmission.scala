@@ -329,6 +329,146 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
     }
 
+    Scenario("4. PSA User Can Submit IHTP Application, Individual and Yes NI") {
+
+      Given("the user is logged in as an organisation user")
+      AuthLoginPage.loginAsOrgUserWithPsaEnrolment()
+
+      When("the user navigates to the What You will need page")
+      AuthLoginPage.navigateTo(WhatYouWillNeedPage.pageUrl)
+
+      Then("the What You will need page details should be correct")
+      WhatYouWillNeedPage.verifyPageDetails() shouldBe true
+
+      And("the page heading should be displayed")
+      WhatYouWillNeedPage.verifyPageHeading() shouldBe true
+
+      And("User Should be able to see and Click Save and Continue Button")
+      WhatYouWillNeedPage.SaveAndContinueButton()
+
+      And("User should be able to Navigate to Enter the Inheritance Tax reference number Page ")
+      WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
+
+      And("User is on the Enter the Inheritance Tax reference number Page")
+      EnterTheInheritanceTaxReferenceNumberPage.verifyPageDetails() shouldBe true
+      EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
+
+      And("User is able to enter Tax reference number")
+      EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("A123456/25A")
+
+      And("User should be able to Navigate to Deceased Name Page ")
+      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
+
+      And("User is on the Deceased Name Page")
+      DeceasedNamePage.verifyPageDetails() shouldBe true
+      DeceasedNamePage.verifyPageHeading() shouldBe true
+
+      And("User is able to enter Details of the Deceased")
+      DeceasedNamePage.enterDeceasedDetails(
+        "Mr",
+        "ABC",
+        "P",
+        "XYZ"
+      )
+
+      Then("User should be able to Navigate to National Insurance Number Page")
+      DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
+      NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
+
+      And("User selects No for Does User has National Number")
+      NationalInsuranceNumberPage.clickRadioButton("Yes")
+
+      Then("User Enter Reason for no National Insurance Number and continue")
+      NationalInsuranceNumberPage.enterNINO("ST533331B")
+
+      Then("User should be on Enter the birth and death dates of the user")
+      NationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
+      EnterBirthDeathPage.verifyPageDetails() shouldBe true
+
+      And("User should be able to enter Date of Birth and Death Date")
+      EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
+      EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
+
+      When("user click On save and Continue navigates to the LPR Type page")
+      EnterBirthDeathPage.navigateTo(LPRTypePage.pageUrl)
+      LPRTypePage.verifyPageDetails() shouldBe true
+
+      And("User selects Individual for LPR Type")
+      LPRTypePage.clickRadioButton("Individual")
+
+      And("User should be able to Navigate to LPR Name Page")
+      LPRTypePage.navigateTo(LPRNamePage.pageUrl)
+
+      And("User is on the LPR Name Page and able to enter Details of the LPR")
+      LPRNamePage.verifyPageHeading() shouldBe true
+      LPRNamePage.enterLPRDetails(
+        "Mr",
+        "ABC",
+        "P",
+        "XYZ"
+      )
+      LPRNamePage.SaveAndContinueButton()
+
+      When("user click On save and Continue navigates to the Select Country Page")
+      CountryPickerPage.verifyPage()
+      CountryPickerPage.enterCountry("United Kingdom")
+      CountryPickerPage.SaveAndContinueButton()
+
+      Then("User Navigates to Look Up Address Page")
+      LookUpPostcodePage.verifyPage()
+      LookUpPostcodePage.enterPostcode("ZZ1 1ZZ")
+      LookUpPostcodePage.SaveAndContinueButton()
+
+      And("User Navigated to Choose Address Page")
+      ChooseAddressPage.verifyPage()
+      ChooseAddressPage.clickRadioButton("4")
+      ChooseAddressPage.clickSaveAndContinueButton()
+
+      Then("User Navigated to Review and Confirm Page")
+      ReviewAndConfirmPage.verifyPageHeading() shouldBe true
+      ReviewAndConfirmPage.verifyPage()
+      ReviewAndConfirmPage.confirmAddressButton()
+
+      Then("Check and submit the report page")
+      ReviewAndConfirmPage.navigateTo(CheckYourAnswersPage.pageUrl)
+      CheckYourAnswersPage.verifyPageDetails() shouldBe true
+      CheckYourAnswersPage.verifyPageHeading() shouldBe true
+
+      Then("User should be able to click on Change Link Button")
+      CheckYourAnswersPage.ClickChangeLink()
+
+      And("When User Clicks on Change Link Button it will navigates to enter the Inheritance Tax reference number Page")
+      CheckYourAnswersPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.newUrl)
+      EnterTheInheritanceTaxReferenceNumberPage.verifyNewUrl() shouldBe true
+
+      When("user click On save and Continue it navigates to the Check and submit the report page")
+      EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
+      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
+      CheckYourAnswersPage.verifyPageDetails()
+
+      Then("User click on Save and Continue button on the Check and submit the report page ")
+      CheckYourAnswersPage.SaveAndContinueButton()
+
+      And("User should be able to Navigates to Psa-Declaration Page")
+      CheckYourAnswersPage.navigateTo(PSADeclarationPage.pageUrl)
+      PSADeclarationPage.verifyPageDetails() shouldBe true
+      PSADeclarationPage.verifyPageHeading() shouldBe true
+
+      And("User should be click on Agree and Submit Button on Psa-Declaration Page")
+      PSADeclarationPage.AgreeAndSubmitButton()
+
+      And("User should be able to Navigates to Submission Page")
+      PSADeclarationPage.navigateTo(ReportSubmittedPage.pageUrl)
+      ReportSubmittedPage.verifyPageDetails() shouldBe true
+      ReportSubmittedPage.verifyPageHeading() shouldBe true
+
+      And("the GOV.UK footer links should be present")
+      ReportSubmittedPage.verifyFooterLinksArePresent() shouldBe true
+
+      And("the Sign out link should be displayed")
+      AuthLoginPage.verifySignOutLinkText() shouldBe true
+    }
+
   }
 
 }

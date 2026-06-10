@@ -16,24 +16,22 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
-object LPRNamePage extends BasePage {
-  override val pageUrl: String   = s"$baseUrl/enter-name-lpr"
-  override val pageTitle: String =
-    "Enter the full name of the person managing the estate - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String        = "Enter the full name of the person managing the estate"
+import uk.gov.hmrc.ui.ihtp.pages.CountryPickerPage.clickSubmitButton
+import uk.gov.hmrc.ui.ihtp.pages.EnterTheInheritanceTaxReferenceNumberPage.clickSaveAndContinueButton
 
-  def verifyPageHeading(): Boolean =
-    getPageSource.contains(pageHeading)
+object LookUpPostcodePage extends BasePage {
+
+  override val pageUrl: String =
+    ".*/lookup-address/.../lookup"
+  def verifyPage(): Unit       =
+    verifyPageLoadedContains("/lookup")
 
   def SaveAndContinueButton(): Unit =
     clickSaveAndContinueButton()
 
-  def enterLPRDetails(title: String, firstForename: String, secondForename: String, surname: String): Unit = {
-    checkURL
-    enterText("title", title)
-    enterText("firstForename", firstForename)
-    enterText("secondForename", secondForename)
-    enterText("surname", surname)
+  def enterPostcode(textToEnter: String): Unit = {
+    enterText("postcode", textToEnter)
+    clickSubmitButton()
   }
 
 }
