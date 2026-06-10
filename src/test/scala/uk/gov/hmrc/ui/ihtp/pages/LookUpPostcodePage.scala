@@ -21,9 +21,6 @@ import uk.gov.hmrc.ui.ihtp.pages.EnterTheInheritanceTaxReferenceNumberPage.click
 
 object LookUpPostcodePage extends BasePage {
 
-//  override val pageTitle: String =
-//    "Enter the full name of the deceased - Report inheritance tax on a pension - GOV.UK"
-
   override val pageUrl: String =
     ".*/lookup-address/.../lookup"
   def verifyPage(): Unit       =

@@ -26,7 +26,6 @@ object LPRNamePage extends BasePage {
     getPageSource.contains(pageHeading)
 
   def SaveAndContinueButton(): Unit =
-    // checkURL
     clickSaveAndContinueButton()
 
   def enterLPRDetails(title: String, firstForename: String, secondForename: String, surname: String): Unit = {
