@@ -51,7 +51,6 @@ trait BasePage extends Matchers with PageObject {
     verifyPageLoaded(url)
   }
 
-  
   def isElementPresent(by: By): Boolean =
     Try(Driver.instance.findElement(by)).isSuccess
 
