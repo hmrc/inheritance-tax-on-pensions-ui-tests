@@ -28,7 +28,7 @@ object YourSubmissionsPage extends BasePage {
     getPageSource.contains(pageHeading)
 
   def clickLink(): Unit =
-    click(By.id("start-new-submission")
+    click(By.id("start-new-submission"))
 
   def verifyRegistrationReminderPage(): Boolean = {
     val mainHeading      = "You need to register as a pension scheme administrator or practitioner"
