@@ -33,8 +33,11 @@ class YourSubmissionsScreenSpec extends BaseSpec {
       Then("the Your Submissions page details should be correct")
       YourSubmissionsPage.verifyPageDetails() shouldBe true
 
-      And("the page heading should be displayed")
-      YourSubmissionsPage.verifyPageHeading() shouldBe true
+      And("User clicks on Link for start a New Report")
+      YourSubmissionsPage.clickLink()
+
+      Then("User will be on What you will be need Page")
+      WhatYouWillNeedPage.verifyPageDetails() shouldBe true
 
       And("the GOV.UK footer links should be present")
       YourSubmissionsPage.verifyFooterLinksArePresent() shouldBe true
