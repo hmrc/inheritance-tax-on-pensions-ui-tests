@@ -34,7 +34,7 @@ object AuthLoginPage extends BasePage {
         )
       case viewSubmissions       =>
         redirectUrl(
-          TestConfiguration.url("inheritance-tax-on-pensions") + "/submission-list"
+          TestConfiguration.url("inheritance-tax-on-pensions") + "/report-inheritance-tax-on-pension"
         )
     }
 

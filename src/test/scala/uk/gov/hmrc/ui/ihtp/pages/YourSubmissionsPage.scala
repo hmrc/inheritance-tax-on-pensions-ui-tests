@@ -16,14 +16,19 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
+import org.openqa.selenium.By
+
 object YourSubmissionsPage extends BasePage {
-  override val pageUrl: String   = s"$baseUrl/submission-list"
+  override val pageUrl: String   = s"$baseUrl/report-inheritance-tax-on-pension"
   val mpsPageUrl: String         = "http://localhost:8204/manage-pension-schemes/you-need-to-register"
-  override val pageTitle: String = "Your submissions - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String        = "Your submissions"
+  override val pageTitle: String = "Report Inheritance Tax on a pension - Report inheritance tax on a pension - GOV.UK"
+  val pageHeading: String        = "Report Inheritance Tax on a pension"
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
+
+  def clickLink(): Unit =
+    click(By.id("start-new-submission")
 
   def verifyRegistrationReminderPage(): Boolean = {
     val mainHeading      = "You need to register as a pension scheme administrator or practitioner"
