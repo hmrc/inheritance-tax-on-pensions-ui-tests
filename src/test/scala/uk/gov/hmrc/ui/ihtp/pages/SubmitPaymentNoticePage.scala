@@ -16,19 +16,18 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
-import uk.gov.hmrc.ui.ihtp.pages.EnterTheInheritanceTaxReferenceNumberPage.{checkURL, clickSaveAndContinueButton, enterText}
+import org.openqa.selenium.By
 
-object NameOfTheOrganisationPage extends BasePage {
-  override val pageUrl: String   = s"$baseUrl/enter-organisation-name"
-  override val pageTitle: String = "Enter the name of the organisation - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String        = "Enter the name of the organisation"
+object SubmitPaymentNoticePage extends BasePage {
+  override val pageUrl: String   = s"$baseUrl/pr-submit-payment-notice"
+  override val pageTitle: String =
+    "Did the PR submit the payment notice? - Report Inheritance Tax on a pension - GOV.UK"
 
-  def verifyPageHeading(): Boolean =
-    getPageSource.contains(pageHeading)
-
-  def enterOrganisationName(textToEnter: String): Unit = {
-    enterText("value", textToEnter)
+  def clickRadioButton(text: String): Unit =
+    text match {
+      case "Yes" => click(By.id("value"))
+      case "No"  => click(By.id("value-no"))
+    }
     clickSaveAndContinueButton()
-  }
 
 }
