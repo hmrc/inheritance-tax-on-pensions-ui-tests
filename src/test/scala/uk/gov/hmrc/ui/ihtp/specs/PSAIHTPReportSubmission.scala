@@ -218,13 +218,13 @@ class PSAIHTPReportSubmission extends BaseSpec {
       OrganisationRepresentativeNamePage.verifyPageDetails() shouldBe true
 
       And("User should able to enter PR details")
-       OrganisationRepresentativeNamePage.enterOrgRepresentativeDetails(
+      OrganisationRepresentativeNamePage.enterOrgRepresentativeDetails(
         "Mr",
         "John",
         "S",
         "Smith"
-       )
-       OrganisationRepresentativeNamePage.clickSaveAndContinueButton()
+      )
+      OrganisationRepresentativeNamePage.clickSaveAndContinueButton()
 
       Then("User will navigates to Submit Payment Notice Page")
       SubmitPaymentNoticePage.verifyPageDetails()
