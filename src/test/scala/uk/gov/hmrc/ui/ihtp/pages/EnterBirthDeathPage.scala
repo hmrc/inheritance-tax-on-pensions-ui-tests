@@ -23,7 +23,6 @@ object EnterBirthDeathPage extends BasePage {
   val pageHeading: String        = "Enter the date of birth and date of death of A A"
 
   def SaveAndContinueButton(): Unit = {
-    checkURL
     clickSaveAndContinueButton()
   }
 
@@ -39,7 +38,6 @@ object EnterBirthDeathPage extends BasePage {
     enterText("dateOfDeath.day", day)
     enterText("dateOfDeath.month", month)
     enterText("dateOfDeath.year", year)
-    clickSaveAndContinueButton()
   }
 
 }

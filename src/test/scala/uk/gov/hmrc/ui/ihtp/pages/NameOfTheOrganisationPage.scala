@@ -26,13 +26,7 @@ object NameOfTheOrganisationPage extends BasePage {
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
 
-  def SaveAndContinueButton(): Unit = {
-    checkURL
-    clickSaveAndContinueButton()
-  }
-
   def enterOrganisationName(textToEnter: String): Unit = {
-    checkURL
     enterText("value", textToEnter)
     clickSaveAndContinueButton()
   }

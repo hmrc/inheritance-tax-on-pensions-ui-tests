@@ -22,12 +22,11 @@ object SubmitPaymentNoticePage extends BasePage {
   override val pageUrl: String   = s"$baseUrl/pr-submit-payment-notice"
   override val pageTitle: String =
     "Did the PR submit the payment notice? - Report Inheritance Tax on a pension - GOV.UK"
-  
 
   def clickRadioButton(text: String): Unit =
     text match {
-      case "Yes"   => click(By.id("value"))
-      case "No" => click(By.id("value-no"))
+      case "Yes" => click(By.id("value"))
+      case "No"  => click(By.id("value-no"))
     }
     clickSaveAndContinueButton()
 

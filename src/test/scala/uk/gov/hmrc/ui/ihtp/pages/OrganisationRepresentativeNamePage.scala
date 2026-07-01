@@ -17,12 +17,17 @@
 package uk.gov.hmrc.ui.ihtp.pages
 
 object OrganisationRepresentativeNamePage extends BasePage {
-  override val pageUrl: String   = s"$baseUrl/enter-name-pr-organisation"
+  override val pageUrl: String = s"$baseUrl/enter-name-pr-organisation"
 
   def SaveAndContinueButton(): Unit =
     clickSaveAndContinueButton()
 
-  def enterOrgRepresentativeDetails(title: String, firstForename: String, secondForename: String, surname: String): Unit = {
+  def enterOrgRepresentativeDetails(
+    title: String,
+    firstForename: String,
+    secondForename: String,
+    surname: String
+  ): Unit = {
     checkURL
     enterText("title", title)
     enterText("firstForename", firstForename)

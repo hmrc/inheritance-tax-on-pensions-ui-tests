@@ -198,12 +198,14 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
+      EnterBirthDeathPage.clickSaveAndContinueButton()
 
       When("user click On save and Continue navigates to the LPR Type page")
       LPRTypePage.verifyPageDetails() shouldBe true
 
       And("User selects Organisation for LPR Type")
       LPRTypePage.clickRadioButton("Organisation")
+      LPRTypePage.clickSaveAndContinueButton()
 
       Then("User should be able to Navigate to Organisation Page")
       NameOfTheOrganisationPage.verifyPageDetails() shouldBe true
@@ -216,12 +218,13 @@ class PSAIHTPReportSubmission extends BaseSpec {
       OrganisationRepresentativeNamePage.verifyPageDetails() shouldBe true
 
       And("User should able to enter PR details")
-      OrganisationRepresentativeNamePage.enterOrgRepresentativeDetails(
+       OrganisationRepresentativeNamePage.enterOrgRepresentativeDetails(
         "Mr",
         "John",
         "S",
         "Smith"
-      )
+       )
+       OrganisationRepresentativeNamePage.clickSaveAndContinueButton()
 
       Then("User will navigates to Submit Payment Notice Page")
       SubmitPaymentNoticePage.verifyPageDetails()
