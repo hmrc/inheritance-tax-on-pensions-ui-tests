@@ -16,7 +16,7 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
-import uk.gov.hmrc.ui.ihtp.pages.EnterTheInheritanceTaxReferenceNumberPage.{checkURL, clickSaveAndContinueButton, enterText}
+import uk.gov.hmrc.ui.ihtp.pages.EnterTheInheritanceTaxReferenceNumberPage.{clickSaveAndContinueButton, enterText}
 
 object NameOfTheOrganisationPage extends BasePage {
   override val pageUrl: String   = s"$baseUrl/enter-organisation-name"
