@@ -20,12 +20,12 @@ import org.openqa.selenium.By
 
 object LPRTypePage extends BasePage {
   override val pageUrl: String = s"$baseUrl/lpr-individual-or-organisation"
-//  override val pageTitle: String =
-//    " Is the legal personal representative (LPR) an individual or a member of an organisation? - Report Inheritance Tax on a pension - GOV.UK"
-//  val pageHeading: String = " Is the legal personal representative (LPR) an individual or a member of an organisation?"
-//
-//  def verifyPageHeading(): Boolean =
-//    getPageSource.contains(pageHeading)
+  override val pageTitle: String =
+    " Is the personal representative (PR) an individual or a member of an organisation? - Report Inheritance Tax on a pension - GOV.UK"
+  val pageHeading: String = " Is the personal representative (PR) an individual or a member of an organisation?"
+
+  def verifyPageHeading(): Boolean =
+    getPageSource.contains(pageHeading)
 
   def clickRadioButton(text: String): Unit =
     text match {
