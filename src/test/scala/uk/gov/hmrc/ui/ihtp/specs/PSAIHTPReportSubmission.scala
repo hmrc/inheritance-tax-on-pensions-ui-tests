@@ -239,7 +239,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
 
       When("User clicks on Save and continue button it navigates to the <placeholder for the next page - currrently goes to CYA page> page")
-      SchemeReceivePaymentNoticePage.clickSaveAndContinueButton();
+      SchemeReceivePaymentNoticePage.clickSaveAndContinueButton()
 
       Then("User will be on CYA page")
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
@@ -457,7 +457,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
 
       When("User clicks on Save and continue button it navigates to the <placeholder for the next page> page")
-      SubmitPaymentNoticePage.clickSaveAndContinueButton();
+      SubmitPaymentNoticePage.clickSaveAndContinueButton()
 
       Then("User will be on CYA page")
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
