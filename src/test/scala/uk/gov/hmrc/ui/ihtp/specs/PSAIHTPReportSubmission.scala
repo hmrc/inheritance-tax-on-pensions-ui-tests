@@ -238,7 +238,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User should be able to enter date of receiving payment notice")
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
 
-      When("User clicks on Save and continue button it navigates to the <placeholder for the next page - currrently goes to CYA page> page")
+      When("User clicks on Save and continue button it and navigates to the next page")
       SchemeReceivePaymentNoticePage.clickSaveAndContinueButton()
 
       Then("User will be on CYA page")
@@ -456,7 +456,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User should be able to enter date of receiving payment notice")
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
 
-      When("User clicks on Save and continue button it navigates to the <placeholder for the next page> page")
+      When("User clicks on Save and continue button it and navigates to the next page")
       SubmitPaymentNoticePage.clickSaveAndContinueButton()
 
       Then("User will be on CYA page")
