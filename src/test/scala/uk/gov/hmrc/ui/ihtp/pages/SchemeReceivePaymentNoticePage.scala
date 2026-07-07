@@ -11,9 +11,9 @@ object SchemeReceivePaymentNoticePage extends BasePage {
 
   def dateOfReceivingPaymentNotice(day: String, month: String, year: String): Unit = {
     checkURL
-    enterText("dateOfReceivingPaymentNotice.day", day)
-    enterText("dateOfReceivingPaymentNotice.month", month)
-    enterText("dateOfReceivingPaymentNotice.year", year)
+    enterText("dateThePensionSchemeReceivedNoticeToPay.day", day)
+    enterText("dateThePensionSchemeReceivedNoticeToPay.month", month)
+    enterText("dateThePensionSchemeReceivedNoticeToPay.year", year)
   }
 
 }
