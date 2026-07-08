@@ -178,9 +178,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the Deceased")
       DeceasedNamePage.enterDeceasedDetails(
         "Mr",
-        "ABC",
-        "P",
-        "XYZ"
+        "Firstname",
+        "Middlename",
+        "Lastname"
       )
 
       When("User Navigate to National Insurance Number Page")
@@ -231,6 +231,15 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       When("User Clicks on Yes Radio button and click on continue button")
       SubmitPaymentNoticePage.clickRadioButton("Yes")
+
+      Then("User will navigate to Scheme Receive Payment Notice")
+      SchemeReceivePaymentNoticePage.verifyPageDetails()
+
+      And("User should be able to enter date of receiving payment notice")
+      SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
+
+      When("User clicks on Save and continue button it and navigates to the next page")
+      SchemeReceivePaymentNoticePage.clickSaveAndContinueButton()
 
       Then("User will be on CYA page")
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
@@ -371,9 +380,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the Deceased")
       DeceasedNamePage.enterDeceasedDetails(
         "Mr",
-        "ABC",
-        "P",
-        "XYZ"
+        "Firstname",
+        "Middlename",
+        "Lastname"
       )
 
       Then("User should be able to Navigate to National Insurance Number Page")
@@ -440,6 +449,15 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User Clicks on Yes Radio button and click on continue button")
       SubmitPaymentNoticePage.clickRadioButton("Yes")
+
+      Then("User will navigate to Scheme Receive Payment Notice")
+      SchemeReceivePaymentNoticePage.verifyPageDetails()
+
+      And("User should be able to enter date of receiving payment notice")
+      SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
+
+      When("User clicks on Save and continue button it and navigates to the next page")
+      SubmitPaymentNoticePage.clickSaveAndContinueButton()
 
       Then("User will be on CYA page")
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
