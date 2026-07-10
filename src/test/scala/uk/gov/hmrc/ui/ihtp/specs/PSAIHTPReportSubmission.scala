@@ -50,7 +50,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("A123456/25A")
 
       // Deceased name page
-      And("User should be able to Navigate to Deceased Name Page ")
+      And("User should be able to Navigate to Deceased Name Page")
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
 
       And("User is on the Deceased Name Page")
@@ -83,24 +83,24 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
-      When("user click On save and Continue navigates to the LPR Type page")
+      When("user click On save and Continue navigates to the PR Type page")
       EnterBirthDeathPage.navigateTo(PRTypePage.pageUrl)
       PRTypePage.verifyPageDetails() shouldBe true
       // CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
-      And("User selects Individual for LPR Type")
+      And("User selects Individual for PR Type")
       PRTypePage.clickRadioButton("Individual")
 
       // LPR Name (individual)
 
-      And("User should be able to Navigate to LPR Name Page")
+      And("User should be able to Navigate to PR Name Page")
       PRTypePage.navigateTo(PRNamePage.pageUrl)
 
-      And("User is on the LPR Name Page")
+      And("User is on the PR Name Page")
       PRNamePage.verifyPageDetails() shouldBe true
       PRNamePage.verifyPageHeading() shouldBe true
 
-      And("User is able to enter Details of the LPR")
+      And("User is able to enter Details of the PR")
       PRNamePage.enterPRDetails(
         "Mr",
         "ABC",
@@ -200,10 +200,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
       EnterBirthDeathPage.clickSaveAndContinueButton()
 
-      When("user click On save and Continue navigates to the LPR Type page")
+      When("user click On save and Continue navigates to the PR Type page")
       PRTypePage.verifyPageDetails() shouldBe true
 
-      And("User selects Organisation for LPR Type")
+      And("User selects Organisation for PR Type")
       PRTypePage.clickRadioButton("Organisation")
       PRTypePage.clickSaveAndContinueButton()
 
@@ -241,7 +241,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       When("User clicks on Save and continue button it and navigates to the next page")
       SchemeReceivePaymentNoticePage.clickSaveAndContinueButton()
 
-      Then("User is navigated to the Are the beneficiaries known? page")
+      Then("User is navigated to the Are the beneficiaries known page")
       AreBeneficiariesKnownPage.navigateTo(AreBeneficiariesKnownPage.pageUrl)
       AreBeneficiariesKnownPage.verifyPageDetails() shouldBe true
 
@@ -309,7 +309,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User Should be able to see and Click Save and Continue Button")
       WhatYouWillNeedPage.SaveAndContinueButton()
 
-      And("User should be able to Navigate to Enter the Inheritance Tax reference number Page ")
+      And("User should be able to Navigate to Enter the Inheritance Tax reference number Page")
       WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
 
       And("User is on the Enter the Inheritance Tax reference number Page")
@@ -380,7 +380,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Tax reference number")
       EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("A123456/25A")
 
-      And("User should be able to Navigate to Deceased Name Page ")
+      And("User should be able to Navigate to Deceased Name Page")
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
 
       And("User is on the Deceased Name Page")
@@ -413,17 +413,17 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
-      When("user click On save and Continue navigates to the LPR Type page")
+      When("user click On save and Continue navigates to the PR Type page")
       EnterBirthDeathPage.navigateTo(PRTypePage.pageUrl)
       PRTypePage.verifyPageDetails() shouldBe true
 
-      And("User selects Individual for LPR Type")
+      And("User selects Individual for PR Type")
       PRTypePage.clickRadioButton("Individual")
 
-      And("User should be able to Navigate to LPR Name Page")
+      And("User should be able to Navigate to PR Name Page")
       PRTypePage.navigateTo(PRNamePage.pageUrl)
 
-      And("User is on the LPR Name Page and able to enter Details of the LPR")
+      And("User is on the LPR Name Page and able to enter Details of the PR")
       PRNamePage.verifyPageHeading() shouldBe true
       PRNamePage.enterPRDetails(
         "Mr",
@@ -469,7 +469,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       When("User clicks on Save and continue button it and navigates to the next page")
       SchemeReceivePaymentNoticePage.clickSaveAndContinueButton()
 
-      Then("User is navigated to the Are the beneficiaries known? page")
+      Then("User is navigated to the Are the beneficiaries known page")
       AreBeneficiariesKnownPage.navigateTo(AreBeneficiariesKnownPage.pageUrl)
       AreBeneficiariesKnownPage.verifyPageDetails() shouldBe true
 
@@ -492,7 +492,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails()
 
-      Then("User click on Save and Continue button on the Check and submit the report page ")
+      Then("User click on Save and Continue button on the Check and submit the report page")
       CheckYourAnswersPage.SaveAndContinueButton()
 
       And("User should be able to Navigates to Psa-Declaration Page")
