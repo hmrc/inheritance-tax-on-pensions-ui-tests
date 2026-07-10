@@ -148,7 +148,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       AuthLoginPage.verifySignOutLinkText() shouldBe true
     }
 
-    Scenario("2. PSA User Can Submit IHTP Application, Organisation") {
+    Scenario("2. PSA User Can Submit IHTP Application, Organisation, and No for Payment Notice submission") {
 
       Given("the user is logged in as an organisation user")
       AuthLoginPage.loginAsOrgUserWithPsaEnrolment()
@@ -240,6 +240,16 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       When("User clicks on Save and continue button it and navigates to the next page")
       SchemeReceivePaymentNoticePage.clickSaveAndContinueButton()
+
+      Then("User is navigated to the Are the beneficiaries known? page")
+      AreBeneficiariesKnownPage.navigateTo(AreBeneficiariesKnownPage.pageUrl)
+      AreBeneficiariesKnownPage.verifyPageDetails() shouldBe true
+
+      And("User Clicks on Yes Radio button and clicks on Save and continue button")
+      AreBeneficiariesKnownPage.clickRadioButton("No")
+
+      Then("Navigate to the CYA page")
+      CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
 
       Then("User will be on CYA page")
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
@@ -343,7 +353,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
     }
 
-    Scenario("4. PSA User Can Submit IHTP Application, Individual and Yes NI") {
+    Scenario("4. PSA User Can Submit IHTP Application, Individual and Yes NI, and Yes for Payment Notice submission") {
 
       Given("the user is logged in as an organisation user")
       AuthLoginPage.loginAsOrgUserWithPsaEnrolment()
@@ -457,7 +467,14 @@ class PSAIHTPReportSubmission extends BaseSpec {
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
 
       When("User clicks on Save and continue button it and navigates to the next page")
-      SubmitPaymentNoticePage.clickSaveAndContinueButton()
+      SchemeReceivePaymentNoticePage.clickSaveAndContinueButton()
+
+      Then("User is navigated to the Are the beneficiaries known? page")
+      AreBeneficiariesKnownPage.navigateTo(AreBeneficiariesKnownPage.pageUrl)
+      AreBeneficiariesKnownPage.verifyPageDetails() shouldBe true
+
+      And("User Clicks on Yes Radio button and clicks on Save and continue button")
+      AreBeneficiariesKnownPage.clickRadioButton("Yes")
 
       Then("User will be on CYA page")
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
