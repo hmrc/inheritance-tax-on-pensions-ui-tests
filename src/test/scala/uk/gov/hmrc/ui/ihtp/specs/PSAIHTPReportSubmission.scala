@@ -248,6 +248,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User Clicks on Yes Radio button and clicks on Save and continue button")
       AreBeneficiariesKnownPage.clickRadioButton("No")
 
+      Then("Navigate to the CYA page")
+      CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
+
       Then("User will be on CYA page")
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
