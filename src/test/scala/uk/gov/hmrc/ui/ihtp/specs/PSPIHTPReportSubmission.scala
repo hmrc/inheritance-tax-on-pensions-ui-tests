@@ -85,35 +85,35 @@ class PSPIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
-      When("user click On save and Continue navigates to the LPR Type page")
-      EnterBirthDeathPage.navigateTo(LPRTypePage.pageUrl)
-      LPRTypePage.verifyPageDetails() shouldBe true
+      When("User click On save and Continue navigates to the PR Type page")
+      EnterBirthDeathPage.navigateTo(PRTypePage.pageUrl)
+      PRTypePage.verifyPageDetails() shouldBe true
 
-      And("User selects Individual for LPR Type")
-      LPRTypePage.clickRadioButton("Individual")
+      And("User selects Individual for PR Type")
+      PRTypePage.clickRadioButton("Individual")
 
-      // LPR Name (individual)
-      And("User should be able to Navigate to LPR Name Page")
-      LPRTypePage.navigateTo(LPRNamePage.pageUrl)
+      // PR Name (individual)
+      And("User should be able to Navigate to PR Name Page")
+      PRTypePage.navigateTo(PRNamePage.pageUrl)
 
-      And("User is on the LPR Name Page")
-      LPRNamePage.verifyPageDetails() shouldBe true
-      LPRNamePage.verifyPageHeading() shouldBe true
+      And("User is on the PR Name Page")
+      PRNamePage.verifyPageDetails() shouldBe true
+      PRNamePage.verifyPageHeading() shouldBe true
 
-      And("User is able to enter Details of the LPR")
-      LPRNamePage.enterLPRDetails(
+      And("User is able to enter Details of the PR")
+      PRNamePage.enterPRDetails(
         "Mr",
         "ABC",
         "P",
         "XYZ"
       )
 
-      When("user click On save and Continue navigates to the Check and submit the report page")
-      LPRTypePage.navigateTo(CheckYourAnswersPage.pageUrl)
+      When("User click On save and Continue navigates to the Check and submit the report page")
+      PRTypePage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
-      When("user click On save and Continue navigates to the Check and submit the report page")
+      When("User click On save and Continue navigates to the Check and submit the report page")
       EnterBirthDeathPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
@@ -138,10 +138,10 @@ class PSPIHTPReportSubmission extends BaseSpec {
       PSPDeclarationPage.verifyPageDetails() shouldBe true
       PSPDeclarationPage.verifyPageHeading() shouldBe true
 
-      And(" User should be enter Administrator's id on Psp-Declaration Page")
+      And("User should be enter Administrator's id on Psp-Declaration Page")
       PSPDeclarationPage.enterAdministratorId("A2100005")
 
-      And(" click on Agree and Submit Button on Psp-Declaration Page")
+      And("click on Agree and Submit Button on Psp-Declaration Page")
       PSPDeclarationPage.AgreeAndSubmitButton()
 
       And("User should be able to Navigates to Submission Page")
@@ -216,24 +216,24 @@ class PSPIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
-      When("user click On save and Continue navigates to the LPR Type page")
-      EnterBirthDeathPage.navigateTo(LPRTypePage.pageUrl)
-      LPRTypePage.verifyPageDetails() shouldBe true
+      When("User click On save and Continue navigates to the PR Type page")
+      EnterBirthDeathPage.navigateTo(PRTypePage.pageUrl)
+      PRTypePage.verifyPageDetails() shouldBe true
 
-      And("User selects Individual for LPR Type")
-      LPRTypePage.clickRadioButton("Organisation")
+      And("User selects Individual for PR Type")
+      PRTypePage.clickRadioButton("Organisation")
 
       And("User should be able to Navigate to Organisation Page")
-      LPRTypePage.navigateTo(NameOfTheOrganisationPage.pageUrl)
+      PRTypePage.navigateTo(NameOfTheOrganisationPage.pageUrl)
 
-      And("User is on the LPR Name Page")
+      And("User is on the PR Name Page")
       NameOfTheOrganisationPage.verifyPageDetails() shouldBe true
       NameOfTheOrganisationPage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Organisation name")
       NameOfTheOrganisationPage.enterOrganisationName("Test")
 
-      When("user click On save and Continue navigates to the Check and submit the report page")
+      When("User click On save and Continue navigates to the Check and submit the report page")
       NameOfTheOrganisationPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
@@ -245,7 +245,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
       CheckYourAnswersPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.newUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyNewUrl() shouldBe true
 
-      When("user click On save and Continue it navigates to the Check and submit the report page")
+      When("User click On save and Continue it navigates to the Check and submit the report page")
       EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
@@ -258,10 +258,10 @@ class PSPIHTPReportSubmission extends BaseSpec {
       PSPDeclarationPage.verifyPageDetails() shouldBe true
       PSPDeclarationPage.verifyPageHeading() shouldBe true
 
-      And(" User should be enter Administrator's id on Psp-Declaration Page")
+      And("User should be enter Administrator's id on Psp-Declaration Page")
       PSPDeclarationPage.enterAdministratorId("A2100005")
 
-      And(" click on Agree and Submit Button on Psp-Declaration Page")
+      And("click on Agree and Submit Button on Psp-Declaration Page")
       PSPDeclarationPage.AgreeAndSubmitButton()
 
       And("User should be able to Navigates to Submission Page")

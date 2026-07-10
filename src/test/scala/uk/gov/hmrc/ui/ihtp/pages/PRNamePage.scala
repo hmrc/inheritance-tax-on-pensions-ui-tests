@@ -16,21 +16,24 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
-import org.openqa.selenium.By
-
-object LPRTypePage extends BasePage {
-  override val pageUrl: String   = s"$baseUrl/lpr-individual-or-organisation"
+object PRNamePage extends BasePage {
+  override val pageUrl: String   = s"$baseUrl/enter-name-pr"
   override val pageTitle: String =
-    " Is the personal representative (PR) an individual or a member of an organisation? - Report Inheritance Tax on a pension - GOV.UK"
-  val pageHeading: String        = " Is the personal representative (PR) an individual or a member of an organisation?"
+    "Enter the full name of the person managing the estate - Report inheritance tax on a pension - GOV.UK"
+  val pageHeading: String        = "Enter the full name of the person managing the estate"
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
 
-  def clickRadioButton(text: String): Unit =
-    text match {
-      case "Individual"   => click(By.id("value_0"))
-      case "Organisation" => click(By.id("value_1"))
-    }
+  def SaveAndContinueButton(): Unit =
+    clickSaveAndContinueButton()
+
+  def enterPRDetails(title: String, firstForename: String, secondForename: String, surname: String): Unit = {
+    checkURL
+    enterText("title", title)
+    enterText("firstForename", firstForename)
+    enterText("secondForename", secondForename)
+    enterText("surname", surname)
+  }
 
 }
