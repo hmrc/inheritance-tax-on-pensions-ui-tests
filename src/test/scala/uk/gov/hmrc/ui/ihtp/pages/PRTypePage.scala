@@ -18,8 +18,8 @@ package uk.gov.hmrc.ui.ihtp.pages
 
 import org.openqa.selenium.By
 
-object LPRTypePage extends BasePage {
-  override val pageUrl: String   = s"$baseUrl/lpr-individual-or-organisation"
+object PRTypePage extends BasePage {
+  override val pageUrl: String   = s"$baseUrl/pr-individual-or-organisation"
   override val pageTitle: String =
     " Is the personal representative (PR) an individual or a member of an organisation? - Report Inheritance Tax on a pension - GOV.UK"
   val pageHeading: String        = " Is the personal representative (PR) an individual or a member of an organisation?"

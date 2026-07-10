@@ -16,8 +16,8 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
-object LPRNamePage extends BasePage {
-  override val pageUrl: String   = s"$baseUrl/enter-name-lpr"
+object PRNamePage extends BasePage {
+  override val pageUrl: String   = s"$baseUrl/enter-name-pr"
   override val pageTitle: String =
     "Enter the full name of the person managing the estate - Report inheritance tax on a pension - GOV.UK"
   val pageHeading: String        = "Enter the full name of the person managing the estate"
@@ -28,7 +28,7 @@ object LPRNamePage extends BasePage {
   def SaveAndContinueButton(): Unit =
     clickSaveAndContinueButton()
 
-  def enterLPRDetails(title: String, firstForename: String, secondForename: String, surname: String): Unit = {
+  def enterPRDetails(title: String, firstForename: String, secondForename: String, surname: String): Unit = {
     checkURL
     enterText("title", title)
     enterText("firstForename", firstForename)

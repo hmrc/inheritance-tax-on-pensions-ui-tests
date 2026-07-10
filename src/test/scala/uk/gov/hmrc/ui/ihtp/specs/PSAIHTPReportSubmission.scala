@@ -84,24 +84,24 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
       When("user click On save and Continue navigates to the LPR Type page")
-      EnterBirthDeathPage.navigateTo(LPRTypePage.pageUrl)
-      LPRTypePage.verifyPageDetails() shouldBe true
+      EnterBirthDeathPage.navigateTo(PRTypePage.pageUrl)
+      PRTypePage.verifyPageDetails() shouldBe true
       // CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
       And("User selects Individual for LPR Type")
-      LPRTypePage.clickRadioButton("Individual")
+      PRTypePage.clickRadioButton("Individual")
 
       // LPR Name (individual)
 
       And("User should be able to Navigate to LPR Name Page")
-      LPRTypePage.navigateTo(LPRNamePage.pageUrl)
+      PRTypePage.navigateTo(PRNamePage.pageUrl)
 
       And("User is on the LPR Name Page")
-      LPRNamePage.verifyPageDetails() shouldBe true
-      LPRNamePage.verifyPageHeading() shouldBe true
+      PRNamePage.verifyPageDetails() shouldBe true
+      PRNamePage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Details of the LPR")
-      LPRNamePage.enterLPRDetails(
+      PRNamePage.enterPRDetails(
         "Mr",
         "ABC",
         "P",
@@ -109,7 +109,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       )
 
       When("user click On save and Continue navigates to the Check and submit the report page")
-      LPRTypePage.navigateTo(CheckYourAnswersPage.pageUrl)
+      PRTypePage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
@@ -201,11 +201,11 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.clickSaveAndContinueButton()
 
       When("user click On save and Continue navigates to the LPR Type page")
-      LPRTypePage.verifyPageDetails() shouldBe true
+      PRTypePage.verifyPageDetails() shouldBe true
 
       And("User selects Organisation for LPR Type")
-      LPRTypePage.clickRadioButton("Organisation")
-      LPRTypePage.clickSaveAndContinueButton()
+      PRTypePage.clickRadioButton("Organisation")
+      PRTypePage.clickSaveAndContinueButton()
 
       Then("User should be able to Navigate to Organisation Page")
       NameOfTheOrganisationPage.verifyPageDetails() shouldBe true
@@ -414,24 +414,24 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
       When("user click On save and Continue navigates to the LPR Type page")
-      EnterBirthDeathPage.navigateTo(LPRTypePage.pageUrl)
-      LPRTypePage.verifyPageDetails() shouldBe true
+      EnterBirthDeathPage.navigateTo(PRTypePage.pageUrl)
+      PRTypePage.verifyPageDetails() shouldBe true
 
       And("User selects Individual for LPR Type")
-      LPRTypePage.clickRadioButton("Individual")
+      PRTypePage.clickRadioButton("Individual")
 
       And("User should be able to Navigate to LPR Name Page")
-      LPRTypePage.navigateTo(LPRNamePage.pageUrl)
+      PRTypePage.navigateTo(PRNamePage.pageUrl)
 
       And("User is on the LPR Name Page and able to enter Details of the LPR")
-      LPRNamePage.verifyPageHeading() shouldBe true
-      LPRNamePage.enterLPRDetails(
+      PRNamePage.verifyPageHeading() shouldBe true
+      PRNamePage.enterPRDetails(
         "Mr",
         "ABC",
         "P",
         "XYZ"
       )
-      LPRNamePage.SaveAndContinueButton()
+      PRNamePage.SaveAndContinueButton()
 
       When("user click On save and Continue navigates to the Select Country Page")
       CountryPickerPage.verifyPage()
