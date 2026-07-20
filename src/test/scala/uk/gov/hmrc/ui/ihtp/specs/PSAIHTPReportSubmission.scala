@@ -23,7 +23,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
   Feature("PSA IHTP Report Submission") {
 
     Scenario(
-      "1. PSA User Can Submit IHTP Application, Individual, Yes for Payment notice submission, Yes for beneficiaries known"
+      "1. PSA User Can Submit IHTP Application, Individual and Yes NI, Yes for Payment notice submission, Yes for beneficiaries known"
     ) {
 
       Given("the user is logged in as an organisation user")
@@ -86,7 +86,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
       Then("the user clicks on Save and continue button on Date of Birth and Death Date Page")
-      EnterBirthDeathPage.SaveAndContinueButton()
+      EnterBirthDeathPage.clickSaveAndContinueButton()
 
       Then(
         "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page"
@@ -258,7 +258,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
       Then("the user clicks on Save and continue button on Date of Birth and Death Date Page")
-      EnterBirthDeathPage.SaveAndContinueButton()
+      EnterBirthDeathPage.clickSaveAndContinueButton()
 
       Then(
         "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page"
@@ -469,7 +469,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
       Then("the user clicks on Save and continue button on Date of Birth and Death Date Page")
-      EnterBirthDeathPage.SaveAndContinueButton()
+      EnterBirthDeathPage.clickSaveAndContinueButton()
 
       Then(
         "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page"
