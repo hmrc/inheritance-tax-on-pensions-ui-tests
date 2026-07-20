@@ -41,8 +41,8 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User clicks the Continue Button on the What you will need Page")
       WhatYouWillNeedPage.SaveAndContinueButton()
 
-//      And("User navigates to Enter the Inheritance Tax reference number Page")
-//      WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
+      And("User navigates to Enter the Inheritance Tax reference number Page")
+      WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
 
       Then("the user is navigated to the Enter the Inheritance Tax reference number Page")
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageDetails() shouldBe true
@@ -52,8 +52,8 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("A123456/25A")
 
       // Deceased name page
-//      And("User should be able to Navigate to Deceased Name Page")
-//      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
+      And("User should be able to Navigate to Deceased Name Page")
+      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
 
       Then("User is navigated to the Deceased Name Page")
       DeceasedNamePage.verifyPageDetails() shouldBe true
@@ -62,9 +62,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the Deceased and continues to next Page")
       DeceasedNamePage.enterDeceasedDetails(
         "Mr",
-        "TestFirstname",
-        "TestMiddleName",
-        "TestLastName"
+        "Joe",
+        "Test",
+        "Doe"
       )
 
       Then("User is navigated to the National Insurance Number Page")
@@ -78,7 +78,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NationalInsuranceNumberPage.enterReason("Test")
 
       Then("User is navigated to the Enter the birth and death dates of the user Page")
-//      NationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
+      NationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
       And("User enters Date of Birth and Death Date")
@@ -97,8 +97,8 @@ class PSAIHTPReportSubmission extends BaseSpec {
       PRTypePage.clickRadioButton("Individual")
       PRTypePage.clickSaveAndContinueButton()
 
-//      And("User is navigated to PR Name Page")
-//      PRTypePage.navigateTo(PRNamePage.pageUrl)
+      And("User is navigated to PR Name Page")
+      PRTypePage.navigateTo(PRNamePage.pageUrl)
 
       Then("User is navigated to the PR Name Page")
       PRNamePage.verifyPageDetails() shouldBe true
@@ -211,12 +211,8 @@ class PSAIHTPReportSubmission extends BaseSpec {
       When("User clicks on Continue button and it navigates to the next page")
       WhatYouWillNeedPage.clickSaveAndContinueButton()
 
-//      And("User should be able to Navigate to Enter the Inheritance Tax reference number Page ")
-//      WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
-//      EnterTheInheritanceTaxReferenceNumberPage.verifyPageDetails() shouldBe true
-//      EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
-
       Then("the user is navigated to the Enter the Inheritance Tax reference number Page")
+      WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageDetails() shouldBe true
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
@@ -224,8 +220,8 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("A123456/25A")
 
       // Deceased name page
-      //      And("User should be able to Navigate to Deceased Name Page")
-      //      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
+      And("User should be able to Navigate to Deceased Name Page")
+      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
 
       Then("User is navigated to the Deceased Name Page")
       DeceasedNamePage.verifyPageDetails() shouldBe true
@@ -234,9 +230,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the Deceased")
       DeceasedNamePage.enterDeceasedDetails(
         "Mr",
-        "TestFirstname",
-        "TestMiddleName",
-        "TestLastName"
+        "Joe",
+        "Test",
+        "Doe"
       )
 
       Then("User is navigated to the National Insurance Number Page")
@@ -250,7 +246,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NationalInsuranceNumberPage.enterReason("Test")
 
       Then("User is navigated to the Enter the birth and death dates of the user Page")
-      //      NationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
+      NationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
       And("User enters Date of Birth and Death Date")
@@ -372,6 +368,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
 
       And("User is on the Enter the Inheritance Tax reference number Page")
+      WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageDetails() shouldBe true
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
@@ -432,6 +429,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       WhatYouWillNeedPage.SaveAndContinueButton()
 
       Then("the user is navigated to the Enter the Inheritance Tax reference number Page")
+      WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageDetails() shouldBe true
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
@@ -445,9 +443,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the Deceased and continues to next Page")
       DeceasedNamePage.enterDeceasedDetails(
         "Mr",
-        "Firstname",
-        "Middlename",
-        "Lastname"
+        "Joe",
+        "Test",
+        "Doe"
       )
 
       Then("User is navigated to the National Insurance Number Page")
@@ -461,7 +459,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NationalInsuranceNumberPage.enterNINO("ST533331B")
 
       Then("User is navigated to the Enter the birth and death dates of the user Page")
-//      NationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
+      NationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
       And("User enters Date of Birth and Death Date")
