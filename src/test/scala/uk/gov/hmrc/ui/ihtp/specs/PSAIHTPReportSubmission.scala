@@ -34,9 +34,8 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("the What You will need page details are correct")
       WhatYouWillNeedPage.verifyPageDetails() shouldBe true
-
-      And("the page heading should be displayed")
       WhatYouWillNeedPage.verifyPageHeading() shouldBe true
+      WhatYouWillNeedPage.SaveAndContinueButton()
 
       And("User clicks the Continue Button on the What you will need Page")
       WhatYouWillNeedPage.SaveAndContinueButton()
@@ -207,8 +206,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("the What You will need page details are correct")
       WhatYouWillNeedPage.verifyPageDetails() shouldBe true
       WhatYouWillNeedPage.verifyPageHeading() shouldBe true
-
-      When("User clicks on Continue button and it navigates to the next page")
       WhatYouWillNeedPage.clickSaveAndContinueButton()
 
       Then("the user is navigated to the Enter the Inheritance Tax reference number Page")
@@ -421,12 +418,8 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("the What You will need page details are correct")
       WhatYouWillNeedPage.verifyPageDetails() shouldBe true
-
-      And("the page heading should be displayed")
       WhatYouWillNeedPage.verifyPageHeading() shouldBe true
-
-      And("User clicks the Continue Button on the What you will need Page")
-      WhatYouWillNeedPage.SaveAndContinueButton()
+      WhatYouWillNeedPage.clickSaveAndContinueButton()
 
       Then("the user is navigated to the Enter the Inheritance Tax reference number Page")
       WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
