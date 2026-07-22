@@ -83,7 +83,7 @@ trait BasePage extends Matchers with PageObject {
   def clearDataForReturns(): Unit =
     Driver.instance.get(TestConfiguration.url("inheritance-tax-on-pensions") + "/test-only/clear-all")
 
-  def checkURL: Unit =
+  def checkURL(): Unit =
     if (pageUrl.contains("...")) {
       fluentWait.until(ExpectedConditions.urlMatches(pageUrl.replace("...", "[^/]+")))
     } else {
