@@ -37,9 +37,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       WhatYouWillNeedPage.verifyPageHeading() shouldBe true
       WhatYouWillNeedPage.clickSaveAndContinueButton()
 
-      And("User clicks the Continue Button on the What you will need Page")
-      WhatYouWillNeedPage.clickSaveAndContinueButton()
-
       And("User navigates to Enter the Inheritance Tax reference number Page")
       WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
 
@@ -442,7 +439,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       )
       OrganisationRepresentativeNamePage.clickSaveAndContinueButton()
 
-      Then("User is navigated to Did a a submit the payment notice? page")
+      Then("User is navigated to Did John Smith submit the payment notice? page")
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
 
       And("User Clicks on Yes Radio button and click on continue button")
@@ -592,7 +589,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       )
       OrganisationRepresentativeNamePage.clickSaveAndContinueButton()
 
-      Then("User is navigated to Did a a submit the payment notice? page")
+      Then("User is navigated to Did John Smith submit the payment notice? page")
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
 
       And("User Clicks on Yes Radio button and click on continue button")
