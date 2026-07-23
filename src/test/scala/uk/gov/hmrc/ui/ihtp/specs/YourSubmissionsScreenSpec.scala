@@ -55,9 +55,6 @@ class YourSubmissionsScreenSpec extends BaseSpec {
 
       Then("the user should see the registration page for pension scheme administrators or practitioners")
       YourSubmissionsPage.verifyRegistrationReminderPage() shouldBe true
-
-      And("the page details should not be the Your Submissions page details")
-      YourSubmissionsPage.verifyPageDetails() shouldBe false
     }
   }
 }

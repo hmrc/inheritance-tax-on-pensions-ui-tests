@@ -28,12 +28,12 @@ object DeceasedNamePage extends BasePage {
     getPageSource.contains(pageHeading)
 
   def SaveAndContinueButton(): Unit = {
-    checkURL
+    checkURL()
     clickSaveAndContinueButton()
   }
 
   def enterDeceasedDetails(title: String, firstForename: String, secondForename: String, surname: String): Unit = {
-    checkURL
+    checkURL()
     enterText("title", title)
     enterText("firstForename", firstForename)
     enterText("secondForename", secondForename)

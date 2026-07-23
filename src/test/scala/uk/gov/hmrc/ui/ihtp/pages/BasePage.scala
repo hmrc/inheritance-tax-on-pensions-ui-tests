@@ -44,7 +44,7 @@ trait BasePage extends Matchers with PageObject {
     fluentWait.until(ExpectedConditions.urlContains(urlFragment))
 
   def verifyPageDetails(): Boolean =
-    getCurrentUrl == pageUrl // && getTitle == pageTitle - uncomment this when titles are stable
+    fluentWait.until((driver: WebDriver) => getCurrentUrl == pageUrl)
 
   def navigateTo(url: String): Unit = {
     Driver.instance.get(url)
@@ -83,7 +83,7 @@ trait BasePage extends Matchers with PageObject {
   def clearDataForReturns(): Unit =
     Driver.instance.get(TestConfiguration.url("inheritance-tax-on-pensions") + "/test-only/clear-all")
 
-  def checkURL: Unit =
+  def checkURL(): Unit =
     if (pageUrl.contains("...")) {
       fluentWait.until(ExpectedConditions.urlMatches(pageUrl.replace("...", "[^/]+")))
     } else {

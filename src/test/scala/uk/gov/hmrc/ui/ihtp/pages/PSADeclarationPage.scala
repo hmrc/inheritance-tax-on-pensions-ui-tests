@@ -25,7 +25,7 @@ object PSADeclarationPage extends BasePage {
     getPageSource.contains(pageHeading)
 
   def AgreeAndSubmitButton(): Unit = {
-    checkURL
+    checkURL()
     clickSaveAndContinueButton()
   }
 

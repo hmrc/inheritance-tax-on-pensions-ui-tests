@@ -33,7 +33,7 @@ object EnterTheInheritanceTaxReferenceNumberPage extends BasePage {
     clickSaveAndContinueButton()
 
   def enterReferenceNumber(textToEnter: String): Unit = {
-    checkURL
+    checkURL()
     enterText("value", textToEnter)
     clickSaveAndContinueButton()
   }
