@@ -29,7 +29,7 @@ object NationalInsuranceNumberPage extends BasePage {
   //   getPageSource.contains(pageHeading)
 
   def SaveAndContinueButton(): Unit = {
-    checkURL
+    checkURL()
     clickSaveAndContinueButton()
   }
 
@@ -40,20 +40,20 @@ object NationalInsuranceNumberPage extends BasePage {
     }
 
   def addNino(adding: Boolean): Unit = {
-    checkURL
+    checkURL()
     if (adding) clickRadioButton("Yes")
     else clickRadioButton("No")
     clickSaveAndContinueButton()
   }
 
   def enterNINO(textToEnter: String): Unit = {
-    checkURL
+    checkURL()
     enterText("nino", textToEnter)
     clickSaveAndContinueButton()
   }
 
   def enterReason(textToEnter: String): Unit = {
-    checkURL
+    checkURL()
     enterText("reasonForNoNino", textToEnter)
     clickSaveAndContinueButton()
   }

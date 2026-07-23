@@ -29,7 +29,7 @@ object PRNamePage extends BasePage {
     clickSaveAndContinueButton()
 
   def enterPRDetails(title: String, firstForename: String, secondForename: String, surname: String): Unit = {
-    checkURL
+    checkURL()
     enterText("title", title)
     enterText("firstForename", firstForename)
     enterText("secondForename", secondForename)

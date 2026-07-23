@@ -23,14 +23,14 @@ object EnterBirthDeathPage extends BasePage {
   val pageHeading: String        = "Enter the date of birth and date of death of A A"
 
   def enterBirthDate(day: String, month: String, year: String): Unit = {
-    checkURL
+    checkURL()
     enterText("dateOfBirth.day", day)
     enterText("dateOfBirth.month", month)
     enterText("dateOfBirth.year", year)
   }
 
   def enterDeathDate(day: String, month: String, year: String): Unit = {
-    checkURL
+    checkURL()
     enterText("dateOfDeath.day", day)
     enterText("dateOfDeath.month", month)
     enterText("dateOfDeath.year", year)

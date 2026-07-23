@@ -25,7 +25,7 @@ object WhatYouWillNeedPage extends BasePage {
     getPageSource.contains(pageHeading)
 
   def SaveAndContinueButton(): Unit = {
-    checkURL
+    checkURL()
     clickSaveAndContinueButton()
   }
 
