@@ -418,14 +418,14 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User selects Organisation for PR Type and continues to next Page")
       PRTypePage.clickRadioButton("Organisation")
-      PRTypePage.clickSaveAndContinueButton()
+//      PRTypePage.clickSaveAndContinueButton()
 
       Then("User is navigated to the Enter the name of the organisation Page")
       NameOfTheOrganisationPage.verifyPageDetails() shouldBe true
       NameOfTheOrganisationPage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Organisation name and continues to next Page")
-      NameOfTheOrganisationPage.enterOrganisationName("TestOrganisation")
+      NameOfTheOrganisationPage.enterOrganisationName("Kapil & Sons Ltd.")
 
       Then("User is navigated to the Enter Name of the PR Organisation name Page")
       OrganisationRepresentativeNamePage.verifyPageDetails() shouldBe true
@@ -438,6 +438,26 @@ class PSAIHTPReportSubmission extends BaseSpec {
         "Smith"
       )
       OrganisationRepresentativeNamePage.clickSaveAndContinueButton()
+
+      Then("User is navigated to Select the country or territory of Kapil & Sons Ltd.")
+      CountryPickerPage.verifyPage()
+      CountryPickerPage.enterCountry("United Kingdom")
+      CountryPickerPage.SaveAndContinueButton()
+
+      Then("User is navigated to Look Up Address Page")
+      LookUpPostcodePage.verifyPage()
+      LookUpPostcodePage.enterPostcode("ZZ11ZZ")
+      LookUpPostcodePage.SaveAndContinueButton()
+
+      And("User is navigated to Choose Address Page")
+      ChooseAddressPage.verifyPage()
+      ChooseAddressPage.clickRadioButton("4")
+      ChooseAddressPage.clickSaveAndContinueButton()
+
+      Then("User is navigated to Review and confirm Page")
+      ReviewAndConfirmPage.verifyPageHeading() shouldBe true
+      ReviewAndConfirmPage.verifyPage()
+      ReviewAndConfirmPage.confirmAddressButton()
 
       Then("User is navigated to Did John Smith submit the payment notice? page")
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
@@ -588,6 +608,26 @@ class PSAIHTPReportSubmission extends BaseSpec {
         "Smith"
       )
       OrganisationRepresentativeNamePage.clickSaveAndContinueButton()
+
+      Then("User is navigated to Select the country or territory of Kapil & Sons Ltd.")
+      CountryPickerPage.verifyPage()
+      CountryPickerPage.enterCountry("United Kingdom")
+      CountryPickerPage.SaveAndContinueButton()
+
+      Then("User is navigated to Look Up Address Page")
+      LookUpPostcodePage.verifyPage()
+      LookUpPostcodePage.enterPostcode("ZZ11ZZ")
+      LookUpPostcodePage.SaveAndContinueButton()
+
+      And("User is navigated to Choose Address Page")
+      ChooseAddressPage.verifyPage()
+      ChooseAddressPage.clickRadioButton("4")
+      ChooseAddressPage.clickSaveAndContinueButton()
+
+      Then("User is navigated to Review and confirm Page")
+      ReviewAndConfirmPage.verifyPageHeading() shouldBe true
+      ReviewAndConfirmPage.verifyPage()
+      ReviewAndConfirmPage.confirmAddressButton()
 
       Then("User is navigated to Did John Smith submit the payment notice? page")
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
