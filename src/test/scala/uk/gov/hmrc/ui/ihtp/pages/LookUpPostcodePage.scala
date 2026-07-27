@@ -16,7 +16,6 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
-import uk.gov.hmrc.ui.ihtp.pages.CountryPickerPage.clickSubmitButton
 import uk.gov.hmrc.ui.ihtp.pages.EnterTheInheritanceTaxReferenceNumberPage.clickSaveAndContinueButton
 
 object LookUpPostcodePage extends BasePage {
@@ -26,12 +25,9 @@ object LookUpPostcodePage extends BasePage {
   def verifyPage(): Unit       =
     verifyPageLoadedContains("/lookup")
 
-  def SaveAndContinueButton(): Unit =
-    clickSaveAndContinueButton()
-
   def enterPostcode(textToEnter: String): Unit = {
     enterText("postcode", textToEnter)
-    clickSubmitButton()
+    clickSaveAndContinueButton()
   }
 
 }

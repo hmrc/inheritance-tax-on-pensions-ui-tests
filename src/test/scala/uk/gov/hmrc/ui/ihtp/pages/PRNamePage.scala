@@ -25,15 +25,13 @@ object PRNamePage extends BasePage {
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
 
-  def SaveAndContinueButton(): Unit =
-    clickSaveAndContinueButton()
-
   def enterPRDetails(title: String, firstForename: String, secondForename: String, surname: String): Unit = {
     checkURL()
     enterText("title", title)
     enterText("firstForename", firstForename)
     enterText("secondForename", secondForename)
     enterText("surname", surname)
+    clickSaveAndContinueButton()
   }
 
 }
