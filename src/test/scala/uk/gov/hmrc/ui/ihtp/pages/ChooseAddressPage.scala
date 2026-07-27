@@ -32,7 +32,7 @@ object ChooseAddressPage extends BasePage {
   def SaveAndContinueButton(): Unit =
     clickSaveAndContinueButton()
 
-  def clickRadioButton(text: String): Unit =
+  def clickRadioButton(text: String): Unit = {
     text match {
       case "2"         => click(By.id("addressId"))
       case "3"         => click(By.id("addressId-1"))
@@ -47,5 +47,7 @@ object ChooseAddressPage extends BasePage {
       case "10"        => click(By.id("addressId-10"))
 
     }
+    clickSaveAndContinueButton()
+  }
 
 }

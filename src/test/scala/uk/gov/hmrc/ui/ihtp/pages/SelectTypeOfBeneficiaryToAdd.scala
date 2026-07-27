@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 HM Revenue & Customs
+ * Copyright 2026 HM Revenue & Customs
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,21 +16,18 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
-object OrganisationRepresentativeNamePage extends BasePage {
-  override val pageUrl: String = s"$baseUrl/enter-name-pr-organisation"
+import org.openqa.selenium.By
 
-  def enterOrgRepresentativeDetails(
-    title: String,
-    firstForename: String,
-    secondForename: String,
-    surname: String
-  ): Unit = {
-    checkURL()
-    enterText("title", title)
-    enterText("firstForename", firstForename)
-    enterText("secondForename", secondForename)
-    enterText("surname", surname)
+object SelectTypeOfBeneficiaryToAdd extends BasePage {
+  override val pageUrl: String   = s"$baseUrl/select-beneficiary-type/0"
+  override val pageTitle: String =
+    "Select the type of beneficiary to add - Report Inheritance Tax on a pension - GOV.UK"
+
+  def clickRadioButton(text: String): Unit =
+    text match {
+      case "An individual"            => click(By.id("value_0"))
+      case "An organisation or trust" => click(By.id("value_1"))
+    }
     clickSaveAndContinueButton()
-  }
 
 }

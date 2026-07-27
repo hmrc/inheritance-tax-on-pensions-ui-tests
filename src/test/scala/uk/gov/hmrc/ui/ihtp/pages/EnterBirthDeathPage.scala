@@ -34,6 +34,7 @@ object EnterBirthDeathPage extends BasePage {
     enterText("dateOfDeath.day", day)
     enterText("dateOfDeath.month", month)
     enterText("dateOfDeath.year", year)
+    clickSaveAndContinueButton()
   }
 
 }

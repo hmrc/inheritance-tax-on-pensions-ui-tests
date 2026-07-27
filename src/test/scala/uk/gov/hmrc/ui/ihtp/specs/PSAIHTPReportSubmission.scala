@@ -37,10 +37,8 @@ class PSAIHTPReportSubmission extends BaseSpec {
       WhatYouWillNeedPage.verifyPageHeading() shouldBe true
       WhatYouWillNeedPage.clickSaveAndContinueButton()
 
-      And("User navigates to Enter the Inheritance Tax reference number Page")
-      WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
-
       Then("the user is navigated to the Enter the Inheritance Tax reference number Page")
+      WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageDetails() shouldBe true
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
@@ -48,10 +46,8 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("A123456/25A")
 
       // Deceased name page
-      And("User should be able to Navigate to Deceased Name Page")
-      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
-
       Then("User is navigated to the Deceased Name Page")
+      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
       DeceasedNamePage.verifyPageDetails() shouldBe true
       DeceasedNamePage.verifyPageHeading() shouldBe true
 
@@ -67,7 +63,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
       NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
 
-      And("User selects No for Does User has National Number?")
+      And("User selects No for Does Joe Doe have a National Insurance number?")
       NationalInsuranceNumberPage.clickRadioButton("No")
 
       Then("User Enters Reason for no National Insurance Number and continues to next Page")
@@ -77,12 +73,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
-      And("User enters Date of Birth and Death Date")
+      And("User enters Date of Birth and Death Date then continues to the next page")
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
-
-      Then("the user clicks on Save and continue button on Date of Birth and Death Date Page")
-      EnterBirthDeathPage.clickSaveAndContinueButton()
 
       Then(
         "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page"
@@ -91,65 +84,62 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User selects Individual for PR Type and then continues to next Page")
       PRTypePage.clickRadioButton("Individual")
-      PRTypePage.clickSaveAndContinueButton()
-
-      And("User is navigated to PR Name Page")
-      PRTypePage.navigateTo(PRNamePage.pageUrl)
 
       Then("User is navigated to the PR Name Page")
+      PRTypePage.navigateTo(PRNamePage.pageUrl)
       PRNamePage.verifyPageDetails() shouldBe true
       PRNamePage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Details of the PR and continues to next Page")
       PRNamePage.enterPRDetails(
         "Mr",
-        "ABC",
-        "P",
-        "XYZ"
+        "John",
+        "S",
+        "Smith"
       )
-      PRNamePage.SaveAndContinueButton()
 
       Then("User is navigated to the Select Country Page")
       CountryPickerPage.verifyPage()
       CountryPickerPage.enterCountry("United Kingdom")
-      CountryPickerPage.SaveAndContinueButton()
 
       Then("User is navigated to Look Up Address Page")
       LookUpPostcodePage.verifyPage()
       LookUpPostcodePage.enterPostcode("ZZ1 1ZZ")
-      LookUpPostcodePage.SaveAndContinueButton()
 
       And("User is navigated to Choose Address Page")
       ChooseAddressPage.verifyPage()
       ChooseAddressPage.clickRadioButton("4")
-      ChooseAddressPage.clickSaveAndContinueButton()
 
       Then("User is navigated to Review and confirm Page")
       ReviewAndConfirmPage.verifyPageHeading() shouldBe true
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then("User is navigated to Did a a submit the payment notice? page")
+      Then("User is navigated to Did John Smith submit the payment notice? page")
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
 
       And("User Clicks on Yes Radio button and click on continue button")
       SubmitPaymentNoticePage.clickRadioButton("Yes")
 
       Then("User is navigated to When did the scheme receive the payment notice? Page")
-      SchemeReceivePaymentNoticePage.verifyPageDetails()
+      SchemeReceivePaymentNoticePage.verifyPageDetails() shouldBe true
 
-      And("User should be able to enter date of receiving payment notice")
+      And("User should be able to enter date of receiving payment notice and continues to the next page")
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
-
-      When("User clicks on Save and continue button and it navigates to the next page")
-      SchemeReceivePaymentNoticePage.clickSaveAndContinueButton()
 
       Then("User is navigated to the Are the beneficiaries known page")
       AreBeneficiariesKnownPage.navigateTo(AreBeneficiariesKnownPage.pageUrl)
       AreBeneficiariesKnownPage.verifyPageDetails() shouldBe true
 
-      And("User Clicks on Yes Radio button and clicks on Save and continue button")
+      And("User Clicks on Yes Radio button and continues to the next page")
       AreBeneficiariesKnownPage.clickRadioButton("Yes")
+
+      Then("User is navigated to the Are the beneficiaries known page")
+      SelectTypeOfBeneficiaryToAdd.navigateTo(SelectTypeOfBeneficiaryToAdd.pageUrl)
+      SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
+
+      And("User Clicks on An individual option and continues to the next page")
+      SelectTypeOfBeneficiaryToAdd.clickRadioButton("An individual")
 
       Then("User will be on CYA page")
       CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
@@ -214,7 +204,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Tax reference number")
       EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("A123456/25A")
 
+      // Deceased name page
       Then("User is navigated to the Deceased Name Page")
+      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
       DeceasedNamePage.verifyPageDetails() shouldBe true
       DeceasedNamePage.verifyPageHeading() shouldBe true
 
@@ -240,12 +232,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
-      And("User enters Date of Birth and Death Date")
+      And("User enters Date of Birth and Death Date then continues to the next page")
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
-
-      Then("the user clicks on Save and continue button on Date of Birth and Death Date Page")
-      EnterBirthDeathPage.clickSaveAndContinueButton()
 
       Then(
         "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page"
@@ -254,55 +243,48 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User selects Individual for PR Type and then continues to next Page")
       PRTypePage.clickRadioButton("Individual")
-      PRTypePage.clickSaveAndContinueButton()
 
       Then("User is navigated to the PR Name Page")
+      PRTypePage.navigateTo(PRNamePage.pageUrl)
       PRNamePage.verifyPageDetails() shouldBe true
       PRNamePage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Details of the PR and continues to next Page")
       PRNamePage.enterPRDetails(
         "Mr",
-        "ABC",
-        "P",
-        "XYZ"
+        "John",
+        "S",
+        "Smith"
       )
-      PRNamePage.SaveAndContinueButton()
 
       Then("User is navigated to the Select Country Page")
       CountryPickerPage.verifyPage()
       CountryPickerPage.enterCountry("United Kingdom")
-      CountryPickerPage.SaveAndContinueButton()
 
       Then("User is navigated to Look Up Address Page")
       LookUpPostcodePage.verifyPage()
       LookUpPostcodePage.enterPostcode("ZZ1 1ZZ")
-      LookUpPostcodePage.SaveAndContinueButton()
 
       And("User is navigated to Choose Address Page")
       ChooseAddressPage.verifyPage()
       ChooseAddressPage.clickRadioButton("4")
-      ChooseAddressPage.clickSaveAndContinueButton()
 
       Then("User is navigated to Review and confirm Page")
       ReviewAndConfirmPage.verifyPageHeading() shouldBe true
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then("User is navigated to Did a a submit the payment notice? page")
+      Then("User is navigated to Did John Smith submit the payment notice? page")
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
 
       And("User Clicks on Yes Radio button and click on continue button")
       SubmitPaymentNoticePage.clickRadioButton("Yes")
 
       Then("User is navigated to When did the scheme receive the payment notice? Page")
-      SchemeReceivePaymentNoticePage.verifyPageDetails()
+      SchemeReceivePaymentNoticePage.verifyPageDetails() shouldBe true
 
-      And("User should be able to enter date of receiving payment notice")
+      And("User should be able to enter date of receiving payment notice and continue to the next page")
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
-
-      When("User clicks on Save and continue button and it navigates to the next page")
-      SchemeReceivePaymentNoticePage.clickSaveAndContinueButton()
 
       Then("User is navigated to the Are the beneficiaries known page")
       AreBeneficiariesKnownPage.navigateTo(AreBeneficiariesKnownPage.pageUrl)
@@ -394,7 +376,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
       NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
 
-      And("User selects No for Does User has National Number?")
+      And("User selects No for Does Joe Doe have a National Insurance number?")
       NationalInsuranceNumberPage.clickRadioButton("No")
 
       Then("User Enters Reason for no National Insurance Number and continues to next Page")
@@ -404,12 +386,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
-      And("User enters Date of Birth and Death Date")
+      And("User enters Date of Birth and Death Date then continues to the next page")
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
-
-      Then("the user clicks on Save and continue button on Date of Birth and Death Date Page")
-      EnterBirthDeathPage.clickSaveAndContinueButton()
 
       Then(
         "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page"
@@ -418,7 +397,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User selects Organisation for PR Type and continues to next Page")
       PRTypePage.clickRadioButton("Organisation")
-//      PRTypePage.clickSaveAndContinueButton()
 
       Then("User is navigated to the Enter the name of the organisation Page")
       NameOfTheOrganisationPage.verifyPageDetails() shouldBe true
@@ -437,22 +415,18 @@ class PSAIHTPReportSubmission extends BaseSpec {
         "S",
         "Smith"
       )
-      OrganisationRepresentativeNamePage.clickSaveAndContinueButton()
 
       Then("User is navigated to Select the country or territory of Kapil & Sons Ltd.")
       CountryPickerPage.verifyPage()
       CountryPickerPage.enterCountry("United Kingdom")
-      CountryPickerPage.SaveAndContinueButton()
 
       Then("User is navigated to Look Up Address Page")
       LookUpPostcodePage.verifyPage()
-      LookUpPostcodePage.enterPostcode("ZZ11ZZ")
-      LookUpPostcodePage.SaveAndContinueButton()
+      LookUpPostcodePage.enterPostcode("ZZ1 1ZZ")
 
       And("User is navigated to Choose Address Page")
       ChooseAddressPage.verifyPage()
       ChooseAddressPage.clickRadioButton("4")
-      ChooseAddressPage.clickSaveAndContinueButton()
 
       Then("User is navigated to Review and confirm Page")
       ReviewAndConfirmPage.verifyPageHeading() shouldBe true
@@ -466,13 +440,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
       SubmitPaymentNoticePage.clickRadioButton("Yes")
 
       Then("User is navigated to When did the scheme receive the payment notice? Page")
-      SchemeReceivePaymentNoticePage.verifyPageDetails()
+      SchemeReceivePaymentNoticePage.verifyPageDetails() shouldBe true
 
       And("User should be able to enter date of receiving payment notice")
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
-
-      When("User clicks on Save and continue button and it navigates to the next page")
-      SchemeReceivePaymentNoticePage.clickSaveAndContinueButton()
 
       Then("User is navigated to the Are the beneficiaries known page")
       AreBeneficiariesKnownPage.navigateTo(AreBeneficiariesKnownPage.pageUrl)
@@ -480,6 +451,13 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User Clicks on Yes Radio button and clicks on Save and continue button")
       AreBeneficiariesKnownPage.clickRadioButton("Yes")
+
+      Then("User is navigated to Select the type of beneficiary to add Page")
+      SelectTypeOfBeneficiaryToAdd.navigateTo(SelectTypeOfBeneficiaryToAdd.pageUrl)
+      SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
+
+      And("User Clicks on An organisation or trust option and clicks on Save and continue button")
+      SelectTypeOfBeneficiaryToAdd.clickRadioButton("An organisation or trust")
 
       Then("User will be on CYA page")
       CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
@@ -522,7 +500,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
     }
 
     Scenario(
-      "4. PSA User Can Submit IHTP Application, Organisation, and No for Payment Notice submission, No for beneficiaries known"
+      "4. PSA User Can Submit IHTP Application, Organisation, and No for Payment Notice submission"
     ) {
 
       Given("the user is logged in as an organisation user")
@@ -564,7 +542,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
       NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
 
-      And("User selects No for Does User has National Number?")
+      And("User selects No for Does Joe Doe have a National Insurance number?")
       NationalInsuranceNumberPage.clickRadioButton("No")
 
       Then("User Enters Reason for no National Insurance Number and continues to next Page")
@@ -574,12 +552,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
-      And("User enters Date of Birth and Death Date")
+      And("User enters Date of Birth and Death Date then continues to next page")
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
-
-      Then("the user clicks on Save and continue button on Date of Birth and Death Date Page")
-      EnterBirthDeathPage.clickSaveAndContinueButton()
 
       Then(
         "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page"
@@ -588,14 +563,13 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User selects Organisation for PR Type and continues to next Page")
       PRTypePage.clickRadioButton("Organisation")
-      PRTypePage.clickSaveAndContinueButton()
 
       Then("User is navigated to the Enter the name of the organisation Page")
       NameOfTheOrganisationPage.verifyPageDetails() shouldBe true
       NameOfTheOrganisationPage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Organisation name and continues to next Page")
-      NameOfTheOrganisationPage.enterOrganisationName("TestOrganisation")
+      NameOfTheOrganisationPage.enterOrganisationName("Test & Orgs Ltd.")
 
       Then("User is navigated to the Enter Name of the PR Organisation name Page")
       OrganisationRepresentativeNamePage.verifyPageDetails() shouldBe true
@@ -607,49 +581,42 @@ class PSAIHTPReportSubmission extends BaseSpec {
         "S",
         "Smith"
       )
-      OrganisationRepresentativeNamePage.clickSaveAndContinueButton()
 
-      Then("User is navigated to Select the country or territory of Kapil & Sons Ltd.")
+      Then("User is navigated to Select the country or territory of Test & Orgs Ltd.")
       CountryPickerPage.verifyPage()
       CountryPickerPage.enterCountry("United Kingdom")
-      CountryPickerPage.SaveAndContinueButton()
 
       Then("User is navigated to Look Up Address Page")
       LookUpPostcodePage.verifyPage()
-      LookUpPostcodePage.enterPostcode("ZZ11ZZ")
-      LookUpPostcodePage.SaveAndContinueButton()
+      LookUpPostcodePage.enterPostcode("ZZ1 1ZZ")
 
       And("User is navigated to Choose Address Page")
       ChooseAddressPage.verifyPage()
       ChooseAddressPage.clickRadioButton("4")
-      ChooseAddressPage.clickSaveAndContinueButton()
 
       Then("User is navigated to Review and confirm Page")
       ReviewAndConfirmPage.verifyPageHeading() shouldBe true
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then("User is navigated to Did John Smith submit the payment notice? page")
+      Then("User is navigated to Did John Smith submit the payment notice? Page")
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
 
-      And("User Clicks on Yes Radio button and click on continue button")
+      And("User Clicks on No Radio button and click on continue button")
       SubmitPaymentNoticePage.clickRadioButton("No")
 
       Then("User is navigated to When did the scheme receive the payment notice? Page")
-      SchemeReceivePaymentNoticePage.verifyPageDetails()
+      SchemeReceivePaymentNoticePage.verifyPageDetails() shouldBe true
 
-      And("User should be able to enter date of receiving payment notice")
+      And("User should be able to enter date of receiving payment notice and continues to the next page")
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
 
-      When("User clicks on Save and continue button and it navigates to the next page")
-      SchemeReceivePaymentNoticePage.clickSaveAndContinueButton()
+      Then("User is navigated to Select the type of beneficiary to add Page")
+      SelectTypeOfBeneficiaryToAdd.navigateTo(SelectTypeOfBeneficiaryToAdd.pageUrl)
+      SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
 
-      Then("User is navigated to the Are the beneficiaries known page")
-      AreBeneficiariesKnownPage.navigateTo(AreBeneficiariesKnownPage.pageUrl)
-      AreBeneficiariesKnownPage.verifyPageDetails() shouldBe true
-
-      And("User Clicks on Yes Radio button and clicks on Save and continue button")
-      AreBeneficiariesKnownPage.clickRadioButton("No")
+      And("User Clicks on An organisation or trust option and clicks on Save and continue button")
+      SelectTypeOfBeneficiaryToAdd.clickRadioButton("An organisation or trust")
 
       Then("User will be on CYA page")
       CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)

@@ -30,6 +30,7 @@ object SchemeReceivePaymentNoticePage extends BasePage {
     enterText("dateThePensionSchemeReceivedNoticeToPay.day", day)
     enterText("dateThePensionSchemeReceivedNoticeToPay.month", month)
     enterText("dateThePensionSchemeReceivedNoticeToPay.year", year)
+    clickSaveAndContinueButton()
   }
 
 }
