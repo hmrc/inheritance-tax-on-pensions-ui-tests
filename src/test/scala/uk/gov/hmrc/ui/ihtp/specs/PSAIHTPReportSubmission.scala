@@ -148,12 +148,16 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the Beneficiary and continues to next Page")
       EnterNameOfBeneficiaryPage.enterBeneficiaryDetails(
         "Mr",
-        "ThirdTestFirstName",
-        "ThirdTestMiddleName",
-        "ThirdTestLastName"
+        "John",
+        "D",
+        "Doe"
       )
 
-      Then("User will be on CYA page")
+      Then("User will be on Does Beneficiary have a National Insurance Number")
+      BeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
+      BeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
+
+      And("User will be on CYA page")
       CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
@@ -464,12 +468,16 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the Beneficiary and continues to next Page")
       EnterNameOfBeneficiaryPage.enterBeneficiaryDetails(
         "Mr",
-        "ThirdTestFirstName",
-        "ThirdTestMiddleName",
-        "ThirdTestLastName"
+        "John",
+        "D",
+        "Doe"
       )
 
-      Then("User will be on CYA page")
+      Then("User will be on Does Beneficiary have a National Insurance Number")
+      BeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
+      BeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
+
+      And("User will be on CYA page")
       CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
@@ -953,7 +961,23 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User Clicks on An organisation or trust option and clicks on Save and continue button")
       SelectTypeOfBeneficiaryToAdd.clickRadioButton("An individual")
 
-      Then("User will be on CYA page")
+      Then("User is navigated to the Enter the full name of the beneficiary Page")
+      EnterNameOfBeneficiaryPage.navigateTo(EnterNameOfBeneficiaryPage.pageUrl)
+      EnterNameOfBeneficiaryPage.verifyPageDetails() shouldBe true
+
+      And("User is able to enter Details of the Beneficiary and continues to next Page")
+      EnterNameOfBeneficiaryPage.enterBeneficiaryDetails(
+        "Mr",
+        "John",
+        "D",
+        "Doe"
+      )
+
+      Then("User will be on Does Beneficiary have a National Insurance Number")
+      BeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
+      BeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
+
+      And("User will be on CYA page")
       CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true

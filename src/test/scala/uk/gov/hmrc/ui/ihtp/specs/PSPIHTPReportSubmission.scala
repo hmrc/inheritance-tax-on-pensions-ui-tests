@@ -85,36 +85,88 @@ class PSPIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
-      When("User click On save and Continue navigates to the PR Type page")
-      EnterBirthDeathPage.navigateTo(PRTypePage.pageUrl)
+      Then(
+        "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page"
+      )
       PRTypePage.verifyPageDetails() shouldBe true
 
-      And("User selects Individual for PR Type")
+      And("User selects Individual for PR Type and then continues to next Page")
       PRTypePage.clickRadioButton("Individual")
 
-      // PR Name (individual)
-      And("User should be able to Navigate to PR Name Page")
+      Then("User is navigated to the PR Name Page")
       PRTypePage.navigateTo(PRNamePage.pageUrl)
-
-      And("User is on the PR Name Page")
       PRNamePage.verifyPageDetails() shouldBe true
       PRNamePage.verifyPageHeading() shouldBe true
 
-      And("User is able to enter Details of the PR")
+      And("User is able to enter Details of the PR and continues to next Page")
       PRNamePage.enterPRDetails(
         "Mr",
-        "ABC",
-        "P",
-        "XYZ"
+        "John",
+        "S",
+        "Smith"
       )
 
-      When("User click On save and Continue navigates to the Check and submit the report page")
-      PRTypePage.navigateTo(CheckYourAnswersPage.pageUrl)
-      CheckYourAnswersPage.verifyPageDetails() shouldBe true
-      CheckYourAnswersPage.verifyPageHeading() shouldBe true
+      Then("User is navigated to the Select Country Page")
+      CountryPickerPage.verifyPage()
+      CountryPickerPage.enterCountry("United Kingdom")
 
-      When("User click On save and Continue navigates to the Check and submit the report page")
-      EnterBirthDeathPage.navigateTo(CheckYourAnswersPage.pageUrl)
+      Then("User is navigated to Look Up Address Page")
+      LookUpPostcodePage.verifyPage()
+      LookUpPostcodePage.enterPostcode("ZZ1 1ZZ")
+
+      And("User is navigated to Choose Address Page")
+      ChooseAddressPage.verifyPage()
+      ChooseAddressPage.clickRadioButton("4")
+
+      Then("User is navigated to Review and confirm Page")
+      ReviewAndConfirmPage.verifyPageHeading() shouldBe true
+      ReviewAndConfirmPage.verifyPage()
+      ReviewAndConfirmPage.confirmAddressButton()
+
+      Then("User is navigated to Did John Smith submit the payment notice? Page")
+      SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
+
+      And("User Clicks on Yes Radio button and click on continue button")
+      SubmitPaymentNoticePage.clickRadioButton("Yes")
+
+      Then("User is navigated to When did the scheme receive the payment notice? Page")
+      SchemeReceivePaymentNoticePage.verifyPageDetails() shouldBe true
+
+      And("User should be able to enter date of receiving payment notice and continues to the next page")
+      SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
+
+      Then("User is navigated to the Are the beneficiaries known Page")
+      AreBeneficiariesKnownPage.navigateTo(AreBeneficiariesKnownPage.pageUrl)
+      AreBeneficiariesKnownPage.verifyPageDetails() shouldBe true
+
+      And("User Clicks on Yes Radio button and continues to the next Page")
+      AreBeneficiariesKnownPage.clickRadioButton("Yes")
+
+      Then("User is navigated to the Select the type of beneficiary to add Page")
+      SelectTypeOfBeneficiaryToAdd.navigateTo(SelectTypeOfBeneficiaryToAdd.pageUrl)
+      SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
+
+      And("User Clicks on An individual option and continues to the next Page")
+      SelectTypeOfBeneficiaryToAdd.clickRadioButton("An individual")
+
+      Then("User is navigated to the Enter the full name of the beneficiary Page")
+      EnterNameOfBeneficiaryPage.navigateTo(EnterNameOfBeneficiaryPage.pageUrl)
+      EnterNameOfBeneficiaryPage.verifyPageDetails() shouldBe true
+
+      And("User is able to enter Details of the Beneficiary and continues to next Page")
+      EnterNameOfBeneficiaryPage.enterBeneficiaryDetails(
+        "Mr",
+        "John",
+        "D",
+        "Doe"
+      )
+
+      Then("User will be on Does Beneficiary have a National Insurance Number")
+      BeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
+      BeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
+
+      And("User will be on CYA page")
+      CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
@@ -125,12 +177,12 @@ class PSPIHTPReportSubmission extends BaseSpec {
       CheckYourAnswersPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.newUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyNewUrl() shouldBe true
 
-      When("user click On save and Continue it navigates to the Check and submit the report page")
+      When("user clicks on Save and continue it navigates to the Check and submit the report page")
       EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
-      CheckYourAnswersPage.verifyPageDetails() shouldBe true
+      CheckYourAnswersPage.verifyPageDetails()
 
-      Then("User click on Save and Continue button on the Check and submit the report page ")
+      Then("User clicks on Save and Continue button on the Check and submit the report page ")
       CheckYourAnswersPage.SaveAndContinueButton()
 
       And("User should be able to Navigates to Psp-Declaration Page")
@@ -230,11 +282,65 @@ class PSPIHTPReportSubmission extends BaseSpec {
       NameOfTheOrganisationPage.verifyPageDetails() shouldBe true
       NameOfTheOrganisationPage.verifyPageHeading() shouldBe true
 
-      And("User is able to enter Organisation name")
-      NameOfTheOrganisationPage.enterOrganisationName("Test")
+      And("User is able to enter Organisation name and continues to next Page")
+      NameOfTheOrganisationPage.enterOrganisationName("Kapil & Sons Ltd.")
 
-      When("User click On save and Continue navigates to the Check and submit the report page")
-      NameOfTheOrganisationPage.navigateTo(CheckYourAnswersPage.pageUrl)
+      Then("User is navigated to the Enter Name of the PR Organisation name Page")
+      OrganisationRepresentativeNamePage.verifyPageDetails() shouldBe true
+
+      And("User should able to enter PR details and continues to next Page")
+      OrganisationRepresentativeNamePage.enterOrgRepresentativeDetails(
+        "Mr",
+        "John",
+        "S",
+        "Smith"
+      )
+
+      Then("User is navigated to Select the country or territory of Kapil & Sons Ltd.")
+      CountryPickerPage.verifyPage()
+      CountryPickerPage.enterCountry("United Kingdom")
+
+      Then("User is navigated to Look Up Address Page")
+      LookUpPostcodePage.verifyPage()
+      LookUpPostcodePage.enterPostcode("ZZ1 1ZZ")
+
+      And("User is navigated to Choose Address Page")
+      ChooseAddressPage.verifyPage()
+      ChooseAddressPage.clickRadioButton("4")
+
+      Then("User is navigated to Review and confirm Page")
+      ReviewAndConfirmPage.verifyPageHeading() shouldBe true
+      ReviewAndConfirmPage.verifyPage()
+      ReviewAndConfirmPage.confirmAddressButton()
+
+      Then("User is navigated to Did John Smith submit the payment notice? Page")
+      SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
+
+      And("User Clicks on Yes Radio button and click on continue button")
+      SubmitPaymentNoticePage.clickRadioButton("Yes")
+
+      Then("User is navigated to When did the scheme receive the payment notice? Page")
+      SchemeReceivePaymentNoticePage.verifyPageDetails() shouldBe true
+
+      And("User should be able to enter date of receiving payment notice")
+      SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
+
+      Then("User is navigated to the Are the beneficiaries known Page")
+      AreBeneficiariesKnownPage.navigateTo(AreBeneficiariesKnownPage.pageUrl)
+      AreBeneficiariesKnownPage.verifyPageDetails() shouldBe true
+
+      And("User Clicks on Yes Radio button and clicks on Save and continue button")
+      AreBeneficiariesKnownPage.clickRadioButton("Yes")
+
+      Then("User is navigated to Select the type of beneficiary to add Page")
+      SelectTypeOfBeneficiaryToAdd.navigateTo(SelectTypeOfBeneficiaryToAdd.pageUrl)
+      SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
+
+      And("User Clicks on An organisation or trust option and continues to the next page")
+      SelectTypeOfBeneficiaryToAdd.clickRadioButton("An organisation or trust")
+
+      Then("User will be on CYA page")
+      CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
@@ -245,15 +351,15 @@ class PSPIHTPReportSubmission extends BaseSpec {
       CheckYourAnswersPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.newUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyNewUrl() shouldBe true
 
-      When("User click On save and Continue it navigates to the Check and submit the report page")
+      Then("user click On save and Continue it navigates to the Check and submit the report page")
       EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
-      CheckYourAnswersPage.verifyPageDetails() shouldBe true
+      CheckYourAnswersPage.verifyPageDetails()
 
-      Then("User click on Save and Continue button on the Check and submit the report page ")
+      And("User click on Save and Continue button on the Check and submit the report page ")
       CheckYourAnswersPage.SaveAndContinueButton()
 
-      And("User should be able to Navigates to Psp-Declaration Page")
+      Then("User should be able to Navigates to Psp-Declaration Page")
       CheckYourAnswersPage.navigateTo(PSPDeclarationPage.pageUrl)
       PSPDeclarationPage.verifyPageDetails() shouldBe true
       PSPDeclarationPage.verifyPageHeading() shouldBe true
@@ -261,7 +367,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
       And("User should be enter Administrator's id on Psp-Declaration Page")
       PSPDeclarationPage.enterAdministratorId("A2100005")
 
-      And("click on Agree and Submit Button on Psp-Declaration Page")
+      When("click on Agree and Submit Button on Psp-Declaration Page")
       PSPDeclarationPage.AgreeAndSubmitButton()
 
       And("User should be able to Navigates to Submission Page")
