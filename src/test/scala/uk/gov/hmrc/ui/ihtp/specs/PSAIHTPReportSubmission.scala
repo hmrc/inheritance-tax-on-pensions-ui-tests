@@ -169,10 +169,39 @@ class PSAIHTPReportSubmission extends BaseSpec {
       CheckYourAnswersPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.newUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyNewUrl() shouldBe true
 
-      When("user clicks on Save and continue it navigates to the Check and submit the report page")
+      When("User clicks on Save and continue it navigates to the Check and submit the report Page")
       EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails()
+
+      // Verify if fields on the Check and Submit Page
+
+      Then("User verifies if the details for Country of PR and Address of PR are correct")
+      CheckYourAnswersPage.verifyCountryOfUnitedKingdom("United Kingdom")
+      CheckYourAnswersPage.verifyAddressOfPr("4 Other Place\nSome District\nAnytown\nZZ1 1ZZ")
+
+      And("User should be able to click on Change Country of PR")
+      CheckYourAnswersPage.clickChangeCountryOfPrLink()
+
+      Then("User is navigated to the Select Country Page")
+      CountryPickerPage.verifyPage()
+      CountryPickerPage.enterCountry("Spain")
+
+      Then("User is navigated to Enter Address Page")
+      LookUpPostcodePage.verifyPage()
+      LookUpPostcodePage.enterAddressLine1("Spanish Address 1")
+      LookUpPostcodePage.enterAddressLine2("Spanish Address 2")
+      LookUpPostcodePage.enterAddressLine3("Spanish Address 3")
+      LookUpPostcodePage.enterPostcode("49610")
+
+      Then("User is navigated to Review and confirm Page")
+      ReviewAndConfirmPage.verifyPageHeading() shouldBe true
+      ReviewAndConfirmPage.verifyPage()
+      ReviewAndConfirmPage.confirmAddressButton()
+
+      Then("User verifies if the changed details for Country of PR and Address of PR are correct")
+      CheckYourAnswersPage.verifyCountryOfSpain("Spain")
+      CheckYourAnswersPage.verifyAddressOfPr("Spanish Address 1\nSpanish Address 2\nSpanish Address 3\n49610")
 
       Then("User clicks on Save and Continue button on the Check and submit the report page ")
       CheckYourAnswersPage.SaveAndContinueButton()
@@ -655,10 +684,39 @@ class PSAIHTPReportSubmission extends BaseSpec {
       CheckYourAnswersPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.newUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyNewUrl() shouldBe true
 
-      Then("user click On save and Continue it navigates to the Check and submit the report page")
+      When("User clicks on Save and continue it navigates to the Check and submit the report Page")
       EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails()
+
+      // Verify if fields on the Check and Submit Page
+
+      Then("User verifies if the details for Country of PR and Address of PR are correct")
+      CheckYourAnswersPage.verifyCountryOfUnitedKingdom("United Kingdom")
+      CheckYourAnswersPage.verifyAddressOfOrganisation("4 Other Place\nSome District\nAnytown\nZZ1 1ZZ")
+
+      And("User should be able to click on Change Country of PR")
+      CheckYourAnswersPage.clickChangeCountryOfOrganisationLink()
+
+      Then("User is navigated to the Select Country Page")
+      CountryPickerPage.verifyPage()
+      CountryPickerPage.enterCountry("Spain")
+
+      Then("User is navigated to Enter Address Page")
+      LookUpPostcodePage.verifyPage()
+      LookUpPostcodePage.enterAddressLine1("Spanish Address 1")
+      LookUpPostcodePage.enterAddressLine2("Spanish Address 2")
+      LookUpPostcodePage.enterAddressLine3("Spanish Address 3")
+      LookUpPostcodePage.enterPostcode("49610")
+
+      Then("User is navigated to Review and confirm Page")
+      ReviewAndConfirmPage.verifyPageHeading() shouldBe true
+      ReviewAndConfirmPage.verifyPage()
+      ReviewAndConfirmPage.confirmAddressButton()
+
+      Then("User verifies if the changed details for Country of PR and Address of PR are correct")
+      CheckYourAnswersPage.verifyCountryOfSpain("Spain")
+      CheckYourAnswersPage.verifyAddressOfOrganisation("Spanish Address 1\nSpanish Address 2\nSpanish Address 3\n49610")
 
       And("User click on Save and Continue button on the Check and submit the report page ")
       CheckYourAnswersPage.SaveAndContinueButton()

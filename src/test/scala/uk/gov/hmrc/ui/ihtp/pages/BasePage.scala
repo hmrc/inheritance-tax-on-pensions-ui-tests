@@ -29,10 +29,17 @@ import scala.util.Try
 
 trait BasePage extends Matchers with PageObject {
 
-  val pageUrl: String   = ""
-  val pageTitle: String = ""
-  val newUrl: String    = ""
-  val baseUrl: String   = TestConfiguration.url("inheritance-tax-on-pensions")
+  val pageUrl: String                   = ""
+  val pageTitle: String                 = ""
+  val newUrl: String                    = ""
+  val baseUrl: String                   = TestConfiguration.url("inheritance-tax-on-pensions")
+  val countryOfPRValueUnitedKingdom: By =
+    By.xpath("//dd[@class='govuk-summary-list__value' and normalize-space(text())='United Kingdom']")
+  val countryOfPRValueSpain: By         =
+    By.xpath("//dd[@class='govuk-summary-list__value' and normalize-space(text())='Spain']")
+  val addressOfPr: By                   = By.xpath("//dt[normalize-space(text())='Address of PR']/following-sibling::dd")
+  val addressOfOrganisation: By         =
+    By.xpath("//dt[normalize-space(text())='Address of Organisation']/following-sibling::dd")
 
   private def fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
     .withTimeout(Duration.ofSeconds(20))
@@ -89,6 +96,26 @@ trait BasePage extends Matchers with PageObject {
     } else {
       fluentWait.until(ExpectedConditions.urlToBe(pageUrl))
     }
+
+  def verifyCountryOfUnitedKingdom(expectedCountryOfPr: String): Unit = {
+    val actualCountryOfPr = getText(countryOfPRValueUnitedKingdom)
+    actualCountryOfPr shouldBe expectedCountryOfPr
+  }
+
+  def verifyCountryOfSpain(expectedCountryOfPr: String): Unit = {
+    val actualCountryOfPr = getText(countryOfPRValueSpain)
+    actualCountryOfPr shouldBe expectedCountryOfPr
+  }
+
+  def verifyAddressOfPr(expectedAddressOfPr: String): Unit = {
+    val actualAddressOfPr = getText(addressOfPr)
+    actualAddressOfPr shouldBe expectedAddressOfPr
+  }
+
+  def verifyAddressOfOrganisation(expectedAddressOfPr: String): Unit = {
+    val actualAddressOfPr = getText(addressOfOrganisation)
+    actualAddressOfPr shouldBe expectedAddressOfPr
+  }
 
   def clickSaveAndContinueButton(): Unit =
     click(By.cssSelector(".govuk-button"))

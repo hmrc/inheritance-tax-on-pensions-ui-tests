@@ -25,6 +25,18 @@ object LookUpPostcodePage extends BasePage {
   def verifyPage(): Unit       =
     verifyPageLoadedContains("/lookup")
 
+  def enterAddressLine1(textToEnter: String): Unit =
+    enterText("line1", textToEnter)
+
+  def enterAddressLine2(textToEnter: String): Unit =
+    enterText("line2", textToEnter)
+
+  def enterAddressLine3(textToEnter: String): Unit =
+    enterText("line3", textToEnter)
+
+  def enterAddressLine4(textToEnter: String): Unit =
+    enterText("line4", textToEnter)
+
   def enterPostcode(textToEnter: String): Unit = {
     enterText("postcode", textToEnter)
     clickSaveAndContinueButton()
