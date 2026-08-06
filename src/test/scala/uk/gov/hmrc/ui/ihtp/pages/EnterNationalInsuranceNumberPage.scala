@@ -19,11 +19,11 @@ package uk.gov.hmrc.ui.ihtp.pages
 import org.openqa.selenium.By
 import uk.gov.hmrc.ui.ihtp.pages.EnterBirthDeathPage.{checkURL, clickSaveAndContinueButton}
 
-object NationalInsuranceNumberPage extends BasePage {
-  override val pageUrl: String   = s"$baseUrl/deceased-has-ni-number"
+object EnterNationalInsuranceNumberPage extends BasePage {
+  override val pageUrl: String   = s"$baseUrl/enter-ni-number"
   override val pageTitle: String =
-    "Does the deceased have a National Insurance number? - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String = "Does Joe Doe have a National Insurance number?"
+    "Enter the National Insurance number of the deceased - Report Inheritance Tax on a pension - GOV.UK"
+  val pageHeading: String = "Enter the National Insurance number of Joe Doe"
 
    def verifyPageHeading(): Boolean =
      getPageSource.contains(pageHeading)
@@ -52,7 +52,7 @@ object NationalInsuranceNumberPage extends BasePage {
 
   def enterNINO(textToEnter: String): Unit = {
     checkURL()
-    enterText("nino", textToEnter)
+    enterText("value", textToEnter)
     clickSaveAndContinueButton()
   }
 

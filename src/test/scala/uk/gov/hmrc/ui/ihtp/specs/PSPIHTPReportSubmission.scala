@@ -74,11 +74,16 @@ class PSPIHTPReportSubmission extends BaseSpec {
       And("User selects No for Does User has National Number")
       NationalInsuranceNumberPage.clickRadioButton("No")
 
-      Then("User Enter Reason for no National Insurance Number and continue")
-      NationalInsuranceNumberPage.enterReason("Test")
+      Then("User will navigates to Enter reason for no NI number Page")
+      NationalInsuranceNumberPage.navigateTo(NoNationalInsuranceNumberReasonPage.pageUrl)
+      NoNationalInsuranceNumberReasonPage.verifyPageDetails() shouldBe true
+      NoNationalInsuranceNumberReasonPage.verifyPageHeading() shouldBe true
 
-      Then("User should be on Enter the birth and death dates of the user")
-      NationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
+      Then("User Enters Reason for no National Insurance Number and continues to next Page")
+      NoNationalInsuranceNumberReasonPage.enterReason("the deceased was not a UK citizen")
+
+      Then("User is navigated to the Enter the birth and death dates of the user Page")
+      NoNationalInsuranceNumberReasonPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
       And("User should be able to enter Date of Birth and Death Date")
@@ -257,11 +262,16 @@ class PSPIHTPReportSubmission extends BaseSpec {
       And("User selects No for Does User has National Number")
       NationalInsuranceNumberPage.clickRadioButton("No")
 
-      Then("User Enter Reason for no National Insurance Number and continue")
-      NationalInsuranceNumberPage.enterReason("Test")
+      Then("User will navigates to Enter reason for no NI number Page")
+      NationalInsuranceNumberPage.navigateTo(NoNationalInsuranceNumberReasonPage.pageUrl)
+      NoNationalInsuranceNumberReasonPage.verifyPageDetails() shouldBe true
+      NoNationalInsuranceNumberReasonPage.verifyPageHeading() shouldBe true
 
-      Then("User should be on Enter the birth and death dates of the user")
-      NationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
+      Then("User Enters Reason for no National Insurance Number and continues to next Page")
+      NoNationalInsuranceNumberReasonPage.enterReason("the deceased was not a UK citizen")
+
+      Then("User is navigated to the Enter the birth and death dates of the user Page")
+      NoNationalInsuranceNumberReasonPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
       And("User should be able to enter Date of Birth and Death Date")
