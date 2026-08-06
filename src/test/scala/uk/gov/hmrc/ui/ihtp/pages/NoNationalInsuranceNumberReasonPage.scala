@@ -23,25 +23,24 @@ object NoNationalInsuranceNumberReasonPage extends BasePage {
   override val pageUrl: String   = s"$baseUrl/reason-no-ni-number"
   override val pageTitle: String =
     "Why does the deceased not have a National Insurance number? - Report Inheritance Tax on a pension - GOV.UK"
-  val pageHeading: String = "Why does Joe Doe not have a National Insurance number?"
+  val pageHeading: String        = "Why does Joe Doe not have a National Insurance number?"
 
-   def verifyPageHeading(): Boolean =
-     getPageSource.contains(pageHeading)
+  def verifyPageHeading(): Boolean =
+    getPageSource.contains(pageHeading)
 
 //  def SaveAndContinueButton(): Unit = {
 //    checkURL()
 //    clickSaveAndContinueButton()
 //  }
 
-  def clickRadioButton(text: String): Unit =
-    {
-      text match {
-        case "Yes" => click(By.id("value"))
-        case "No"  => click(By.id("value-no"))
-      }
-      clickSaveAndContinueButton()
+  def clickRadioButton(text: String): Unit = {
+    text match {
+      case "Yes" => click(By.id("value"))
+      case "No"  => click(By.id("value-no"))
     }
-    
+    clickSaveAndContinueButton()
+  }
+
 //
 //  def addNino(adding: Boolean): Unit = {
 //    checkURL()
@@ -57,7 +56,6 @@ object NoNationalInsuranceNumberReasonPage extends BasePage {
 //  }
 
   def enterReason(textToEnter: String): Unit = {
-    checkURL()
     enterText("noNinoReason", textToEnter)
     clickSaveAndContinueButton()
   }

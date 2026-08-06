@@ -59,9 +59,9 @@ class PSPIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the Deceased")
       DeceasedNamePage.enterDeceasedDetails(
         "Mr",
-        "ABC",
-        "P",
-        "XYZ"
+        "Joe",
+        "Test",
+        "Doe"
       )
 
       Then("User should be able to Navigate to National Insurance Number Page")
@@ -69,7 +69,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
 
       And("User is on the National Insurance Number Page")
       NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
-      // NationalInsuranceNumberPage.verifyPageHeading() shouldBe true
+      NationalInsuranceNumberPage.verifyPageHeading() shouldBe true
 
       And("User selects No for Does User has National Number")
       NationalInsuranceNumberPage.clickRadioButton("No")
@@ -250,9 +250,9 @@ class PSPIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the Deceased")
       DeceasedNamePage.enterDeceasedDetails(
         "Mr",
-        "ABC",
-        "P",
-        "XYZ"
+        "Joe",
+        "Test",
+        "Doe"
       )
 
       Then("User should be able to Navigate to National Insurance Number Page")

@@ -23,25 +23,23 @@ object EnterNationalInsuranceNumberPage extends BasePage {
   override val pageUrl: String   = s"$baseUrl/enter-ni-number"
   override val pageTitle: String =
     "Enter the National Insurance number of the deceased - Report Inheritance Tax on a pension - GOV.UK"
-  val pageHeading: String = "Enter the National Insurance number of Joe Doe"
+  val pageHeading: String        = "Enter the National Insurance number of Joe Doe"
 
-   def verifyPageHeading(): Boolean =
-     getPageSource.contains(pageHeading)
+  def verifyPageHeading(): Boolean =
+    getPageSource.contains(pageHeading)
 
 //  def SaveAndContinueButton(): Unit = {
 //    checkURL()
 //    clickSaveAndContinueButton()
 //  }
 
-  def clickRadioButton(text: String): Unit =
-    {
-      text match {
-        case "Yes" => click(By.id("value"))
-        case "No"  => click(By.id("value-no"))
-      }
-      clickSaveAndContinueButton()
+  def clickRadioButton(text: String): Unit = {
+    text match {
+      case "Yes" => click(By.id("value"))
+      case "No"  => click(By.id("value-no"))
     }
-    
+    clickSaveAndContinueButton()
+  }
 
   def addNino(adding: Boolean): Unit = {
     checkURL()

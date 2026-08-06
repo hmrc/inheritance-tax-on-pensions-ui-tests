@@ -158,7 +158,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
         "Doe"
       )
 
-      Then("User will be on Does Beneficiary have a National Insurance Number")
+      Then("User will be on Does Beneficiary have a National Insurance Number Page")
       BeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
       BeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
 
@@ -518,7 +518,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
         "Doe"
       )
 
-      Then("User will be on Does Beneficiary have a National Insurance Number")
+      Then("User will be on Does Beneficiary have a National Insurance Number Page")
       BeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
       BeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
 
@@ -1062,7 +1062,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
         "Doe"
       )
 
-      Then("User will be on Does Beneficiary have a National Insurance Number")
+      Then("User will be on Does Beneficiary have a National Insurance Number Page")
       BeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
       BeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
 
