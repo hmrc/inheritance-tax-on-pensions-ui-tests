@@ -28,7 +28,6 @@ object NationalInsuranceNumberPage extends BasePage {
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
 
-
   def clickRadioButton(text: String): Unit = {
     text match {
       case "Yes" => click(By.id("value"))

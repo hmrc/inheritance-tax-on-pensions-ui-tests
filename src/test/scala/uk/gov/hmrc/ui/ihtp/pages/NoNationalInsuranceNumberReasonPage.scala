@@ -36,7 +36,6 @@ object NoNationalInsuranceNumberReasonPage extends BasePage {
     clickSaveAndContinueButton()
   }
 
-
   def enterReason(textToEnter: String): Unit = {
     enterText("noNinoReason", textToEnter)
     clickSaveAndContinueButton()
