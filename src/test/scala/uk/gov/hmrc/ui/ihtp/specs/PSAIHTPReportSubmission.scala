@@ -23,7 +23,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
   Feature("PSA IHTP Report Submission") {
 
     Scenario(
-      "1. PSA User Can Submit IHTP Application, Individual and Yes NI, Yes for Payment notice submission, Yes for beneficiaries known, An individual for beneficiaries known"
+      "1. PSA User Can Submit IHTP Application, Individual and No NI, Yes for Payment notice submission, Yes for beneficiaries known, An individual for beneficiaries known"
     ) {
 
       Given("the user is logged in as an organisation user")

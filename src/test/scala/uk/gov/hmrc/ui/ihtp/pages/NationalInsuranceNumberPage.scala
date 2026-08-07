@@ -28,10 +28,6 @@ object NationalInsuranceNumberPage extends BasePage {
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
 
-//  def SaveAndContinueButton(): Unit = {
-//    checkURL()
-//    clickSaveAndContinueButton()
-//  }
 
   def clickRadioButton(text: String): Unit = {
     text match {

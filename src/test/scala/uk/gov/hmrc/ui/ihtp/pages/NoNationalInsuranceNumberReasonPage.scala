@@ -28,11 +28,6 @@ object NoNationalInsuranceNumberReasonPage extends BasePage {
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
 
-//  def SaveAndContinueButton(): Unit = {
-//    checkURL()
-//    clickSaveAndContinueButton()
-//  }
-
   def clickRadioButton(text: String): Unit = {
     text match {
       case "Yes" => click(By.id("value"))
@@ -41,19 +36,6 @@ object NoNationalInsuranceNumberReasonPage extends BasePage {
     clickSaveAndContinueButton()
   }
 
-//
-//  def addNino(adding: Boolean): Unit = {
-//    checkURL()
-//    if (adding) clickRadioButton("Yes")
-//    else clickRadioButton("No")
-//    clickSaveAndContinueButton()
-//  }
-//
-//  def enterNINO(textToEnter: String): Unit = {
-//    checkURL()
-//    enterText("nino", textToEnter)
-//    clickSaveAndContinueButton()
-//  }
 
   def enterReason(textToEnter: String): Unit = {
     enterText("noNinoReason", textToEnter)
