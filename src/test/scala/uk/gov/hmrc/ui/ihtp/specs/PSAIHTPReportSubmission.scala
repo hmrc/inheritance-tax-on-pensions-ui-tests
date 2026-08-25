@@ -162,8 +162,13 @@ class PSAIHTPReportSubmission extends BaseSpec {
       BeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
       BeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
 
+      And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
+      BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
+      AddBeneficiaryPage.verifyPageDetails() shouldBe true
+      AddBeneficiaryPage.clickRadioButton("No")
+
       And("User will be on CYA page")
-      CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
+      AddBeneficiaryPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
@@ -522,8 +527,37 @@ class PSAIHTPReportSubmission extends BaseSpec {
       BeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
       BeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
 
+      And("User will be on Add Beneficiary page and selects Yes for Do you need to add another beneficiary")
+      BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
+      AddBeneficiaryPage.verifyPageDetails() shouldBe true
+      AddBeneficiaryPage.clickRadioButton("Yes")
+
+      Then("User will be on New page of Select Beneficiary type and selects An individual for another Beneficiary")
+      NewSelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
+      NewSelectTypeOfBeneficiaryToAdd.clickRadioButton("An individual")
+
+      Then(
+        "User is navigated to the Enter the full name of the beneficiary Page and able to enter Details of the Beneficiary"
+      )
+      EnterNameOfNewBeneficiaryPage.verifyPageDetails() shouldBe true
+      EnterNameOfNewBeneficiaryPage.enterBeneficiaryDetails(
+        "Mr",
+        "Peter",
+        "S",
+        "Doe"
+      )
+
+      Then("User will be on Does Beneficiary have a National Insurance Number Page")
+      NewBeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
+      NewBeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
+
+      And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
+      BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
+      AddBeneficiaryPage.verifyPageDetails() shouldBe true
+      AddBeneficiaryPage.clickRadioButton("No")
+
       And("User will be on CYA page")
-      CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
+      AddBeneficiaryPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
@@ -1065,6 +1099,38 @@ class PSAIHTPReportSubmission extends BaseSpec {
       Then("User will be on Does Beneficiary have a National Insurance Number Page")
       BeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
       BeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
+
+      And("User will be on Add Beneficiary page and selects Yes for Do you need to add another beneficiary")
+      BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
+      AddBeneficiaryPage.verifyPageDetails() shouldBe true
+      AddBeneficiaryPage.clickRadioButton("Yes")
+
+      Then("User will be on New page of Select Beneficiary type and selects An individual for another Beneficiary")
+      NewSelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
+      NewSelectTypeOfBeneficiaryToAdd.clickRadioButton("An individual")
+
+      Then(
+        "User is navigated to the Enter the full name of the beneficiary Page and able to enter Details of the Beneficiary"
+      )
+      EnterNameOfNewBeneficiaryPage.verifyPageDetails() shouldBe true
+      EnterNameOfNewBeneficiaryPage.enterBeneficiaryDetails(
+        "Mr",
+        "Peter",
+        "S",
+        "Doe"
+      )
+
+      Then("User will be on Does Beneficiary have a National Insurance Number Page")
+      NewBeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
+      NewBeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
+
+      And("User will be on Add Beneficiary page and selects remove Hyperlink for first Beneficiary to removed")
+      AddBeneficiaryPage.selectHyperlink("Remove Hyperlink")
+
+      RemoveBeneficiaryPage.remove(false)
+      And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
+      AddBeneficiaryPage.verifyPageDetails() shouldBe true
+      AddBeneficiaryPage.clickRadioButton("No")
 
       And("User will be on CYA page")
       CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
