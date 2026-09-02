@@ -23,7 +23,7 @@ object NationalInsuranceNumberPage extends BasePage {
   override val pageUrl: String   = s"$baseUrl/deceased-has-ni-number"
   override val pageTitle: String =
     "Does the deceased have a National Insurance number? - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String        = "Does Joe Doe have a National Insurance number?"
+  val pageHeading: String        = "Does DeceasedFirstName DeceasedSurnameName have a National Insurance number?"
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)

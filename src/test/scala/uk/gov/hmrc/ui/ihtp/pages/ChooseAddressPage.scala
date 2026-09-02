@@ -24,27 +24,19 @@ object ChooseAddressPage extends BasePage {
   override val pageTitle: String = "Choose the address - Report inheritance tax on a pension - GOV.UK"
 
   override val pageUrl: String =
-    ".*/lookup-address/.../select?postcode=ZZ1+1ZZ"
+    ".*/lookup-address/.../select?postcode=ZZ01+1ZZ"
 
   def verifyPage(): Unit =
-    verifyPageLoadedContains("/select?postcode=ZZ1+1ZZ")
+    verifyPageLoadedContains("/select?postcode=ZZ01+1ZZ")
 
   def SaveAndContinueButton(): Unit =
     clickSaveAndContinueButton()
 
   def clickRadioButton(text: String): Unit = {
     text match {
-      case "2"         => click(By.id("addressId"))
-      case "3"         => click(By.id("addressId-1"))
-      case "4"         => click(By.id("addressId-2"))
-      case "5"         => click(By.id("addressId-3"))
-      case "6"         => click(By.id("addressId-4"))
-      case "Flat 1, 7" => click(By.id("addressId-5"))
-      case "Flat 2, 7" => click(By.id("addressId-6"))
-      case "Flat 3, 7" => click(By.id("addressId-7"))
-      case "8"         => click(By.id("addressId-8"))
-      case "9"         => click(By.id("addressId-9"))
-      case "10"        => click(By.id("addressId-10"))
+      case "1" => click(By.id("addressId"))
+      case "2" => click(By.id("addressId-1"))
+      case "3" => click(By.id("addressId-2"))
 
     }
     clickSaveAndContinueButton()

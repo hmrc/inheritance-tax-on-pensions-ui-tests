@@ -18,12 +18,14 @@ package uk.gov.hmrc.ui.ihtp.pages
 
 import org.openqa.selenium.By
 import uk.gov.hmrc.ui.ihtp.pages.EnterBirthDeathPage.{checkURL, clickSaveAndContinueButton}
+import uk.gov.hmrc.domain.NinoGenerator
 
 object EnterNationalInsuranceNumberPage extends BasePage {
   override val pageUrl: String   = s"$baseUrl/enter-ni-number"
   override val pageTitle: String =
     "Enter the National Insurance number of the deceased - Report Inheritance Tax on a pension - GOV.UK"
-  val pageHeading: String        = "Enter the National Insurance number of Joe Doe"
+  val pageHeading: String        = "Enter the National Insurance number of DeceasedFirstName DeceasedSurnameName"
+  val nino: String               = NinoGenerator().nextNino.nino
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
@@ -43,9 +45,9 @@ object EnterNationalInsuranceNumberPage extends BasePage {
     clickSaveAndContinueButton()
   }
 
-  def enterNINO(textToEnter: String): Unit = {
+  def enterNINO(): Unit = {
     checkURL()
-    enterText("value", textToEnter)
+    enterText("value", nino)
     clickSaveAndContinueButton()
   }
 

@@ -20,8 +20,8 @@ import org.openqa.selenium.By
 
 object CheckYourAnswersPage extends BasePage {
   override val pageUrl: String   = s"$baseUrl/check-your-answers"
-  override val pageTitle: String = "Check and submit the report - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String        = "Check and submit the report"
+  override val pageTitle: String = "Check report details - Report inheritance tax on a pension - GOV.UK"
+  val pageHeading: String        = "Check report details"
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
