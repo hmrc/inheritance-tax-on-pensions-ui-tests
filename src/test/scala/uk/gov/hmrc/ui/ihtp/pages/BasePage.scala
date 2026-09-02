@@ -22,7 +22,7 @@ import org.scalatest.matchers.should.Matchers
 import uk.gov.hmrc.selenium.component.PageObject
 import uk.gov.hmrc.selenium.webdriver.Driver
 import uk.gov.hmrc.ui.ihtp.conf.TestConfiguration
-import uk.gov.hmrc.ui.ihtp.pages.YourSubmissionsPage.getPageSource
+import uk.gov.hmrc.ui.ihtp.pages.OverviewPage.getPageSource
 
 import java.time.Duration
 import scala.util.Try
@@ -119,6 +119,9 @@ trait BasePage extends Matchers with PageObject {
 
   def clickSaveAndContinueButton(): Unit =
     click(By.cssSelector(".govuk-button"))
+
+  def clickSaveAsDraft(): Unit =
+    click(By.id("saved-as-draft-link"))
 
   def clickSubmitButton(): Unit =
     click(By.id("continue"))

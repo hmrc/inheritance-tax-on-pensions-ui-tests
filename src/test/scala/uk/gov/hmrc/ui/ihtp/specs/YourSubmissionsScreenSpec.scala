@@ -28,19 +28,19 @@ class YourSubmissionsScreenSpec extends BaseSpec {
       AuthLoginPage.loginAsPsaOrgUserForSubmission()
 
       When("the user navigates to the Your Submissions page")
-      AuthLoginPage.navigateTo(YourSubmissionsPage.pageUrl)
+      AuthLoginPage.navigateTo(OverviewPage.pageUrl)
 
       Then("the Your Submissions page details should be correct")
-      YourSubmissionsPage.verifyPageDetails() shouldBe true
+      OverviewPage.verifyPageDetails() shouldBe true
 
       And("User clicks on Link for start a New Report")
-      YourSubmissionsPage.clickLink()
+      OverviewPage.clickLink()
 
       Then("User will be on What you will be need Page")
       WhatYouWillNeedPage.verifyPageDetails() shouldBe true
 
       And("the GOV.UK footer links should be present")
-      YourSubmissionsPage.verifyFooterLinksArePresent() shouldBe true
+      OverviewPage.verifyFooterLinksArePresent() shouldBe true
 
       And("the Sign out link should be displayed")
       AuthLoginPage.verifySignOutLinkText() shouldBe true
@@ -51,10 +51,10 @@ class YourSubmissionsScreenSpec extends BaseSpec {
       AuthLoginPage.loginAsOrgUserWithoutEnrolment()
 
       When("the user tries to navigate to the Your Submissions page")
-      AuthLoginPage.navigateTo(YourSubmissionsPage.mpsPageUrl)
+      AuthLoginPage.navigateTo(OverviewPage.mpsPageUrl)
 
       Then("the user should see the registration page for pension scheme administrators or practitioners")
-      YourSubmissionsPage.verifyRegistrationReminderPage() shouldBe true
+      OverviewPage.verifyRegistrationReminderPage() shouldBe true
     }
   }
 }

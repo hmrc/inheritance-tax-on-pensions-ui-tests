@@ -22,7 +22,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
 
   Feature("PSP IHTP Report Submission") {
 
-    Scenario("1. PSP User Can Submit IHTP Application Individual") {
+    Scenario("1.PSP User Can Submit IHTP Application Individual") {
 
       Given("the user is logged in as an organisation user")
       AuthLoginPage.loginAsOrgUserWithPspEnrolment()
