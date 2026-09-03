@@ -18,7 +18,7 @@ package uk.gov.hmrc.ui.ihtp.pages
 
 import org.openqa.selenium.By
 
-object YourSubmissionsPage extends BasePage {
+object OverviewPage extends BasePage {
   override val pageUrl: String   = s"$baseUrl/report-inheritance-tax-on-pension"
   val mpsPageUrl: String         = "http://localhost:8204/manage-pension-schemes/you-need-to-register"
   override val pageTitle: String = "Report Inheritance Tax on a pension - Report inheritance tax on a pension - GOV.UK"

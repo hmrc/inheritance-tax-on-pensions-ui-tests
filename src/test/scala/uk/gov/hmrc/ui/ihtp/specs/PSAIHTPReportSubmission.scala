@@ -1149,8 +1149,16 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails()
 
-      And("User click on Save and Continue button on the Check and submit the report page ")
-      CheckYourAnswersPage.SaveAndContinueButton()
+      And("User click on Save As Draft button on the CYA page and Navigates to Overview Page")
+      CheckYourAnswersPage.SaveAsDraft()
+      OverviewPage.verifyPageDetails() shouldBe true
+      OverviewPage.verifyPageHeading() shouldBe true
+
+      When("User Navigates to CYA Page and Click on Save and continue CTA")
+      OverviewPage.navigateTo(CheckYourAnswersPage.pageUrl)
+      CheckYourAnswersPage.verifyPageDetails() shouldBe true
+      CheckYourAnswersPage.verifyPageHeading() shouldBe true
+      CheckYourAnswersPage.clickSaveAndContinueButton()
 
       Then("User should be able to Navigates to Psa-Declaration Page")
       CheckYourAnswersPage.navigateTo(PSADeclarationPage.pageUrl)
