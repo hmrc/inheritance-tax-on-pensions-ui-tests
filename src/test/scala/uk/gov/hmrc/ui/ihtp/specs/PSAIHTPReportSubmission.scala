@@ -54,16 +54,16 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the Deceased and continues to next Page")
       DeceasedNamePage.enterDeceasedDetails(
         "Mr",
-        "Joe",
-        "Test",
-        "Doe"
+        "DeceasedFirstName",
+        "DeceasedMiddleName",
+        "DeceasedSurnameName"
       )
 
       Then("User is navigated to the National Insurance Number Page")
       DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
       NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
 
-      And("User selects No for Does Joe Doe have a National Insurance number?")
+      And("User selects No for Does DeceasedFirstName DeceasedSurnameName have a National Insurance number?")
       NationalInsuranceNumberPage.clickRadioButton("No")
 
       Then("User will navigates to Enter reason for no NI number Page")
@@ -78,7 +78,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NoNationalInsuranceNumberReasonPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
-      And("User enters Date of Birth and Death Date then continues to the next page")
+      And("User enters Date of Birth and Date of Death then continues to the next page")
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
@@ -98,9 +98,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the PR and continues to next Page")
       PRNamePage.enterPRDetails(
         "Mr",
-        "John",
-        "S",
-        "Smith"
+        "PRFirstName",
+        "PRMiddleName",
+        "PRSurnameName"
       )
 
       Then("User is navigated to the Select Country Page")
@@ -109,18 +109,18 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User is navigated to Look Up Address Page")
       LookUpPostcodePage.verifyPage()
-      LookUpPostcodePage.enterPostcode("ZZ1 1ZZ")
+      LookUpPostcodePage.enterPostcode("ZZ01 1ZZ")
 
       And("User is navigated to Choose Address Page")
       ChooseAddressPage.verifyPage()
-      ChooseAddressPage.clickRadioButton("4")
+      ChooseAddressPage.clickRadioButton("1")
 
       Then("User is navigated to Review and confirm Page")
       ReviewAndConfirmPage.verifyPageHeading() shouldBe true
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then("User is navigated to Did John Smith submit the payment notice? Page")
+      Then("User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page")
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
 
       And("User Clicks on Yes Radio button and click on continue button")
@@ -152,10 +152,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User is able to enter Details of the Beneficiary and continues to next Page")
       EnterNameOfBeneficiaryPage.enterBeneficiaryDetails(
-        "Mr",
-        "John",
-        "D",
-        "Doe"
+        "Dr",
+        "BeneficiaryFirstName",
+        "BeneficiaryMiddleName",
+        "BeneficiaryLastName"
       )
 
       Then("User will be on Does Beneficiary have a National Insurance Number Page")
@@ -188,7 +188,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User verifies if the details for Country of PR and Address of PR are correct")
       CheckYourAnswersPage.verifyCountryOfUnitedKingdom("United Kingdom")
-      CheckYourAnswersPage.verifyAddressOfPr("4 Other Place\nSome District\nAnytown\nZZ1 1ZZ")
+      CheckYourAnswersPage.verifyAddressOfPr("1 Test Street\nTesttown\nZZ01 1ZZ")
 
       And("User should be able to click on Change Country of PR")
       CheckYourAnswersPage.clickChangeCountryOfPrLink()
@@ -199,10 +199,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User is navigated to Enter Address Page")
       LookUpPostcodePage.verifyPage()
-      LookUpPostcodePage.enterAddressLine1("Spanish Address 1")
-      LookUpPostcodePage.enterAddressLine2("Spanish Address 2")
-      LookUpPostcodePage.enterAddressLine3("Spanish Address 3")
-      LookUpPostcodePage.enterPostcode("49610")
+      LookUpPostcodePage.enterAddressLine1("SOME HIGH STREET ABROAD 1")
+      LookUpPostcodePage.enterAddressLine2("SOME HIGH STREET ABROAD 2")
+      LookUpPostcodePage.enterAddressLine3("SOME HIGH STREET ABROAD 3")
+      LookUpPostcodePage.enterPostcode("TE5710")
 
       Then("User is navigated to Review and confirm Page")
       ReviewAndConfirmPage.verifyPageHeading() shouldBe true
@@ -211,7 +211,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User verifies if the changed details for Country of PR and Address of PR are correct")
       CheckYourAnswersPage.verifyCountryOfSpain("Spain")
-      CheckYourAnswersPage.verifyAddressOfPr("Spanish Address 1\nSpanish Address 2\nSpanish Address 3\n49610")
+      CheckYourAnswersPage.verifyAddressOfPr(
+        "SOME HIGH STREET ABROAD 1\nSOME HIGH STREET ABROAD 2\nSOME HIGH STREET ABROAD 3\nTE5710"
+      )
 
       Then("User clicks on Save and Continue button on the Check and submit the report page ")
       CheckYourAnswersPage.SaveAndContinueButton()
@@ -268,9 +270,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the Deceased and continues to next Page")
       DeceasedNamePage.enterDeceasedDetails(
         "Mr",
-        "Joe",
-        "Test",
-        "Doe"
+        "DeceasedFirstName",
+        "DeceasedMiddleName",
+        "DeceasedSurnameName"
       )
 
       Then("User is navigated to the National Insurance Number Page")
@@ -278,22 +280,22 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
       NationalInsuranceNumberPage.verifyPageHeading() shouldBe true
 
-      And("User selects No for Does User has National Number")
+      And("User selects Yes for Does user have a National Insurance Number")
       NationalInsuranceNumberPage.clickRadioButton("Yes")
 
-      Then("User will navigates to Enter reason for no NI number Page")
+      Then("User navigates to Enter NI number Page")
       NationalInsuranceNumberPage.navigateTo(EnterNationalInsuranceNumberPage.pageUrl)
       EnterNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
       EnterNationalInsuranceNumberPage.verifyPageHeading() shouldBe true
 
-      Then("User enters reason for no National Insurance Number and continues to next Page")
-      EnterNationalInsuranceNumberPage.enterNINO("ST533331B")
+      Then("User enters National Insurance Number and continues to next Page")
+      EnterNationalInsuranceNumberPage.enterNINO()
 
       Then("User is navigated to the Enter the birth and death dates of the user Page")
       EnterNationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
-      And("User enters Date of Birth and Death Date then continues to the next page")
+      And("User enters Date of Birth and Date of Death then continues to the next page")
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
@@ -313,9 +315,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the PR and continues to next Page")
       PRNamePage.enterPRDetails(
         "Mr",
-        "John",
-        "S",
-        "Smith"
+        "PRFirstName",
+        "PRMiddleName",
+        "PRSurnameName"
       )
 
       Then("User is navigated to the Select Country Page")
@@ -324,18 +326,18 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User is navigated to Look Up Address Page")
       LookUpPostcodePage.verifyPage()
-      LookUpPostcodePage.enterPostcode("ZZ1 1ZZ")
+      LookUpPostcodePage.enterPostcode("ZZ01 1ZZ")
 
       And("User is navigated to Choose Address Page")
       ChooseAddressPage.verifyPage()
-      ChooseAddressPage.clickRadioButton("4")
+      ChooseAddressPage.clickRadioButton("1")
 
       Then("User is navigated to Review and confirm Page")
       ReviewAndConfirmPage.verifyPageHeading() shouldBe true
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then("User is navigated to Did John Smith submit the payment notice? page")
+      Then("User is navigated to Did PRFirstName PRSurnameName submit the payment notice? page")
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
 
       And("User Clicks on Yes Radio button and click on continue button")
@@ -426,16 +428,16 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the Deceased and continues to next Page")
       DeceasedNamePage.enterDeceasedDetails(
         "Mr",
-        "Joe",
-        "Test",
-        "Doe"
+        "DeceasedFirstName",
+        "DeceasedMiddleName",
+        "DeceasedSurnameName"
       )
 
       Then("User is navigated to the National Insurance Number Page")
       DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
       NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
 
-      And("User selects No for Does Joe Doe have a National Insurance number?")
+      And("User selects No for Does DeceasedFirstName DeceasedSurnameName have a National Insurance number?")
       NationalInsuranceNumberPage.clickRadioButton("No")
 
       Then("User will navigates to Enter reason for no NI number Page")
@@ -450,7 +452,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NoNationalInsuranceNumberReasonPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
-      And("User enters Date of Birth and Death Date then continues to the next page")
+      And("User enters Date of Birth and Date of Death then continues to the next page")
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
@@ -470,9 +472,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the PR and continues to next Page")
       PRNamePage.enterPRDetails(
         "Mr",
-        "John",
-        "S",
-        "Smith"
+        "PRFirstName",
+        "PRMiddleName",
+        "PRSurnameName"
       )
 
       Then("User is navigated to the Select Country Page")
@@ -481,18 +483,18 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User is navigated to Look Up Address Page")
       LookUpPostcodePage.verifyPage()
-      LookUpPostcodePage.enterPostcode("ZZ1 1ZZ")
+      LookUpPostcodePage.enterPostcode("ZZ01 1ZZ")
 
       And("User is navigated to Choose Address Page")
       ChooseAddressPage.verifyPage()
-      ChooseAddressPage.clickRadioButton("4")
+      ChooseAddressPage.clickRadioButton("1")
 
       Then("User is navigated to Review and confirm Page")
       ReviewAndConfirmPage.verifyPageHeading() shouldBe true
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then("User is navigated to Did John Smith submit the payment notice? Page")
+      Then("User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page")
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
 
       And("User Clicks on Yes Radio button and click on continue button")
@@ -517,10 +519,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User is able to enter Details of the Beneficiary and continues to next Page")
       EnterNameOfBeneficiaryPage.enterBeneficiaryDetails(
-        "Mr",
-        "John",
-        "D",
-        "Doe"
+        "Dr",
+        "BeneficiaryFirstName",
+        "BeneficiaryMiddleName",
+        "BeneficiarySurnameName"
       )
 
       Then("User will be on Does Beneficiary have a National Insurance Number Page")
@@ -541,10 +543,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
       )
       EnterNameOfNewBeneficiaryPage.verifyPageDetails() shouldBe true
       EnterNameOfNewBeneficiaryPage.enterBeneficiaryDetails(
-        "Mr",
-        "Peter",
-        "S",
-        "Doe"
+        "Dr",
+        "BeneficiaryFirstName",
+        "BeneficiaryMiddleName",
+        "BeneficiarySurnameName"
       )
 
       Then("User will be on Does Beneficiary have a National Insurance Number Page")
@@ -630,16 +632,16 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the Deceased")
       DeceasedNamePage.enterDeceasedDetails(
         "Mr",
-        "Joe",
-        "Test",
-        "Doe"
+        "DeceasedFirstName",
+        "DeceasedMiddleName",
+        "DeceasedSurnameName"
       )
 
       Then("User is navigated to the National Insurance Number Page")
       DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
       NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
 
-      And("User selects No for Does Joe Doe have a National Insurance number?")
+      And("User selects No for Does DeceasedFirstName DeceasedSurnameName have a National Insurance number?")
       NationalInsuranceNumberPage.clickRadioButton("No")
 
       Then("User will navigates to Enter reason for no NI number Page")
@@ -654,7 +656,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NoNationalInsuranceNumberReasonPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
-      And("User enters Date of Birth and Death Date then continues to the next page")
+      And("User enters Date of Birth and Date of Death then continues to the next page")
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
@@ -671,7 +673,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NameOfTheOrganisationPage.verifyPageHeading() shouldBe true
 
       And("User is able to enter Organisation name and continues to next Page")
-      NameOfTheOrganisationPage.enterOrganisationName("Kapil & Sons Ltd.")
+      NameOfTheOrganisationPage.enterOrganisationName("Testdata Company Ltd.")
 
       Then("User is navigated to the Enter Name of the PR Organisation name Page")
       OrganisationRepresentativeNamePage.verifyPageDetails() shouldBe true
@@ -679,29 +681,29 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User should able to enter PR details and continues to next Page")
       OrganisationRepresentativeNamePage.enterOrgRepresentativeDetails(
         "Mr",
-        "John",
-        "S",
-        "Smith"
+        "PRFirstName",
+        "PRMiddleName",
+        "PRSurnameName"
       )
 
-      Then("User is navigated to Select the country or territory of Kapil & Sons Ltd.")
+      Then("User is navigated to Select the country or territory of Testdata Company Ltd.")
       CountryPickerPage.verifyPage()
       CountryPickerPage.enterCountry("United Kingdom")
 
       Then("User is navigated to Look Up Address Page")
       LookUpPostcodePage.verifyPage()
-      LookUpPostcodePage.enterPostcode("ZZ1 1ZZ")
+      LookUpPostcodePage.enterPostcode("ZZ01 1ZZ")
 
       And("User is navigated to Choose Address Page")
       ChooseAddressPage.verifyPage()
-      ChooseAddressPage.clickRadioButton("4")
+      ChooseAddressPage.clickRadioButton("1")
 
       Then("User is navigated to Review and confirm Page")
       ReviewAndConfirmPage.verifyPageHeading() shouldBe true
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then("User is navigated to Did John Smith submit the payment notice? Page")
+      Then("User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page")
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
 
       And("User Clicks on Yes Radio button and click on continue button")
@@ -748,7 +750,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User verifies if the details for Country of PR and Address of PR are correct")
       CheckYourAnswersPage.verifyCountryOfUnitedKingdom("United Kingdom")
-      CheckYourAnswersPage.verifyAddressOfOrganisation("4 Other Place\nSome District\nAnytown\nZZ1 1ZZ")
+      CheckYourAnswersPage.verifyAddressOfOrganisation("1 Test Street\nTesttown\nZZ01 1ZZ")
 
       And("User should be able to click on Change Country of PR")
       CheckYourAnswersPage.clickChangeCountryOfOrganisationLink()
@@ -759,10 +761,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User is navigated to Enter Address Page")
       LookUpPostcodePage.verifyPage()
-      LookUpPostcodePage.enterAddressLine1("Spanish Address 1")
-      LookUpPostcodePage.enterAddressLine2("Spanish Address 2")
-      LookUpPostcodePage.enterAddressLine3("Spanish Address 3")
-      LookUpPostcodePage.enterPostcode("49610")
+      LookUpPostcodePage.enterAddressLine1("SOME HIGH STREET ABROAD 1")
+      LookUpPostcodePage.enterAddressLine2("SOME HIGH STREET ABROAD 2")
+      LookUpPostcodePage.enterAddressLine3("SOME HIGH STREET ABROAD 3")
+      LookUpPostcodePage.enterPostcode("TE5710")
 
       Then("User is navigated to Review and confirm Page")
       ReviewAndConfirmPage.verifyPageHeading() shouldBe true
@@ -771,7 +773,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User verifies if the changed details for Country of PR and Address of PR are correct")
       CheckYourAnswersPage.verifyCountryOfSpain("Spain")
-      CheckYourAnswersPage.verifyAddressOfOrganisation("Spanish Address 1\nSpanish Address 2\nSpanish Address 3\n49610")
+      CheckYourAnswersPage.verifyAddressOfOrganisation(
+        "SOME HIGH STREET ABROAD 1\nSOME HIGH STREET ABROAD 2\nSOME HIGH STREET ABROAD 3\nTE5710"
+      )
 
       And("User click on Save and Continue button on the Check and submit the report page ")
       CheckYourAnswersPage.SaveAndContinueButton()
@@ -830,16 +834,16 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the Deceased")
       DeceasedNamePage.enterDeceasedDetails(
         "Mr",
-        "Joe",
-        "Test",
-        "Doe"
+        "DeceasedFirstName",
+        "DeceasedMiddleName",
+        "DeceasedSurnameName"
       )
 
       Then("User is navigated to the National Insurance Number Page")
       DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
       NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
 
-      And("User selects No for Does Joe Doe have a National Insurance number?")
+      And("User selects No for Does DeceasedFirstName DeceasedSurnameName have a National Insurance number?")
       NationalInsuranceNumberPage.clickRadioButton("No")
 
       Then("User will navigates to Enter reason for no NI number Page")
@@ -854,7 +858,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NoNationalInsuranceNumberReasonPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
-      And("User enters Date of Birth and Death Date then continues to next page")
+      And("User enters Date of Birth and Date of Death then continues to next page")
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
@@ -879,9 +883,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User should able to enter PR details and continues to next Page")
       OrganisationRepresentativeNamePage.enterOrgRepresentativeDetails(
         "Mr",
-        "John",
-        "S",
-        "Smith"
+        "PRFirstName",
+        "PRMiddleName",
+        "PRSurnameName"
       )
 
       Then("User is navigated to Select the country or territory of Test & Orgs Ltd.")
@@ -890,18 +894,18 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User is navigated to Look Up Address Page")
       LookUpPostcodePage.verifyPage()
-      LookUpPostcodePage.enterPostcode("ZZ1 1ZZ")
+      LookUpPostcodePage.enterPostcode("ZZ01 1ZZ")
 
       And("User is navigated to Choose Address Page")
       ChooseAddressPage.verifyPage()
-      ChooseAddressPage.clickRadioButton("4")
+      ChooseAddressPage.clickRadioButton("1")
 
       Then("User is navigated to Review and confirm Page")
       ReviewAndConfirmPage.verifyPageHeading() shouldBe true
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then("User is navigated to Did John Smith submit the payment notice? Page")
+      Then("User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page")
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
 
       And("User Clicks on No Radio button and click on continue button")
@@ -994,16 +998,16 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User is able to enter Details of the Deceased")
       DeceasedNamePage.enterDeceasedDetails(
         "Mr",
-        "Joe",
-        "Test",
-        "Doe"
+        "DeceasedFirstName",
+        "DeceasedMiddleName",
+        "DeceasedSurnameName"
       )
 
       Then("User is navigated to the National Insurance Number Page")
       DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
       NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
 
-      And("User selects No for Does Joe Doe have a National Insurance number?")
+      And("User selects No for Does DeceasedFirstName DeceasedSurnameName have a National Insurance number?")
       NationalInsuranceNumberPage.clickRadioButton("No")
 
       Then("User will navigates to Enter reason for no NI number Page")
@@ -1018,7 +1022,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NoNationalInsuranceNumberReasonPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
-      And("User enters Date of Birth and Death Date then continues to next page")
+      And("User enters Date of Birth and Date of Death then continues to next page")
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
@@ -1043,9 +1047,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User should able to enter PR details and continues to next Page")
       OrganisationRepresentativeNamePage.enterOrgRepresentativeDetails(
         "Mr",
-        "John",
-        "S",
-        "Smith"
+        "PRFirstName",
+        "PRMiddleName",
+        "PRSurnameName"
       )
 
       Then("User is navigated to Select the country or territory of Test & Orgs Ltd.")
@@ -1054,18 +1058,18 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User is navigated to Look Up Address Page")
       LookUpPostcodePage.verifyPage()
-      LookUpPostcodePage.enterPostcode("ZZ1 1ZZ")
+      LookUpPostcodePage.enterPostcode("ZZ01 1ZZ")
 
       And("User is navigated to Choose Address Page")
       ChooseAddressPage.verifyPage()
-      ChooseAddressPage.clickRadioButton("4")
+      ChooseAddressPage.clickRadioButton("1")
 
       Then("User is navigated to Review and confirm Page")
       ReviewAndConfirmPage.verifyPageHeading() shouldBe true
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then("User is navigated to Did John Smith submit the payment notice? Page")
+      Then("User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page")
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
 
       And("User Clicks on No Radio button and click on continue button")
@@ -1090,10 +1094,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User is able to enter Details of the Beneficiary and continues to next Page")
       EnterNameOfBeneficiaryPage.enterBeneficiaryDetails(
-        "Mr",
-        "John",
-        "D",
-        "Doe"
+        "Dr",
+        "BeneficiaryFirstName",
+        "BeneficiaryMiddleName",
+        "BeneficiarySurnameName"
       )
 
       Then("User will be on Does Beneficiary have a National Insurance Number Page")
@@ -1114,10 +1118,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
       )
       EnterNameOfNewBeneficiaryPage.verifyPageDetails() shouldBe true
       EnterNameOfNewBeneficiaryPage.enterBeneficiaryDetails(
-        "Mr",
-        "Peter",
-        "S",
-        "Doe"
+        "Dr",
+        "BeneficiaryFirstName",
+        "BeneficiaryMiddleName",
+        "BeneficiarySurnameName"
       )
 
       Then("User will be on Does Beneficiary have a National Insurance Number Page")

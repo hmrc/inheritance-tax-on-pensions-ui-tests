@@ -17,13 +17,13 @@
 package uk.gov.hmrc.ui.ihtp.pages
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.ui.ihtp.pages.EnterBirthDeathPage.{checkURL, clickSaveAndContinueButton}
+import uk.gov.hmrc.ui.ihtp.pages.EnterBirthDeathPage.clickSaveAndContinueButton
 
 object NoNationalInsuranceNumberReasonPage extends BasePage {
   override val pageUrl: String   = s"$baseUrl/reason-no-ni-number"
   override val pageTitle: String =
     "Why does the deceased not have a National Insurance number? - Report Inheritance Tax on a pension - GOV.UK"
-  val pageHeading: String        = "Why does Joe Doe not have a National Insurance number?"
+  val pageHeading: String        = "Why does DeceasedFirstName DeceasedSurnameName not have a National Insurance number?"
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
