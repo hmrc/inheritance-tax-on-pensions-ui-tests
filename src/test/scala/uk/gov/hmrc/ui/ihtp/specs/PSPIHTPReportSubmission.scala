@@ -323,7 +323,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then("User is navigated to Did John Smith submit the payment notice? Page")
+      Then("User is navigated to Did individual submit the payment notice? Page")
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
 
       And("User Clicks on Yes Radio button and click on continue button")

@@ -17,7 +17,7 @@
 package uk.gov.hmrc.ui.ihtp.pages
 
 import org.openqa.selenium.By
-import uk.gov.hmrc.ui.ihtp.pages.EnterBirthDeathPage.{checkURL, clickSaveAndContinueButton}
+import uk.gov.hmrc.ui.ihtp.pages.EnterBirthDeathPage.clickSaveAndContinueButton
 
 object NoNationalInsuranceNumberReasonPage extends BasePage {
   override val pageUrl: String   = s"$baseUrl/reason-no-ni-number"

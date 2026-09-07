@@ -22,8 +22,8 @@ import uk.gov.hmrc.ui.ihtp.pages.EnterBirthDeathPage.clickSaveAndContinueButton
 object RemoveBeneficiaryPage extends BasePage {
   override val pageUrl: String   = s"$baseUrl/remove-beneficiary/0"
   override val pageTitle: String =
-    "Are you sure you want to remove john doe? - Report Inheritance Tax on a pension - GOV.UK"
-  val pageHeading: String        = "Are you sure you want to remove john doe?"
+    "Are you sure you want to remove BeneficiaryFirstName BeneficiaryLastName? - Report Inheritance Tax on a pension - GOV.UK"
+  val pageHeading: String        = "Are you sure you want to remove BeneficiaryFirstName BeneficiaryLastName?"
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
