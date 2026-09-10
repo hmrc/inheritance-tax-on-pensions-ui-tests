@@ -27,7 +27,7 @@ object NewSelectTypeOfBeneficiaryToAdd extends BasePage {
   def clickRadioButton(text: String): Unit =
     text match {
       case "An individual"            => click(By.id("value_0"))
-      case "An organisation or trust" => click(By.id("value_1"))
+      case "A trust" => click(By.id("value_1"))
     }
     clickSaveAndContinueButton()
 
