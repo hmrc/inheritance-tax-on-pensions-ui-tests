@@ -730,14 +730,14 @@ class PSAIHTPReportSubmission extends BaseSpec {
       SelectTypeOfBeneficiaryToAdd.clickRadioButton("An organisation or trust")
 
       Then("User is navigated to the Enter the name of the trust Page")
-      BeneficiaryOrganisationDetailsPage.navigateTo(BeneficiaryOrganisationDetailsPage.pageUrl)
+      SelectTypeOfBeneficiaryToAdd.navigateTo(BeneficiaryOrganisationDetailsPage.pageUrl)
       BeneficiaryOrganisationDetailsPage.verifyPageDetails() shouldBe true
 
       And("User is able to enter Trust name and continues to next Page")
       BeneficiaryOrganisationDetailsPage.enterTrustName("Test Organisation & Co ltd.")
 
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
-      BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
+      BeneficiaryOrganisationDetailsPage.navigateTo(AddBeneficiaryPage.pageUrl)
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
       AddBeneficiaryPage.clickRadioButton("No")
 
