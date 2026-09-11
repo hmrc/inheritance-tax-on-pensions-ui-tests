@@ -346,8 +346,8 @@ class PSPIHTPReportSubmission extends BaseSpec {
       SelectTypeOfBeneficiaryToAdd.navigateTo(SelectTypeOfBeneficiaryToAdd.pageUrl)
       SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
 
-      And("User Clicks on An organisation or trust option and continues to the next page")
-      SelectTypeOfBeneficiaryToAdd.clickRadioButton("An organisation or trust")
+      And("User Clicks on A trust option and continues to the next page")
+      SelectTypeOfBeneficiaryToAdd.clickRadioButton("A trust")
 
       Then("User will be on CYA page")
       CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)

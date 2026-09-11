@@ -599,7 +599,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
     }
 
     Scenario(
-      "4. PSA User Can Submit IHTP Application, Organisation, and Yes for Payment Notice submission, Yes for beneficiaries known, An organisation or trust for beneficiaries to add"
+      "4. PSA User Can Submit IHTP Application, Organisation, and Yes for Payment Notice submission, Yes for beneficiaries known, A trust for beneficiaries to add"
     ) {
 
       Given("the user is logged in as an organisation user")
@@ -726,8 +726,20 @@ class PSAIHTPReportSubmission extends BaseSpec {
       SelectTypeOfBeneficiaryToAdd.navigateTo(SelectTypeOfBeneficiaryToAdd.pageUrl)
       SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
 
-      And("User Clicks on An organisation or trust option and continues to the next page")
-      SelectTypeOfBeneficiaryToAdd.clickRadioButton("An organisation or trust")
+      And("User Clicks on A trust option and continues to the next page")
+      SelectTypeOfBeneficiaryToAdd.clickRadioButton("A trust")
+
+      Then("User is navigated to the Enter the name of the trust Page")
+      SelectTypeOfBeneficiaryToAdd.navigateTo(BeneficiaryOrganisationDetailsPage.pageUrl)
+      BeneficiaryOrganisationDetailsPage.verifyPageDetails() shouldBe true
+
+      And("User is able to enter Trust name and continues to next Page")
+      BeneficiaryOrganisationDetailsPage.enterTrustName("Test Organisation & Co ltd.")
+
+      And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
+      BeneficiaryOrganisationDetailsPage.navigateTo(AddBeneficiaryPage.pageUrl)
+      AddBeneficiaryPage.verifyPageDetails() shouldBe true
+      AddBeneficiaryPage.clickRadioButton("No")
 
       Then("User will be on CYA page")
       CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
@@ -801,7 +813,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
     }
 
     Scenario(
-      "5. PSA User Can Submit IHTP Application, Organisation, and No for Payment Notice submission, An organisation or trust for beneficiaries to add"
+      "5. PSA User Can Submit IHTP Application, Organisation, and No for Payment Notice submission, A trust for beneficiaries to add"
     ) {
 
       Given("the user is logged in as an organisation user")
@@ -921,8 +933,20 @@ class PSAIHTPReportSubmission extends BaseSpec {
       SelectTypeOfBeneficiaryToAdd.navigateTo(SelectTypeOfBeneficiaryToAdd.pageUrl)
       SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
 
-      And("User Clicks on An organisation or trust option and clicks on Save and continue button")
-      SelectTypeOfBeneficiaryToAdd.clickRadioButton("An organisation or trust")
+      And("User Clicks on A trust option and clicks on Save and continue button")
+      SelectTypeOfBeneficiaryToAdd.clickRadioButton("A trust")
+
+      Then("User is navigated to the Enter the name of the trust Page")
+      SelectTypeOfBeneficiaryToAdd.navigateTo(BeneficiaryOrganisationDetailsPage.pageUrl)
+      BeneficiaryOrganisationDetailsPage.verifyPageDetails() shouldBe true
+
+      And("User is able to enter Trust name and continues to next Page")
+      BeneficiaryOrganisationDetailsPage.enterTrustName("Test Organisation & Co ltd.")
+
+      And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
+      BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
+      AddBeneficiaryPage.verifyPageDetails() shouldBe true
+      AddBeneficiaryPage.clickRadioButton("No")
 
       Then("User will be on CYA page")
       CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
@@ -1085,7 +1109,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       SelectTypeOfBeneficiaryToAdd.navigateTo(SelectTypeOfBeneficiaryToAdd.pageUrl)
       SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
 
-      And("User Clicks on An organisation or trust option and clicks on Save and continue button")
+      And("User Clicks on A trust option and clicks on Save and continue button")
       SelectTypeOfBeneficiaryToAdd.clickRadioButton("An individual")
 
       Then("User is navigated to the Enter the full name of the beneficiary Page")

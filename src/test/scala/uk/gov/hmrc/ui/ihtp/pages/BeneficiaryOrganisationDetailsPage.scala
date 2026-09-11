@@ -16,18 +16,16 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
-import org.openqa.selenium.By
+import uk.gov.hmrc.ui.ihtp.pages.NameOfTheOrganisationPage.baseUrl
 
-object SelectTypeOfBeneficiaryToAdd extends BasePage {
-  override val pageUrl: String   = s"$baseUrl/select-beneficiary-type/0"
-  override val pageTitle: String =
-    "Select the type of beneficiary to add - Report Inheritance Tax on a pension - GOV.UK"
+object BeneficiaryOrganisationDetailsPage extends BasePage {
+  override val pageUrl: String   = s"$baseUrl/beneficiary-organisation-details/0"
+  override val pageTitle: String = "Enter the name of the trust - Report inheritance tax on a pension - GOV.UK"
+  val pageHeading: String        = "Enter the name of the trust"
 
-  def clickRadioButton(text: String): Unit =
-    text match {
-      case "An individual" => click(By.id("value_0"))
-      case "A trust"       => click(By.id("value_1"))
-    }
+  def enterTrustName(textToEnter: String): Unit = {
+    enterText("value", textToEnter)
     clickSaveAndContinueButton()
+  }
 
 }
