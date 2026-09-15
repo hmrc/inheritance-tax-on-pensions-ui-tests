@@ -129,6 +129,9 @@ object AuthLoginPage extends BasePage {
   def loginAsPsaOrgUserForSubmission(): Unit =
     submitAuthWithPsaEnrolment("Organisation", viewSubmissions, psaEnrolmentKey)
 
+  def loginAsPspOrgUserForSubmission(): Unit =
+    submitAuthWithPspEnrolment("Organisation", viewSubmissions, pspEnrolmentKey)
+
   def loginAsOrgUserWithPsaEnrolment(): Unit =
     submitAuthWithPsaEnrolment("Organisation", InheritanceTaxService, psaEnrolmentKey)
 
