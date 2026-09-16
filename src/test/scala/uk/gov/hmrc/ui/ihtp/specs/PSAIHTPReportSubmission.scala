@@ -514,7 +514,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then("User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page and Clicks on Yes Radio button")
+      Then(
+        "User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page and Clicks on Yes Radio button"
+      )
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
       SubmitPaymentNoticePage.clickRadioButton("Yes")
 
