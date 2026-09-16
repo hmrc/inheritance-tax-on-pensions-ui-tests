@@ -43,4 +43,7 @@ object CheckYourAnswersPage extends BasePage {
   def clickChangeCountryOfOrganisationLink(): Unit =
     click(By.cssSelector("a[href*='change-pr-organisation-address']"))
 
+  def clickChangeSubmitPaymentNotice(): Unit =
+    click(By.cssSelector("a[href*='change-pr-submit-payment-notice']"))
+
 }

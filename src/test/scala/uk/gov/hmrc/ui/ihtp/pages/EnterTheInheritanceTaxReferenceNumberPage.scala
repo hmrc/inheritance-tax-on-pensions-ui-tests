@@ -23,9 +23,6 @@ object EnterTheInheritanceTaxReferenceNumberPage extends BasePage {
     "Enter the Inheritance Tax reference number - Report inheritance tax on a pension - GOV.UK"
   val pageHeading: String        = "Enter the Inheritance Tax reference number"
 
-  def verifyNewUrl(): Boolean =
-    getCurrentUrl == newUrl
-
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
 
@@ -37,4 +34,7 @@ object EnterTheInheritanceTaxReferenceNumberPage extends BasePage {
     enterText("value", textToEnter)
     clickSaveAndContinueButton()
   }
+
+  def verifyNewUrl(): Boolean =
+    getCurrentUrl == newUrl
 }
