@@ -129,6 +129,12 @@ trait BasePage extends Matchers with PageObject {
   def clickConfirmAddressButton(): Unit =
     click(By.id("continue"))
 
+  def clickViewPaidReportsLink(): Unit =
+    click(By.id("view-reconciled-reports"))
+
+  def clickReturnToActiveReportsLink(): Unit =
+    click(By.id("return-to-active-reports"))
+
   def enterText(id: String, textToEnter: String): Unit =
     sendKeys(By.id(id), textToEnter)
 
