@@ -122,21 +122,19 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page")
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
-
-      And("User Clicks on Yes Radio button and click on continue button")
       SubmitPaymentNoticePage.clickRadioButton("Yes")
 
-      Then("User is navigated to When did the scheme receive the payment notice? Page")
+      Then(
+        "User is navigated to When did the scheme receive the payment notice? Page and enter date of receiving Payment notice and continues to the next page"
+      )
       SchemeReceivePaymentNoticePage.verifyPageDetails() shouldBe true
-
-      And("User should be able to enter date of receiving payment notice and continues to the next page")
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
 
-      Then("User is navigated to the Are the beneficiaries known Page")
+      Then(
+        "User is navigated to the Are the beneficiaries known Page and clicks on Yes Radio button and continues to next page"
+      )
       AreBeneficiariesKnownPage.navigateTo(AreBeneficiariesKnownPage.pageUrl)
       AreBeneficiariesKnownPage.verifyPageDetails() shouldBe true
-
-      And("User Clicks on Yes Radio button and continues to the next Page")
       AreBeneficiariesKnownPage.clickRadioButton("Yes")
 
       Then("User is navigated to the Select the type of beneficiary to add Page")
@@ -161,6 +159,30 @@ class PSAIHTPReportSubmission extends BaseSpec {
       Then("User will be on Does Beneficiary have a National Insurance Number Page")
       BeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
       BeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
+
+      And("User will be on Add Beneficiary page and selects Yes for Do you need to add another beneficiary")
+      BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
+      AddBeneficiaryPage.verifyPageDetails() shouldBe true
+      AddBeneficiaryPage.clickRadioButton("Yes")
+
+      Then("User will be on New page of Select Beneficiary type and selects An individual for another Beneficiary")
+      NewSelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
+      NewSelectTypeOfBeneficiaryToAdd.clickRadioButton("An individual")
+
+      Then(
+        "User is navigated to the Enter the full name of the beneficiary Page and able to enter Details of the Beneficiary"
+      )
+      EnterNameOfNewBeneficiaryPage.verifyPageDetails() shouldBe true
+      EnterNameOfNewBeneficiaryPage.enterBeneficiaryDetails(
+        "Dr",
+        "BeneficiaryFirstName",
+        "BeneficiaryMiddleName",
+        "BeneficiarySurnameName"
+      )
+
+      Then("User will be on Does Beneficiary have a National Insurance Number Page")
+      NewBeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
+      NewBeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
 
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
       BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
@@ -337,16 +359,16 @@ class PSAIHTPReportSubmission extends BaseSpec {
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then("User is navigated to Did PRFirstName PRSurnameName submit the payment notice? page")
+      Then(
+        "User is navigated to Did PRFirstName PRSurnameName submit the payment notice? page and clicks on Yes Radio button"
+      )
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
-
-      And("User Clicks on Yes Radio button and click on continue button")
       SubmitPaymentNoticePage.clickRadioButton("Yes")
 
-      Then("User is navigated to When did the scheme receive the payment notice? Page")
+      Then(
+        "User is navigated to When did the scheme receive the payment notice? Page and enter date of receive Payment Notice"
+      )
       SchemeReceivePaymentNoticePage.verifyPageDetails() shouldBe true
-
-      And("User should be able to enter date of receiving payment notice and continue to the next page")
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
 
       Then("User is navigated to the Are the beneficiaries known page")
@@ -397,7 +419,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
     }
 
     Scenario(
-      "3. PSA User Can Submit IHTP Application, Individual and Yes NI, No for Payment notice submission, An individual for beneficiaries to add"
+      "3. PSA User Can Submit IHTP Application, Individual and Yes NI, Yes for Payment notice submission, An individual for beneficiaries to add"
     ) {
 
       Given("the user is logged in as an organisation user")
@@ -457,14 +479,12 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
       Then(
-        "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page"
+        "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page selects Individual for PR Type "
       )
       PRTypePage.verifyPageDetails() shouldBe true
-
-      And("User selects Individual for PR Type and then continues to next Page")
       PRTypePage.clickRadioButton("Individual")
 
-      Then("User is navigated to the PR Name Page")
+      Then("User is navigated to the Individual PR Name Page")
       PRTypePage.navigateTo(PRNamePage.pageUrl)
       PRNamePage.verifyPageDetails() shouldBe true
       PRNamePage.verifyPageHeading() shouldBe true
@@ -494,30 +514,28 @@ class PSAIHTPReportSubmission extends BaseSpec {
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then("User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page")
+      Then("User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page and Clicks on Yes Radio button")
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
+      SubmitPaymentNoticePage.clickRadioButton("Yes")
 
-      And("User Clicks on Yes Radio button and click on continue button")
-      SubmitPaymentNoticePage.clickRadioButton("No")
-
-      Then("User is navigated to When did the scheme receive the payment notice? Page")
+      Then(
+        "User is navigated to When did the scheme receive the payment notice? Page and should be able to enter date of receiving payment notice"
+      )
       SchemeReceivePaymentNoticePage.verifyPageDetails() shouldBe true
-
-      And("User should be able to enter date of receiving payment notice and continues to the next page")
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
 
-      Then("User is navigated to the Select the type of beneficiary to add Page")
-      SelectTypeOfBeneficiaryToAdd.navigateTo(SelectTypeOfBeneficiaryToAdd.pageUrl)
-      SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
+      Then(
+        "User is navigated to the Are the beneficiaries known Page and clicks on Yes Radio button and continues to next page"
+      )
+      AreBeneficiariesKnownPage.verifyPageDetails() shouldBe true
+      AreBeneficiariesKnownPage.clickRadioButton("Yes")
 
-      And("User Clicks on An individual option and continues to the next Page")
+      Then("User is navigated to the Select the type of beneficiary to add Page and Clicks on An individual option ")
+      SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
       SelectTypeOfBeneficiaryToAdd.clickRadioButton("An individual")
 
       Then("User is navigated to the Enter the full name of the beneficiary Page")
-      EnterNameOfBeneficiaryPage.navigateTo(EnterNameOfBeneficiaryPage.pageUrl)
       EnterNameOfBeneficiaryPage.verifyPageDetails() shouldBe true
-
-      And("User is able to enter Details of the Beneficiary and continues to next Page")
       EnterNameOfBeneficiaryPage.enterBeneficiaryDetails(
         "Dr",
         "BeneficiaryFirstName",
@@ -530,7 +548,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       BeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
 
       And("User will be on Add Beneficiary page and selects Yes for Do you need to add another beneficiary")
-      BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
       AddBeneficiaryPage.clickRadioButton("Yes")
 
@@ -554,28 +571,12 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NewBeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
 
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
-      BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
       AddBeneficiaryPage.clickRadioButton("No")
 
-      And("User will be on CYA page")
-      AddBeneficiaryPage.navigateTo(CheckYourAnswersPage.pageUrl)
+      And("User will be on CYA page and clicks on Save and Continue button")
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
-
-      Then("User should be able to click on Change Link Button")
-      CheckYourAnswersPage.ClickChangeLink()
-
-      And("When User Clicks on Change Link Button it will navigates to enter the Inheritance Tax reference number Page")
-      CheckYourAnswersPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.newUrl)
-      EnterTheInheritanceTaxReferenceNumberPage.verifyNewUrl() shouldBe true
-
-      When("user clicks on Save and continue it navigates to the Check and submit the report page")
-      EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
-      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
-      CheckYourAnswersPage.verifyPageDetails()
-
-      Then("User clicks on Save and Continue button on the Check and submit the report page ")
       CheckYourAnswersPage.SaveAndContinueButton()
 
       And("User should be able to Navigates to Psa-Declaration Page")
@@ -703,41 +704,31 @@ class PSAIHTPReportSubmission extends BaseSpec {
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then("User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page")
+      Then(
+        "User is navigated to Did PRFirstName PRSurnameName submit the payment notice? page and Clicks on Yes Radio button"
+      )
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
-
-      And("User Clicks on Yes Radio button and click on continue button")
       SubmitPaymentNoticePage.clickRadioButton("Yes")
 
-      Then("User is navigated to When did the scheme receive the payment notice? Page")
+      Then(
+        "User is navigated to When did the scheme receive the payment notice? Page and should be able to enter date of receiving payment notice"
+      )
       SchemeReceivePaymentNoticePage.verifyPageDetails() shouldBe true
-
-      And("User should be able to enter date of receiving payment notice")
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
 
-      Then("User is navigated to the Are the beneficiaries known Page")
-      AreBeneficiariesKnownPage.navigateTo(AreBeneficiariesKnownPage.pageUrl)
+      Then("User is navigated to the Are the beneficiaries known Page and Clicks on Yes Radio button")
       AreBeneficiariesKnownPage.verifyPageDetails() shouldBe true
-
-      And("User Clicks on Yes Radio button and clicks on Save and continue button")
       AreBeneficiariesKnownPage.clickRadioButton("Yes")
 
-      Then("User is navigated to Select the type of beneficiary to add Page")
-      SelectTypeOfBeneficiaryToAdd.navigateTo(SelectTypeOfBeneficiaryToAdd.pageUrl)
-      SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
+      Then("User is navigated to Select the type of beneficiary to add Page and clicks on A trust option")
 
-      And("User Clicks on A trust option and continues to the next page")
       SelectTypeOfBeneficiaryToAdd.clickRadioButton("A trust")
 
-      Then("User is navigated to the Enter the name of the trust Page")
-      SelectTypeOfBeneficiaryToAdd.navigateTo(BeneficiaryOrganisationDetailsPage.pageUrl)
+      Then("User is navigated to Organisation detail page and Enter the name of the trust on the Page")
       BeneficiaryOrganisationDetailsPage.verifyPageDetails() shouldBe true
-
-      And("User is able to enter Trust name and continues to next Page")
       BeneficiaryOrganisationDetailsPage.enterTrustName("Test Organisation & Co ltd.")
 
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
-      BeneficiaryOrganisationDetailsPage.navigateTo(AddBeneficiaryPage.pageUrl)
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
       AddBeneficiaryPage.clickRadioButton("No")
 
@@ -917,36 +908,22 @@ class PSAIHTPReportSubmission extends BaseSpec {
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then("User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page")
+      Then(
+        "User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page and Clicks on No Radio button and User should be able to enter date of receiving payment notice"
+      )
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
-
-      And("User Clicks on No Radio button and click on continue button")
-      SubmitPaymentNoticePage.clickRadioButton("No")
-
-      Then("User is navigated to When did the scheme receive the payment notice? Page")
-      SchemeReceivePaymentNoticePage.verifyPageDetails() shouldBe true
-
-      And("User should be able to enter date of receiving payment notice and continues to the next page")
+      SubmitPaymentNoticePage.clickRadioButton("Someone else")
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
 
-      Then("User is navigated to Select the type of beneficiary to add Page")
-      SelectTypeOfBeneficiaryToAdd.navigateTo(SelectTypeOfBeneficiaryToAdd.pageUrl)
+      Then(
+        "User is navigated to Select the type of beneficiary to add Page and Clicks on A trust option and clicks on Save and continue button"
+      )
       SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
-
-      And("User Clicks on A trust option and clicks on Save and continue button")
       SelectTypeOfBeneficiaryToAdd.clickRadioButton("A trust")
 
       Then("User is navigated to the Enter the name of the trust Page")
-      SelectTypeOfBeneficiaryToAdd.navigateTo(BeneficiaryOrganisationDetailsPage.pageUrl)
       BeneficiaryOrganisationDetailsPage.verifyPageDetails() shouldBe true
-
-      And("User is able to enter Trust name and continues to next Page")
       BeneficiaryOrganisationDetailsPage.enterTrustName("Test Organisation & Co ltd.")
-
-      And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
-      BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
-      AddBeneficiaryPage.verifyPageDetails() shouldBe true
-      AddBeneficiaryPage.clickRadioButton("No")
 
       Then("User will be on CYA page")
       CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
@@ -954,15 +931,14 @@ class PSAIHTPReportSubmission extends BaseSpec {
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
       Then("User should be able to click on Change Link Button")
-      CheckYourAnswersPage.ClickChangeLink()
+      CheckYourAnswersPage.clickChangeSubmitPaymentNotice()
 
       And("When User Clicks on Change Link Button it will navigates to enter the Inheritance Tax reference number Page")
-      CheckYourAnswersPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.newUrl)
-      EnterTheInheritanceTaxReferenceNumberPage.verifyNewUrl() shouldBe true
+      SubmitPaymentNoticePage.verifyNewUrl() shouldBe true
+      SubmitPaymentNoticePage.clickRadioButton("Yes")
 
       Then("user click On save and Continue it navigates to the Check and submit the report page")
-      EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
-      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
+      SubmitPaymentNoticePage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails()
 
       And("User click on Save and Continue button on the Check and submit the report page ")
@@ -989,7 +965,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
     }
 
     Scenario(
-      "6. PSA User Can Submit IHTP Application, Organisation, and No for Payment Notice submission, An individual for beneficiaries to add"
+      "6. PSA User Can Submit IHTP Application, Organisation, and Yes for Payment Notice submission, An individual for beneficiaries to add"
     ) {
 
       Given("the user is logged in as an organisation user")
@@ -1093,30 +1069,35 @@ class PSAIHTPReportSubmission extends BaseSpec {
       ReviewAndConfirmPage.verifyPage()
       ReviewAndConfirmPage.confirmAddressButton()
 
-      Then("User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page")
+      Then(
+        "User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page and Clicks on No Radio button"
+      )
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
+      SubmitPaymentNoticePage.clickRadioButton("Yes")
 
-      And("User Clicks on No Radio button and click on continue button")
-      SubmitPaymentNoticePage.clickRadioButton("No")
-
-      Then("User is navigated to When did the scheme receive the payment notice? Page")
+      Then(
+        "User is navigated to When did the scheme receive the payment notice? Page and User should be able to enter date of receiving payment notice"
+      )
       SchemeReceivePaymentNoticePage.verifyPageDetails() shouldBe true
-
-      And("User should be able to enter date of receiving payment notice and continues to the next page")
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
 
-      Then("User is navigated to Select the type of beneficiary to add Page")
+      Then(
+        "User is navigated to the Are the beneficiaries known Page and clicks on Yes Radio button and continues to next page"
+      )
+      AreBeneficiariesKnownPage.verifyPageDetails() shouldBe true
+      AreBeneficiariesKnownPage.clickRadioButton("Yes")
+
+      And(
+        "User is navigated to Select the type of beneficiary to add Page and Clicks on Individual option and clicks on Save and continue button"
+      )
       SelectTypeOfBeneficiaryToAdd.navigateTo(SelectTypeOfBeneficiaryToAdd.pageUrl)
       SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
-
-      And("User Clicks on A trust option and clicks on Save and continue button")
       SelectTypeOfBeneficiaryToAdd.clickRadioButton("An individual")
 
-      Then("User is navigated to the Enter the full name of the beneficiary Page")
-      EnterNameOfBeneficiaryPage.navigateTo(EnterNameOfBeneficiaryPage.pageUrl)
+      Then(
+        "User is navigated to the Enter the full name of the beneficiary Page and able to enter Details of the Beneficiary"
+      )
       EnterNameOfBeneficiaryPage.verifyPageDetails() shouldBe true
-
-      And("User is able to enter Details of the Beneficiary and continues to next Page")
       EnterNameOfBeneficiaryPage.enterBeneficiaryDetails(
         "Dr",
         "BeneficiaryFirstName",
