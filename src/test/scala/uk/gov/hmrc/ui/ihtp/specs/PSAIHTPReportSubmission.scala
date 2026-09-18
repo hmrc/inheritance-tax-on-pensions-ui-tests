@@ -378,6 +378,11 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User Clicks on No Radio button and clicks on Save and continue button")
       AreBeneficiariesKnownPage.clickRadioButton("No")
 
+      When("User will be on Enter Amount of IHT Payable Page and enters Amount of IHT Payable")
+      EnterAmountofIHTPayable.verifyPageDetails() shouldBe true
+      EnterAmountofIHTPayable.verifyPageHeading() shouldBe true
+      EnterAmountofIHTPayable.enterAmountOfIHTPayable("5432.99")
+
       Then("User will be on CYA page")
       CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
