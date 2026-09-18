@@ -20,7 +20,8 @@ import org.openqa.selenium.By
 
 object EnterAmountofIHTPayable extends BasePage {
   override val pageUrl: String   = s"$baseUrl/enter-iht-payable"
-  override val pageTitle: String ="Enter the amount of Inheritance Tax payable - Report Inheritance Tax on a pension - GOV.UK"
+  override val pageTitle: String =
+    "Enter the amount of Inheritance Tax payable - Report Inheritance Tax on a pension - GOV.UK"
   val pageHeading: String        = "Enter the amount of Inheritance Tax payable"
 
   def verifyPageHeading(): Boolean =
