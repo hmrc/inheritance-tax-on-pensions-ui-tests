@@ -834,14 +834,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber(" A123456/25A ")
 
       // Deceased name page
-      And("User should be able to Navigate to Deceased Name Page")
-      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
-
-      Then("User is navigated to the Deceased Name Page")
+      And("User should be able to Navigate to Deceased Name Page AND User is able to enter Details of the Deceased")
       DeceasedNamePage.verifyPageDetails() shouldBe true
       DeceasedNamePage.verifyPageHeading() shouldBe true
-
-      And("User is able to enter Details of the Deceased")
       DeceasedNamePage.enterDeceasedDetails(
         "Mr",
         "DeceasedFirstName",
@@ -849,48 +844,39 @@ class PSAIHTPReportSubmission extends BaseSpec {
         "DeceasedSurnameName"
       )
 
-      Then("User is navigated to the National Insurance Number Page")
-      DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
+      Then(
+        "User is navigated to the National Insurance Number Page  selects No for Does DeceasedFirstName DeceasedSurnameName have a National Insurance number?"
+      )
       NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
-
-      And("User selects No for Does DeceasedFirstName DeceasedSurnameName have a National Insurance number?")
       NationalInsuranceNumberPage.clickRadioButton("No")
 
-      Then("User will navigates to Enter reason for no NI number Page")
-      NationalInsuranceNumberPage.navigateTo(NoNationalInsuranceNumberReasonPage.pageUrl)
+      When("User will navigates to Enter reason for no NI number Page and continues to next Page")
       NoNationalInsuranceNumberReasonPage.verifyPageDetails() shouldBe true
       NoNationalInsuranceNumberReasonPage.verifyPageHeading() shouldBe true
-
-      Then("User Enters Reason for no National Insurance Number and continues to next Page")
       NoNationalInsuranceNumberReasonPage.enterReason("the deceased was not a UK citizen")
 
-      Then("User is navigated to the Enter the birth and death dates of the user Page")
-      NoNationalInsuranceNumberReasonPage.navigateTo(EnterBirthDeathPage.pageUrl)
+      And(
+        "User is navigated to the Enter the birth and death dates of the user Page and enters Date of Birth and Date of Death then continues to next page"
+      )
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
-
-      And("User enters Date of Birth and Date of Death then continues to next page")
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
       Then(
-        "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page"
+        "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page and selects Organisation for PR Type and continues to next Page"
       )
       PRTypePage.verifyPageDetails() shouldBe true
-
-      And("User selects Organisation for PR Type and continues to next Page")
       PRTypePage.clickRadioButton("Organisation")
 
-      Then("User is navigated to the Enter the name of the organisation Page")
+      When(
+        "User is navigated to the Enter the name of the organisation Page and able to enter and continues to next Page"
+      )
       NameOfTheOrganisationPage.verifyPageDetails() shouldBe true
       NameOfTheOrganisationPage.verifyPageHeading() shouldBe true
-
-      And("User is able to enter Organisation name and continues to next Page")
       NameOfTheOrganisationPage.enterOrganisationName("Test & Orgs Ltd.")
 
-      Then("User is navigated to the Enter Name of the PR Organisation name Page")
+      Then("User is navigated to the Enter Name of the PR Organisation name Page and continues to next Page")
       OrganisationRepresentativeNamePage.verifyPageDetails() shouldBe true
-
-      And("User should able to enter PR details and continues to next Page")
       OrganisationRepresentativeNamePage.enterOrgRepresentativeDetails(
         "Mr",
         "PRFirstName",
@@ -898,7 +884,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
         "PRSurnameName"
       )
 
-      Then("User is navigated to Select the country or territory of Test & Orgs Ltd.")
+      And("User is navigated to Select the country or territory of Test & Orgs Ltd.")
       CountryPickerPage.verifyPage()
       CountryPickerPage.enterCountry("United Kingdom")
 
