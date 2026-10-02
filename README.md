@@ -1,8 +1,4 @@
-**This is the template README. Please update this with project specific content.**
-
-# inheritance-tax-on-pensions-ui-tests
-
-Inheritance tax on pensions UI journey tests.
+# Inheritance Tax on Pensions UI Journey Tests
 
 ## Pre-requisites
 
@@ -11,7 +7,7 @@ Inheritance tax on pensions UI journey tests.
 If you haven't got mongo running already, start Mongo Docker container as follows:
 
 ```bash
-docker run --rm -d -p 27017:27017 --name mongo percona/percona-server-mongodb:6.0
+colima start
 ```
 
 Start IHTP services as follows:
@@ -30,6 +26,9 @@ Run tests as follows:
 ```bash
 sbt clean -Dbrowser="<browser>" -Denvironment="<environment>" test testReport
 ```
+### Other ways to run the Tests
+
+Go to [run-tests.sh](run-tests.sh) and click on the play button to run the tests.
 
 ## Scalafmt
 
