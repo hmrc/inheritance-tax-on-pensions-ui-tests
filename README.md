@@ -16,6 +16,12 @@ Start IHTP services as follows:
 sm2 --start IHTP_ALL
 ```
 
+To note in the scenario you want to run a specific version of a microservice. Stop the specific frontend, backend or stubs microservice from the service manager, and run it locally.
+
+> `Example: sm2 --stop INHERITANCE_TAX_ON_PENSIONS_FRONTEND`
+
+> `sbt run -Dplay.http.router=testOnlyDoNotUseInAppConf.Routes`
+
 ## Tests
 
 Run tests as follows:
