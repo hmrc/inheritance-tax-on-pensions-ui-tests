@@ -298,7 +298,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       )
 
       Then("User is navigated to the National Insurance Number Page")
-      DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
       NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
       NationalInsuranceNumberPage.verifyPageHeading() shouldBe true
 
@@ -306,7 +305,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NationalInsuranceNumberPage.clickRadioButton("Yes")
 
       Then("User navigates to Enter NI number Page")
-      NationalInsuranceNumberPage.navigateTo(EnterNationalInsuranceNumberPage.pageUrl)
       EnterNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
       EnterNationalInsuranceNumberPage.verifyPageHeading() shouldBe true
 

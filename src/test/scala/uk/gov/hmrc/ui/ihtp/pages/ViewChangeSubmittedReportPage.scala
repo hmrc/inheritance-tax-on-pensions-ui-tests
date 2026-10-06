@@ -16,31 +16,12 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
-import org.openqa.selenium.By
-
-object CheckYourAnswersPage extends BasePage {
-  override val pageUrl: String   = s"$baseUrl/check-your-answers"
+object ViewChangeSubmittedReportPage extends BasePage {
+  override val pageUrl: String   = s"$baseUrl/view-change-submitted-report"
   override val pageTitle: String = "Check report details - Report inheritance tax on a pension - GOV.UK"
   val pageHeading: String        = "Check report details"
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
-
-  def SaveAndContinueButton(): Unit = {
-    checkURL()
-    clickSaveAndContinueButton()
-  }
-
-  def SaveAsDraft(): Unit =
-    clickSaveAsDraft()
-
-  def ClickChangeLink(): Unit =
-    click(By.cssSelector("dd[class='govuk-summary-list__actions'] a[class='govuk-link']"))
-
-  def clickChangeCountryOfOrganisationLink(): Unit =
-    click(By.cssSelector("a[href*='change-pr-organisation-address']"))
-
-  def clickChangeSubmitPaymentNotice(): Unit =
-    click(By.cssSelector("a[href*='change-pr-submit-payment-notice']"))
 
 }

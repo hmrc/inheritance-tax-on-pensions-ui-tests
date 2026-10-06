@@ -19,24 +19,31 @@ package uk.gov.hmrc.ui.ihtp.pages
 import org.openqa.selenium.By
 
 object OverviewPage extends BasePage {
-  override val pageUrl: String   = s"$baseUrl/report-inheritance-tax-on-pension"
-  val mpsPageUrl: String         = "http://localhost:8204/manage-pension-schemes/you-need-to-register"
-  override val pageTitle: String = "Report Inheritance Tax on a pension - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String        = "Report Inheritance Tax on a pension"
-  val deceasedNameLink: By       =
+  override val pageUrl: String                  = s"$baseUrl/report-inheritance-tax-on-pension"
+  val mpsPageUrl: String                        = "http://localhost:8204/manage-pension-schemes/you-need-to-register"
+  override val pageTitle: String                = "Report Inheritance Tax on a pension - Report inheritance tax on a pension - GOV.UK"
+  val pageHeading: String                       = "Report Inheritance Tax on a pension"
+  // Make deceasedNameLink specific once the test is integrated back into the code
+  val deceasedNameLinkForUniqueDeceasedName: By =
     By.xpath("//a[@id='deceased-name-None' and contains(., 'UniqueDeceasedFirstName UniqueDeceasedSurnameName')]")
+  val deceasedNameDrViewOrChangeLink: By        =
+    By.xpath("//a[@id='deceased-name-Some(119000004320)' and contains(., 'Dr View Or Change')]")
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
 
-  def clickLink(): Unit =
-    click(By.id("start-new-submission"))
+//  def clickLinkBy(): Unit =
+//    click(By.id("start-new-submission"))
 
   def clickLinkBackToReport(): Unit =
     click(By.id("deceased-name-None"))
 
-  def clickLinkByIdAndText(): Unit =
-    click(deceasedNameLink)
+//Add this back in deceasedNameLink has been changed and uncommented
+  def clickLinkByIdAndTextForUniqueDeceasedName(): Unit =
+    click(deceasedNameLinkForUniqueDeceasedName)
+
+  def clickLinkByIdAndTextForDrViewOrChange(): Unit =
+    click(deceasedNameDrViewOrChangeLink)
 
   def verifyRegistrationReminderPage(): Boolean = {
     val mainHeading      = "You need to register as a pension scheme administrator or practitioner"
