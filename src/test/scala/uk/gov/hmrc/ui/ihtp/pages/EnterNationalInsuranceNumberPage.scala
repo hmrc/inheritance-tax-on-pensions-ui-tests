@@ -23,8 +23,8 @@ import uk.gov.hmrc.domain.NinoGenerator
 object EnterNationalInsuranceNumberPage extends BasePage {
   override val pageUrl: String   = s"$baseUrl/enter-ni-number"
   override val pageTitle: String =
-    "Enter the National Insurance number of the deceased - Report Inheritance Tax on a pension - GOV.UK"
-  val pageHeading: String        = "Enter the National Insurance number of DeceasedFirstName DeceasedSurnameName"
+    "Enter the National Insurance number for the deceased - Report Inheritance Tax on a pension - GOV.UK"
+  val pageHeading: String        = "Enter the National Insurance number for DeceasedFirstName DeceasedSurnameName"
   val nino: String               = NinoGenerator().nextNino.nino
 
   def verifyPageHeading(): Boolean =
