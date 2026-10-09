@@ -35,7 +35,7 @@ object MongoHooks {
 
   def clearMongo(): Unit = {
 //    val exitCode = Seq("mongosh", mongoUri, "--eval", script).!
-    val exitCode = Seq("docker exec -it mongodb mongosh", mongoUri, "--eval", script).!
+    val exitCode = Seq("docker", "exec", "mongodb", "mongosh", "mongodb://localhost:27017", "--eval", script).!
     require(exitCode == 0, s"mongosh exited with code $exitCode while clearing test data")
   }
 
