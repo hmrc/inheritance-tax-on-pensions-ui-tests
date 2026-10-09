@@ -39,7 +39,7 @@ trait BasePage extends Matchers with PageObject {
     By.xpath("//dd[@class='govuk-summary-list__value' and normalize-space(text())='Spain']")
   val addressOfPr: By                   = By.xpath("//dt[normalize-space(text())='Address of PR']/following-sibling::dd")
   val addressOfOrganisation: By         =
-    By.xpath("//dt[normalize-space(text())='Address of Organisation']/following-sibling::dd")
+    By.xpath("//dt[normalize-space(text())='Address of organisation']/following-sibling::dd")
 
   private def fluentWait: Wait[WebDriver] = new FluentWait[WebDriver](Driver.instance)
     .withTimeout(Duration.ofSeconds(20))
