@@ -30,15 +30,15 @@
 // * limitations under the License.
 // */
 //
-//package uk.gov.hmrc.ui.ihtp.utils
-//
-//import org.scalatest.{BeforeAndAfterEach, Suite}
-//
-//trait CleanMongoBeforeEach extends BeforeAndAfterEach { this: Suite =>
-//
-//  override def beforeEach(): Unit = {
-//    super.beforeEach()
-//    MongoHooks.clearMongo()
-//  }
-//
-//}
+package uk.gov.hmrc.ui.ihtp.utils
+
+import org.scalatest.{BeforeAndAfterEach, Suite}
+
+trait CleanMongoBeforeEach extends BeforeAndAfterEach { this: Suite =>
+
+  override def beforeEach(): Unit = {
+    super.beforeEach()
+    MongoHooks.clearMongo()
+  }
+
+}

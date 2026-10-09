@@ -30,26 +30,26 @@
 // * limitations under the License.
 // */
 //
-//package uk.gov.hmrc.ui.ihtp.utils
-//
-//import scala.sys.process.*
-//
-//object MongoHooks {
-//
-//  private val script: String =
-//    """
-//      |const backend = db.getSiblingDB("inheritance-tax-on-pensions");
-//      |printjson(backend.getCollection("user-answers").deleteMany({}));
-//      |printjson(backend.getCollection("scheme-details").deleteMany({}));
-//      |
-//      |const frontend = db.getSiblingDB("inheritance-tax-on-pensions-frontend");
-//      |printjson(frontend.getCollection("minimal-details").deleteMany({}));
-//      |printjson(frontend.getCollection("scheme-details").deleteMany({}));
-//      |""".stripMargin
-//
-//  def clearMongo(): Unit = {
-//    val exitCode = Seq("docker", "exec", "mongodb", "mongosh", "mongodb://localhost:27017", "--eval", script).!
-//    require(exitCode == 0, s"mongosh exited with code $exitCode while clearing test data")
-//  }
-//
-//}
+package uk.gov.hmrc.ui.ihtp.utils
+
+import scala.sys.process.*
+
+object MongoHooks {
+
+  private val script: String =
+    """
+      |const backend = db.getSiblingDB("inheritance-tax-on-pensions");
+      |printjson(backend.getCollection("user-answers").deleteMany({}));
+      |printjson(backend.getCollection("scheme-details").deleteMany({}));
+      |
+      |const frontend = db.getSiblingDB("inheritance-tax-on-pensions-frontend");
+      |printjson(frontend.getCollection("minimal-details").deleteMany({}));
+      |printjson(frontend.getCollection("scheme-details").deleteMany({}));
+      |""".stripMargin
+
+  def clearMongo(): Unit = {
+    val exitCode = Seq("docker", "exec", "mongodb", "mongosh", "mongodb://localhost:27017", "--eval", script).!
+    require(exitCode == 0, s"mongosh exited with code $exitCode while clearing test data")
+  }
+
+}
