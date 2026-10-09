@@ -32,9 +32,6 @@ object OverviewPage extends BasePage {
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
 
-//  def clickLinkBy(): Unit =
-//    click(By.id("start-new-submission"))
-
   def clickLinkBackToReport(): Unit =
     click(By.id("deceased-name-None"))
 

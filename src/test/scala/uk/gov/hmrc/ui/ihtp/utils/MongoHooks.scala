@@ -20,8 +20,6 @@ import scala.sys.process.*
 
 object MongoHooks {
 
-  private val mongoUri = "mongodb://localhost:27017"
-
   private val script: String =
     """
       |const backend = db.getSiblingDB("inheritance-tax-on-pensions");
