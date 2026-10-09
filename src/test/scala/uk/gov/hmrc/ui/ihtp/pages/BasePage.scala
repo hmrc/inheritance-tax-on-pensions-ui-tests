@@ -135,6 +135,9 @@ trait BasePage extends Matchers with PageObject {
   def clickReturnToActiveReportsLink(): Unit =
     click(By.id("return-to-active-reports"))
 
+  def clickChangeCountryOfPrLink(): Unit =
+    click(By.cssSelector("a[href*='change-pr-address']"))
+
   def enterText(id: String, textToEnter: String): Unit =
     sendKeys(By.id(id), textToEnter)
 
