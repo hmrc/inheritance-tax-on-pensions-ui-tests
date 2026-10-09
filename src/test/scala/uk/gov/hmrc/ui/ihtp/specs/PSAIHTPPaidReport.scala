@@ -17,9 +17,8 @@
 package uk.gov.hmrc.ui.ihtp.specs
 
 import uk.gov.hmrc.ui.ihtp.pages.*
-import uk.gov.hmrc.ui.ihtp.utils.CleanMongoBeforeEach
 
-class PSAIHTPPaidReport extends BaseSpec with CleanMongoBeforeEach {
+class PSAIHTPPaidReport extends BaseSpec {
 
   Feature("Paid reports page for a PSA") {
 
