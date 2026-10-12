@@ -256,6 +256,13 @@ class PSAIHTPPaidReport extends BaseSpec {
       BeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
       BeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
 
+      Then("User will be on Enter the National Insurance number for BeneficiaryFirstName BeneficiaryLastName")
+      EnterNationalInsuranceNumberForBeneficiariesPage.verifyPageDetails() shouldBe true
+      EnterNationalInsuranceNumberForBeneficiariesPage.verifyPageHeading() shouldBe true
+
+      Then("User enters National Insurance Number and continues to next Page")
+      EnterNationalInsuranceNumberForBeneficiariesPage.enterNINO()
+
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
       AddBeneficiaryPage.clickRadioButton("No")
