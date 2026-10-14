@@ -23,7 +23,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
   Feature("PSA IHTP Report Submission") {
 
     Scenario(
-      "1. PSA User Can Submit IHTP Application, Individual and No NI, Yes for Payment notice submission, Yes for beneficiaries known, An individual for beneficiaries known"
+      "1. PSA User Can Submit IHTP Application, Individual and No NI, Yes for Payment notice submission, Yes for beneficiaries known, An individual for beneficiaries known, Yes for NINO known"
     ) {
 
       Given("the user is logged in as an organisation user")
@@ -437,7 +437,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
     }
 
     Scenario(
-      "3. PSA User Can Submit IHTP Application, Individual and Yes NI, Yes for Payment notice submission, An individual for beneficiaries to add"
+      "3. PSA User Can Submit IHTP Application, Individual and Yes NI, No for Payment notice submission, An individual for beneficiaries to add, No for NINO known"
     ) {
 
       Given("the user is logged in as an organisation user")
@@ -533,10 +533,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
       ReviewAndConfirmPage.confirmAddressButton()
 
       Then(
-        "User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page and Clicks on Yes Radio button"
+        "User is navigated to Did PRFirstName PRSurnameName submit the payment notice? Page and Clicks on No Radio button"
       )
       SubmitPaymentNoticePage.verifyPageDetails() shouldBe true
-      SubmitPaymentNoticePage.clickRadioButton("Yes")
+      SubmitPaymentNoticePage.clickRadioButton("Someone else")
 
       Then(
         "User is navigated to When did the scheme receive the payment notice? Page and should be able to enter date of receiving payment notice"
@@ -544,13 +544,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       SchemeReceivePaymentNoticePage.verifyPageDetails() shouldBe true
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
 
-      Then(
-        "User is navigated to the Are the beneficiaries known Page and clicks on Yes Radio button and continues to next page"
-      )
-      AreBeneficiariesKnownPage.verifyPageDetails() shouldBe true
-      AreBeneficiariesKnownPage.clickRadioButton("Yes")
-
-      Then("User is navigated to the Select the type of beneficiary to add Page and Clicks on An individual option ")
+      Then("User is navigated to the Select the type of beneficiary to add Page and Clicks on An individual option")
       SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
       SelectTypeOfBeneficiaryToAdd.clickRadioButton("An individual")
 
@@ -563,50 +557,18 @@ class PSAIHTPReportSubmission extends BaseSpec {
         "BeneficiaryLastName"
       )
 
-      Then("User will be on Does Beneficiary have a National Insurance Number Page")
+      Then("User will be on Does Beneficiary have a National Insurance Number Page and clicks No")
       BeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
-      BeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
-
-      Then("User will be on Enter the National Insurance number for BeneficiaryFirstName BeneficiaryLastName")
-      EnterNationalInsuranceNumberForBeneficiariesPage.verifyPageDetails() shouldBe true
-      EnterNationalInsuranceNumberForBeneficiariesPage.verifyPageHeading() shouldBe true
-
-      Then("User enters National Insurance Number and continues to next Page")
-      EnterNationalInsuranceNumberForBeneficiariesPage.enterNINO()
-
-      And("User will be on Add Beneficiary page and selects Yes for Do you need to add another beneficiary")
-      AddBeneficiaryPage.verifyPageDetails() shouldBe true
-      AddBeneficiaryPage.clickRadioButton("Yes")
-
-      Then("User will be on New page of Select Beneficiary type and selects An individual for another Beneficiary")
-      NewSelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
-      NewSelectTypeOfBeneficiaryToAdd.clickRadioButton("An individual")
+      BeneficiaryNationalInsuranceNumberPage.clickRadioButton("No")
 
       Then(
-        "User is navigated to the Enter the full name of the beneficiary Page and able to enter Details of the Beneficiary"
+        "User will be on Why does BeneficiaryFirstName BeneficiaryLastName not have a National Insurance number? Page"
       )
-      EnterNameOfNewBeneficiaryPage.verifyPageDetails() shouldBe true
-      EnterNameOfNewBeneficiaryPage.enterBeneficiaryDetails(
-        "Dr",
-        "BeneficiaryFirstName",
-        "BeneficiaryMiddleName",
-        "BeneficiarySurnameName"
-      )
+      NoNationalInsuranceNumberReasonForBeneficiariesPage.verifyPageDetails() shouldBe true
+      NoNationalInsuranceNumberReasonForBeneficiariesPage.verifyPageHeading() shouldBe true
 
-      Then("User will be on Does Beneficiary have a National Insurance Number Page and selects Yes")
-      NewBeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
-      NewBeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
-
-      Then("User will be on Enter the National Insurance number for BeneficiaryFirstName BeneficiarySurnameName")
-      EnterAnotherNationalInsuranceNumberForBeneficiariesPage.verifyPageDetails() shouldBe true
-      EnterAnotherNationalInsuranceNumberForBeneficiariesPage.verifyPageHeading() shouldBe true
-
-      Then("User enters National Insurance Number and continues to next Page")
-      EnterAnotherNationalInsuranceNumberForBeneficiariesPage.enterNINO()
-
-      And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
-      AddBeneficiaryPage.verifyPageDetails() shouldBe true
-      AddBeneficiaryPage.clickRadioButton("No")
+      Then("User Enter reason for no NI number and continues to next Page")
+      NoNationalInsuranceNumberReasonForBeneficiariesPage.enterReason("the deceased was not a UK citizen")
 
       And("User will be on CYA page and clicks on Save and Continue button")
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
@@ -985,7 +947,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
     }
 
     Scenario(
-      "6. PSA User Can Submit IHTP Application, Organisation, and Yes for Payment Notice submission, An individual for beneficiaries to add"
+      "6. PSA User Can Submit IHTP Application, Organisation, and Yes for Payment Notice submission, An individual for beneficiaries to add, Yes for NINO known"
     ) {
 
       Given("the user is logged in as an organisation user")
