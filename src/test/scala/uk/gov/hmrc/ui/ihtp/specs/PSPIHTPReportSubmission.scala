@@ -170,6 +170,27 @@ class PSPIHTPReportSubmission extends BaseSpec {
       BeneficiaryNationalInsuranceNumberPage.verifyPageDetails() shouldBe true
       BeneficiaryNationalInsuranceNumberPage.clickRadioButton("Yes")
 
+      Then("User will be on Enter the National Insurance number for BeneficiaryFirstName BeneficiaryLastName")
+      EnterNationalInsuranceNumberForBeneficiariesPage.verifyPageDetails() shouldBe true
+      EnterNationalInsuranceNumberForBeneficiariesPage.verifyPageHeading() shouldBe true
+
+      Then("User enters National Insurance Number and continues to next Page")
+      EnterNationalInsuranceNumberForBeneficiariesPage.enterNINO()
+
+      Then(
+        "User is navigated to the Enter the amount of Inheritance Tax payable for BeneficiaryFirstName BeneficiaryLastName Page"
+      )
+      EnterAmountTaxPayableForIndividualBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountTaxPayableForIndividualBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountTaxPayableForIndividualBeneficiary.enterAmountOfIHTPayable("2000")
+
+      And("User will be on Add Beneficiary page and selects Yes for Do you need to add another beneficiary")
+      BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
+      AddBeneficiaryPage.verifyPageDetails() shouldBe true
+      AddBeneficiaryPage.clickRadioButton("No")
+
       And("User will be on CYA page")
       CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true

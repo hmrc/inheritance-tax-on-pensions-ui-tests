@@ -263,6 +263,15 @@ class PSAIHTPPaidReport extends BaseSpec {
       Then("User enters National Insurance Number and continues to next Page")
       EnterNationalInsuranceNumberForBeneficiariesPage.enterNINO()
 
+      Then(
+        "User is navigated to the Enter the amount of Inheritance Tax payable for BeneficiaryFirstName BeneficiaryLastName Page"
+      )
+      EnterAmountTaxPayableForIndividualBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountTaxPayableForIndividualBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountTaxPayableForIndividualBeneficiary.enterAmountOfIHTPayable("2000")
+
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
       AddBeneficiaryPage.clickRadioButton("No")

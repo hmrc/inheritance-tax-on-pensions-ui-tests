@@ -168,6 +168,15 @@ class PSAIHTPReportSubmission extends BaseSpec {
       Then("User enters National Insurance Number and continues to next Page")
       EnterNationalInsuranceNumberForBeneficiariesPage.enterNINO()
 
+      Then(
+        "User is navigated to the Enter the amount of Inheritance Tax payable for BeneficiaryFirstName BeneficiaryLastName Page"
+      )
+      EnterAmountTaxPayableForIndividualBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountTaxPayableForIndividualBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountTaxPayableForIndividualBeneficiary.enterAmountOfIHTPayable("2000")
+
       And("User will be on Add Beneficiary page and selects Yes for Do you need to add another beneficiary")
       BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
@@ -198,6 +207,15 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User enters National Insurance Number and continues to next Page")
       EnterAnotherNationalInsuranceNumberForBeneficiariesPage.enterNINO()
+
+      Then(
+        "User is navigated to the Enter the amount of Inheritance Tax payable for BeneficiaryFirstName BeneficiarySurnameName Page"
+      )
+      EnterAmountTaxPayableForIndividualSecondBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountTaxPayableForIndividualSecondBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountTaxPayableForIndividualSecondBeneficiary.enterAmountOfIHTPayable("2000")
 
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
       BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
@@ -569,6 +587,15 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User Enter reason for no NI number and continues to next Page")
       NoNationalInsuranceNumberReasonForBeneficiariesPage.enterReason("the deceased was not a UK citizen")
+
+      Then(
+        "User is navigated to the Enter the amount of Inheritance Tax payable for BeneficiaryFirstName BeneficiaryLastName Page"
+      )
+      EnterAmountTaxPayableForIndividualBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountTaxPayableForIndividualBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountTaxPayableForIndividualBeneficiary.enterAmountOfIHTPayable("2000")
 
       And("User will be on CYA page and clicks on Save and Continue button")
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
@@ -1098,6 +1125,15 @@ class PSAIHTPReportSubmission extends BaseSpec {
       Then("User enters National Insurance Number and continues to next Page")
       EnterNationalInsuranceNumberForBeneficiariesPage.enterNINO()
 
+      Then(
+        "User is navigated to the Enter the amount of Inheritance Tax payable for BeneficiaryFirstName BeneficiaryLastName Page"
+      )
+      EnterAmountTaxPayableForIndividualBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountTaxPayableForIndividualBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountTaxPayableForIndividualBeneficiary.enterAmountOfIHTPayable("2000")
+
       And("User will be on Add Beneficiary page and selects Yes for Do you need to add another beneficiary")
       BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
@@ -1128,6 +1164,15 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User enters National Insurance Number and continues to next Page")
       EnterAnotherNationalInsuranceNumberForBeneficiariesPage.enterNINO()
+
+      Then(
+        "User is navigated to the Enter the amount of Inheritance Tax payable for BeneficiaryFirstName BeneficiarySurnameName Page"
+      )
+      EnterAmountTaxPayableForIndividualSecondBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountTaxPayableForIndividualSecondBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountTaxPayableForIndividualSecondBeneficiary.enterAmountOfIHTPayable("2000")
 
       And("User will be on Add Beneficiary page and selects remove Hyperlink for first Beneficiary to removed")
       AddBeneficiaryPage.selectHyperlink("Remove Hyperlink")
