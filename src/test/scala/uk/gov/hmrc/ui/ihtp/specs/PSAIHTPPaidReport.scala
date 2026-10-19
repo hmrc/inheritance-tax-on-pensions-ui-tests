@@ -47,8 +47,38 @@ class PSAIHTPPaidReport extends BaseSpec {
 
     }
 
+    Scenario("2. PSA User Can go to the View Paid Reports page from the Overview Page and View report details") {
+
+      Given("the user is logged in as an organisation user")
+      AuthLoginPage.loginAsPsaOrgUserForSubmission()
+
+      And("User is navigated to the Report Inheritance Tax on a pension (Overview) Page")
+      AuthLoginPage.navigateTo(OverviewPage.pageUrl)
+      OverviewPage.verifyPageDetails() shouldBe true
+      OverviewPage.verifyPageHeading() shouldBe true
+
+      Then("User clicks on View paid reports link and navigates to the View Paid Reports Page")
+      OverviewPage.clickViewPaidReportsLink()
+      OverviewPage.navigateTo(PaidReportsPage.pageUrl)
+      PaidReportsPage.verifyPageDetails() shouldBe true
+      PaidReportsPage.verifyPageHeading() shouldBe true
+
+      Then("User clicks on report with name Mr Paid Middlename Surname")
+      PaidReportsPage.clickLinkByIdAndTextForMrPaidMiddlenameSurname()
+      ViewReportDetailsForPaidReport.verifyPageDetails() shouldBe true
+      ViewReportDetailsForPaidReport.verifyPageHeading() shouldBe true
+
+      Then(
+        "User clicks on the Return to active reports link and navigates back to the Report Inheritance Tax on a pension (Overview) Page"
+      )
+      ViewReportDetailsForPaidReport.clickReturnToOverviewReportsLink()
+      OverviewPage.verifyPageDetails() shouldBe true
+      OverviewPage.verifyPageHeading() shouldBe true
+
+    }
+
     Scenario(
-      "2. PSA User Can go to the View a submitted Reports page from the Overview Page and make change to one of the fields"
+      "3. PSA User Can go to the View a submitted Reports page from the Overview Page and make change to one of the fields"
     ) {
 
       Given("the user is logged in as an organisation user")
@@ -115,7 +145,7 @@ class PSAIHTPPaidReport extends BaseSpec {
     }
 
     Scenario(
-      "3. PSA User successfully resumes a report after leaving it at Review And Confirm Page"
+      "4. PSA User successfully resumes a report after leaving it at Review And Confirm Page"
     ) {
 
       Given("the user is logged in as an organisation user")
