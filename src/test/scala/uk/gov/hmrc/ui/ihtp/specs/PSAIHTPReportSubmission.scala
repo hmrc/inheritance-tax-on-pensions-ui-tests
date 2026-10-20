@@ -744,12 +744,20 @@ class PSAIHTPReportSubmission extends BaseSpec {
       AreBeneficiariesKnownPage.clickRadioButton("Yes")
 
       Then("User is navigated to Select the type of beneficiary to add Page and clicks on A trust option")
-
       SelectTypeOfBeneficiaryToAdd.clickRadioButton("A trust")
 
       Then("User is navigated to Organisation detail page and Enter the name of the trust on the Page")
       BeneficiaryOrganisationDetailsPage.verifyPageDetails() shouldBe true
       BeneficiaryOrganisationDetailsPage.enterTrustName("Test Organisation & Co ltd.")
+
+      And("Now user enters beneficiary organisation details and continue to next Page")
+      BeneficiaryOrganisationContactPage.verifyPageDetails() shouldBe true
+      BeneficiaryOrganisationContactPage.enterContactDetails(
+        "Mr",
+        "PRFirstName",
+        "PRMiddleName",
+        "PRSurnameName"
+      )
 
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
@@ -933,6 +941,15 @@ class PSAIHTPReportSubmission extends BaseSpec {
       Then("User is navigated to the Enter the name of the trust Page")
       BeneficiaryOrganisationDetailsPage.verifyPageDetails() shouldBe true
       BeneficiaryOrganisationDetailsPage.enterTrustName("Test Organisation & Co ltd.")
+
+      And("Now user enters beneficiary organisation contact details and continue to next Page")
+      BeneficiaryOrganisationContactPage.verifyPageDetails() shouldBe true
+      BeneficiaryOrganisationContactPage.enterContactDetails(
+        "Mr",
+        "PRFirstName",
+        "PRMiddleName",
+        "PRSurnameName"
+      )
 
       Then("User will be on CYA page")
       BeneficiaryOrganisationDetailsPage.navigateTo(CheckYourAnswersPage.pageUrl)
