@@ -16,13 +16,21 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
+import org.openqa.selenium.By
+
 object PaidReportsPage extends BasePage {
   override val pageUrl: String   = s"$baseUrl/paid-reports"
   override val pageTitle: String =
     "Paid Inheritance Tax on a pension reports - Report Inheritance Tax on a pension - GOV.UK"
   val pageHeading: String        = "Paid Inheritance Tax on a pension reports"
 
+  val deceasedNameMrPaidMiddlenameSurnameLink: By =
+    By.xpath("//a[@id='deceased-name-Some(119000004362)' and contains(., 'Mr Paid Middlename Surname')]")
+
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
+
+  def clickLinkByIdAndTextForMrPaidMiddlenameSurname(): Unit =
+    click(deceasedNameMrPaidMiddlenameSurnameLink)
 
 }
