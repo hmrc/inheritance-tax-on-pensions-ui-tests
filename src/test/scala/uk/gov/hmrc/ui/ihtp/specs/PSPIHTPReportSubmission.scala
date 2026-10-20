@@ -374,9 +374,14 @@ class PSPIHTPReportSubmission extends BaseSpec {
       BeneficiaryOrganisationDetailsPage.verifyPageDetails() shouldBe true
       BeneficiaryOrganisationDetailsPage.enterTrustName("Test Organisation & Co ltd.")
 
-      Then("User is navigated to Organisation detail page and Enter the name of the trust on the Page")
-      BeneficiaryOrganisationDetailsPage.verifyPageDetails() shouldBe true
-      BeneficiaryOrganisationDetailsPage.enterTrustName("Test Organisation & Co ltd.")
+      And("Now user enters beneficiary organisation details and continue to next Page")
+      BeneficiaryOrganisationContactPage.verifyPageDetails() shouldBe true
+      BeneficiaryOrganisationContactPage.enterContactDetails(
+        "Mr",
+        "PRFirstName",
+        "PRMiddleName",
+        "PRSurnameName"
+      )
 
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
