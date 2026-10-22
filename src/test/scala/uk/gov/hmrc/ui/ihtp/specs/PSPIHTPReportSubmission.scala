@@ -372,7 +372,7 @@ class PSPIHTPReportSubmission extends BaseSpec {
 
       Then("User is navigated to Organisation detail page and Enter the name of the trust on the Page")
       BeneficiaryOrganisationDetailsPage.verifyPageDetails() shouldBe true
-      BeneficiaryOrganisationDetailsPage.enterTrustName("Test Organisation & Co ltd.")
+      BeneficiaryOrganisationDetailsPage.enterTrustName("Test Organisation Co ltd.")
 
       And("Now user enters beneficiary organisation details and continue to next Page")
       BeneficiaryOrganisationContactPage.verifyPageDetails() shouldBe true
@@ -382,6 +382,15 @@ class PSPIHTPReportSubmission extends BaseSpec {
         "PRMiddleName",
         "PRSurnameName"
       )
+
+      Then(
+        "User is navigated to the Enter the amount of Inheritance Tax payable for Test Organisation Co ltd. Page"
+      )
+      EnterAmountTaxPayableForTrustBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountTaxPayableForTrustBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountTaxPayableForTrustBeneficiary.enterAmountOfIHTPayable("2000")
 
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
       AddBeneficiaryPage.verifyPageDetails() shouldBe true

@@ -16,11 +16,9 @@
 
 package uk.gov.hmrc.ui.ihtp.pages
 
-import org.openqa.selenium.By
-
 object BeneficiaryOrganisationContactPage extends BasePage {
   override val pageUrl: String   = s"$baseUrl/beneficiary-organisation-contact/0"
-//  val pageHeading: String        = "Who submitted the payment notice?"
+  val pageHeading: String        = "Enter the full name of a representative at Test Organisation Co ltd."
   override val pageTitle: String =
     "Enter the full name of a representative at the organisation - Report Inheritance Tax on a pension - GOV.UK"
 

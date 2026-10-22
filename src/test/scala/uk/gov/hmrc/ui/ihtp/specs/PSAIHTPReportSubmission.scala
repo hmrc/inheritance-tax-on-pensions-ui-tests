@@ -748,16 +748,25 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User is navigated to Organisation detail page and Enter the name of the trust on the Page")
       BeneficiaryOrganisationDetailsPage.verifyPageDetails() shouldBe true
-      BeneficiaryOrganisationDetailsPage.enterTrustName("Test Organisation & Co ltd.")
+      BeneficiaryOrganisationDetailsPage.enterTrustName("Test Organisation Co ltd.")
 
       And("Now user enters beneficiary organisation details and continue to next Page")
       BeneficiaryOrganisationContactPage.verifyPageDetails() shouldBe true
       BeneficiaryOrganisationContactPage.enterContactDetails(
-        "Mr",
-        "PRFirstName",
-        "PRMiddleName",
-        "PRSurnameName"
+        "Dr",
+        "BeneficiaryFirstName",
+        "BeneficiaryMiddleName",
+        "BeneficiaryLastName"
       )
+
+      Then(
+        "User is navigated to the Enter the amount of Inheritance Tax payable for Test Organisation Co ltd. Page"
+      )
+      EnterAmountTaxPayableForTrustBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountTaxPayableForTrustBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountTaxPayableForTrustBeneficiary.enterAmountOfIHTPayable("2000")
 
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
@@ -835,7 +844,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
     }
 
     Scenario(
-      "5. PSA User Can Submit IHTP Application, Organisation, and No for Payment Notice submission, A trust for beneficiaries to add"
+      "5. PSA User Can Submit IHTP Application, Organisation, and Someone else for Payment Notice submission, A trust for beneficiaries to add"
     ) {
 
       Given("the user is logged in as an organisation user")
@@ -940,16 +949,25 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User is navigated to the Enter the name of the trust Page")
       BeneficiaryOrganisationDetailsPage.verifyPageDetails() shouldBe true
-      BeneficiaryOrganisationDetailsPage.enterTrustName("Test Organisation & Co ltd.")
+      BeneficiaryOrganisationDetailsPage.enterTrustName("Test Organisation Co ltd.")
 
       And("Now user enters beneficiary organisation contact details and continue to next Page")
       BeneficiaryOrganisationContactPage.verifyPageDetails() shouldBe true
       BeneficiaryOrganisationContactPage.enterContactDetails(
-        "Mr",
-        "PRFirstName",
-        "PRMiddleName",
-        "PRSurnameName"
+        "Dr",
+        "BeneficiaryFirstName",
+        "BeneficiaryMiddleName",
+        "BeneficiaryLastName"
       )
+
+      Then(
+        "User is navigated to the Enter the amount of Inheritance Tax payable for BeneficiaryFirstName BeneficiaryLastName Page"
+      )
+      EnterAmountTaxPayableForTrustBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountTaxPayableForTrustBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountTaxPayableForTrustBeneficiary.enterAmountOfIHTPayable("2000")
 
       Then("User will be on CYA page")
       BeneficiaryOrganisationDetailsPage.navigateTo(CheckYourAnswersPage.pageUrl)
