@@ -25,7 +25,7 @@ object EnterAmountOfInterestPayableIndividualBeneficiary extends BasePage {
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
 
-  def enterAmountOfIHTTaxPayable(textToEnter: String): Unit = {
+  def enterAmountOfIHTInterestPayable(textToEnter: String): Unit = {
     enterText("value", textToEnter)
     clickSaveAndContinueButton()
   }
