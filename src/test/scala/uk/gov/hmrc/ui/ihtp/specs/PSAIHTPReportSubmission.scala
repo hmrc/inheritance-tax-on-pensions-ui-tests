@@ -336,7 +336,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       // Deceased name page
       Then("User is navigated to the Deceased Name Page")
-      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
       DeceasedNamePage.verifyPageDetails() shouldBe true
       DeceasedNamePage.verifyPageHeading() shouldBe true
 
@@ -363,7 +362,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterNationalInsuranceNumberPage.enterNINO()
 
       Then("User is navigated to the Enter the birth and death dates of the user Page")
-      EnterNationalInsuranceNumberPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
       And("User enters Date of Birth and Date of Death then continues to the next page")
@@ -379,7 +377,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       PRTypePage.clickRadioButton("Individual")
 
       Then("User is navigated to the PR Name Page")
-      PRTypePage.navigateTo(PRNamePage.pageUrl)
       PRNamePage.verifyPageDetails() shouldBe true
       PRNamePage.verifyPageHeading() shouldBe true
 
@@ -421,7 +418,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       SchemeReceivePaymentNoticePage.dateOfReceivingPaymentNotice("01", "01", "2026")
 
       Then("User is navigated to the Are the beneficiaries known page")
-      AreBeneficiariesKnownPage.navigateTo(AreBeneficiariesKnownPage.pageUrl)
       AreBeneficiariesKnownPage.verifyPageDetails() shouldBe true
 
       And("User Clicks on No Radio button and clicks on Save and continue button")
