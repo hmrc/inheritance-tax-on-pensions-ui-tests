@@ -392,6 +392,15 @@ class PSPIHTPReportSubmission extends BaseSpec {
       And("User enters the amount of inheritance tax payable and continues to the next Page")
       EnterAmountTaxPayableForTrustBeneficiary.enterAmountOfIHTPayable("2000")
 
+      Then(
+        "User is navigated to the Enter the amount of interest payable for Test Organisation Co ltd. Page"
+      )
+      EnterAmountOfInterestPayableTrustBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountOfInterestPayableTrustBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountOfInterestPayableTrustBeneficiary.enterAmountOfIHTTaxPayable("10")
+
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
       AddBeneficiaryPage.clickRadioButton("No")

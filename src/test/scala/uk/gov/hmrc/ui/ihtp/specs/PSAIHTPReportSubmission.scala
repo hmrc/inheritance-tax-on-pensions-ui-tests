@@ -177,6 +177,15 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User enters the amount of inheritance tax payable and continues to the next Page")
       EnterAmountTaxPayableForIndividualBeneficiary.enterAmountOfIHTPayable("2000")
 
+      Then(
+        "User is navigated to the Enter the amount of interest payable for BeneficiaryFirstName BeneficiaryLastName Page"
+      )
+      EnterAmountOfInterestPayableIndividualBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountOfInterestPayableIndividualBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountOfInterestPayableIndividualBeneficiary.enterAmountOfIHTTaxPayable("10")
+
       And("User will be on Add Beneficiary page and selects Yes for Do you need to add another beneficiary")
       BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
@@ -216,6 +225,15 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User enters the amount of inheritance tax payable and continues to the next Page")
       EnterAmountTaxPayableForIndividualSecondBeneficiary.enterAmountOfIHTPayable("2000")
+
+      Then(
+        "User is navigated to the Enter the amount of interest payable for BeneficiaryFirstName BeneficiarySurnameName Page"
+      )
+      EnterAmountOfInterestPayableForAnotherIndividualBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountOfInterestPayableForAnotherIndividualBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountOfInterestPayableForAnotherIndividualBeneficiary.enterAmountOfIHTTaxPayable("10")
 
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
       BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
@@ -597,6 +615,15 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User enters the amount of inheritance tax payable and continues to the next Page")
       EnterAmountTaxPayableForIndividualBeneficiary.enterAmountOfIHTPayable("2000")
 
+      Then(
+        "User is navigated to the Enter the amount of interest payable for BeneficiaryFirstName BeneficiaryLastName Page"
+      )
+      EnterAmountOfInterestPayableIndividualBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountOfInterestPayableIndividualBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountOfInterestPayableIndividualBeneficiary.enterAmountOfIHTTaxPayable("10")
+
       And("User will be on CYA page and clicks on Save and Continue button")
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
@@ -767,6 +794,15 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User enters the amount of inheritance tax payable and continues to the next Page")
       EnterAmountTaxPayableForTrustBeneficiary.enterAmountOfIHTPayable("2000")
+
+      Then(
+        "User is navigated to the Enter the amount of interest payable for Test Organisation Co ltd. Page"
+      )
+      EnterAmountOfInterestPayableTrustBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountOfInterestPayableTrustBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountOfInterestPayableTrustBeneficiary.enterAmountOfIHTTaxPayable("10")
 
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
@@ -969,6 +1005,15 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User enters the amount of inheritance tax payable and continues to the next Page")
       EnterAmountTaxPayableForTrustBeneficiary.enterAmountOfIHTPayable("2000")
 
+      Then(
+        "User is navigated to the Enter the amount of interest payable for Test Organisation Co ltd. Page"
+      )
+      EnterAmountOfInterestPayableTrustBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountOfInterestPayableTrustBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountOfInterestPayableTrustBeneficiary.enterAmountOfIHTTaxPayable("10")
+
       Then("User will be on CYA page")
       BeneficiaryOrganisationDetailsPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
@@ -1169,6 +1214,15 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User enters the amount of inheritance tax payable and continues to the next Page")
       EnterAmountTaxPayableForIndividualBeneficiary.enterAmountOfIHTPayable("2000")
 
+      Then(
+        "User is navigated to the Enter the amount of interest payable for BeneficiaryFirstName BeneficiaryLastName Page"
+      )
+      EnterAmountOfInterestPayableIndividualBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountOfInterestPayableIndividualBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountOfInterestPayableIndividualBeneficiary.enterAmountOfIHTTaxPayable("10")
+
       And("User will be on Add Beneficiary page and selects Yes for Do you need to add another beneficiary")
       BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
@@ -1208,6 +1262,15 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User enters the amount of inheritance tax payable and continues to the next Page")
       EnterAmountTaxPayableForIndividualSecondBeneficiary.enterAmountOfIHTPayable("2000")
+
+      Then(
+        "User is navigated to the Enter the amount of interest payable for BeneficiaryFirstName BeneficiarySurnameName Page"
+      )
+      EnterAmountOfInterestPayableForAnotherIndividualBeneficiary.verifyPageDetails() shouldBe true
+      EnterAmountOfInterestPayableForAnotherIndividualBeneficiary.verifyPageHeading() shouldBe true
+
+      And("User enters the amount of inheritance tax payable and continues to the next Page")
+      EnterAmountOfInterestPayableForAnotherIndividualBeneficiary.enterAmountOfIHTTaxPayable("10")
 
       And("User will be on Add Beneficiary page and selects remove Hyperlink for first Beneficiary to removed")
       AddBeneficiaryPage.selectHyperlink("Remove Hyperlink")
