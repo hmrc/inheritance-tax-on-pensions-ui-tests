@@ -309,7 +309,7 @@ class PSAIHTPPaidReport extends BaseSpec {
       EnterAmountOfInterestPayableIndividualBeneficiary.verifyPageHeading() shouldBe true
 
       And("User enters the amount of inheritance tax payable and continues to the next Page")
-      EnterAmountOfInterestPayableIndividualBeneficiary.enterAmountOfIHTTaxPayable("10")
+      EnterAmountOfInterestPayableIndividualBeneficiary.enterAmountOfIHTInterestPayable("10")
 
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
