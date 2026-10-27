@@ -177,6 +177,23 @@ class PSPIHTPReportSubmission extends BaseSpec {
       Then("User enters National Insurance Number and continues to next Page")
       EnterNationalInsuranceNumberForBeneficiariesPage.enterNINO()
 
+      Then("User is navigated to the Select Country Page")
+      CountryPickerPage.verifyPage()
+      CountryPickerPage.enterCountry("United Kingdom")
+
+      Then("User is navigated to Look Up Address Page")
+      LookUpPostcodePage.verifyPage()
+      LookUpPostcodePage.enterPostcode("ZZ01 1ZZ")
+
+      And("User is navigated to Choose Address Page")
+      ChooseAddressPage.verifyPage()
+      ChooseAddressPage.clickRadioButton("2")
+
+      Then("User is navigated to Review and confirm Page")
+      ReviewAndConfirmPage.verifyPageHeading() shouldBe true
+      ReviewAndConfirmPage.verifyPage()
+      ReviewAndConfirmPage.confirmAddressButton()
+
       Then(
         "User is navigated to the Enter the amount of Inheritance Tax payable for BeneficiaryFirstName BeneficiaryLastName Page"
       )
@@ -390,6 +407,23 @@ class PSPIHTPReportSubmission extends BaseSpec {
         "PRMiddleName",
         "PRSurnameName"
       )
+
+      Then("User is navigated to the Select Country Page")
+      CountryPickerPage.verifyPage()
+      CountryPickerPage.enterCountry("United Kingdom")
+
+      Then("User is navigated to Look Up Address Page")
+      LookUpPostcodePage.verifyPage()
+      LookUpPostcodePage.enterPostcode("ZZ01 1ZZ")
+
+      And("User is navigated to Choose Address Page")
+      ChooseAddressPage.verifyPage()
+      ChooseAddressPage.clickRadioButton("2")
+
+      Then("User is navigated to Review and confirm Page")
+      ReviewAndConfirmPage.verifyPageHeading() shouldBe true
+      ReviewAndConfirmPage.verifyPage()
+      ReviewAndConfirmPage.confirmAddressButton()
 
       Then(
         "User is navigated to the Enter the amount of Inheritance Tax payable for Test Organisation Co ltd. Page"

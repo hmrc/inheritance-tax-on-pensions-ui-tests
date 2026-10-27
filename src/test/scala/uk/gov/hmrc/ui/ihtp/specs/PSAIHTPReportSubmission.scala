@@ -168,6 +168,23 @@ class PSAIHTPReportSubmission extends BaseSpec {
       Then("User enters National Insurance Number and continues to next Page")
       EnterNationalInsuranceNumberForBeneficiariesPage.enterNINO()
 
+      Then("User is navigated to the Select Country Page")
+      CountryPickerPage.verifyPage()
+      CountryPickerPage.enterCountry("United Kingdom")
+
+      Then("User is navigated to Look Up Address Page")
+      LookUpPostcodePage.verifyPage()
+      LookUpPostcodePage.enterPostcode("ZZ01 1ZZ")
+
+      And("User is navigated to Choose Address Page")
+      ChooseAddressPage.verifyPage()
+      ChooseAddressPage.clickRadioButton("2")
+
+      Then("User is navigated to Review and confirm Page")
+      ReviewAndConfirmPage.verifyPageHeading() shouldBe true
+      ReviewAndConfirmPage.verifyPage()
+      ReviewAndConfirmPage.confirmAddressButton()
+
       Then(
         "User is navigated to the Enter the amount of Inheritance Tax payable for BeneficiaryFirstName BeneficiaryLastName Page"
       )
@@ -216,6 +233,23 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User enters National Insurance Number and continues to next Page")
       EnterAnotherNationalInsuranceNumberForBeneficiariesPage.enterNINO()
+
+      Then("User is navigated to the Select Country Page")
+      CountryPickerPage.verifyPage()
+      CountryPickerPage.enterCountry("United Kingdom")
+
+      Then("User is navigated to Look Up Address Page")
+      LookUpPostcodePage.verifyPage()
+      LookUpPostcodePage.enterPostcode("ZZ01 1ZZ")
+
+      And("User is navigated to Choose Address Page")
+      ChooseAddressPage.verifyPage()
+      ChooseAddressPage.clickRadioButton("3")
+
+      Then("User is navigated to Review and confirm Page")
+      ReviewAndConfirmPage.verifyPageHeading() shouldBe true
+      ReviewAndConfirmPage.verifyPage()
+      ReviewAndConfirmPage.confirmAddressButton()
 
       Then(
         "User is navigated to the Enter the amount of Inheritance Tax payable for BeneficiaryFirstName BeneficiarySurnameName Page"
@@ -611,6 +645,23 @@ class PSAIHTPReportSubmission extends BaseSpec {
       Then("User Enter reason for no NI number and continues to next Page")
       NoNationalInsuranceNumberReasonForBeneficiariesPage.enterReason("the deceased was not a UK citizen")
 
+      Then("User is navigated to the Select Country Page")
+      CountryPickerPage.verifyPage()
+      CountryPickerPage.enterCountry("United Kingdom")
+
+      Then("User is navigated to Look Up Address Page")
+      LookUpPostcodePage.verifyPage()
+      LookUpPostcodePage.enterPostcode("ZZ01 1ZZ")
+
+      And("User is navigated to Choose Address Page")
+      ChooseAddressPage.verifyPage()
+      ChooseAddressPage.clickRadioButton("1")
+
+      Then("User is navigated to Review and confirm Page")
+      ReviewAndConfirmPage.verifyPageHeading() shouldBe true
+      ReviewAndConfirmPage.verifyPage()
+      ReviewAndConfirmPage.confirmAddressButton()
+
       Then(
         "User is navigated to the Enter the amount of Inheritance Tax payable for BeneficiaryFirstName BeneficiaryLastName Page"
       )
@@ -790,6 +841,23 @@ class PSAIHTPReportSubmission extends BaseSpec {
         "BeneficiaryMiddleName",
         "BeneficiaryLastName"
       )
+
+      Then("User is navigated to the Select Country Page")
+      CountryPickerPage.verifyPage()
+      CountryPickerPage.enterCountry("United Kingdom")
+
+      Then("User is navigated to Look Up Address Page")
+      LookUpPostcodePage.verifyPage()
+      LookUpPostcodePage.enterPostcode("ZZ01 1ZZ")
+
+      And("User is navigated to Choose Address Page")
+      ChooseAddressPage.verifyPage()
+      ChooseAddressPage.clickRadioButton("1")
+
+      Then("User is navigated to Review and confirm Page")
+      ReviewAndConfirmPage.verifyPageHeading() shouldBe true
+      ReviewAndConfirmPage.verifyPage()
+      ReviewAndConfirmPage.confirmAddressButton()
 
       Then(
         "User is navigated to the Enter the amount of Inheritance Tax payable for Test Organisation Co ltd. Page"
@@ -1001,6 +1069,23 @@ class PSAIHTPReportSubmission extends BaseSpec {
         "BeneficiaryLastName"
       )
 
+      Then("User is navigated to the Select Country Page")
+      CountryPickerPage.verifyPage()
+      CountryPickerPage.enterCountry("United Kingdom")
+
+      Then("User is navigated to Look Up Address Page")
+      LookUpPostcodePage.verifyPage()
+      LookUpPostcodePage.enterPostcode("ZZ01 1ZZ")
+
+      And("User is navigated to Choose Address Page")
+      ChooseAddressPage.verifyPage()
+      ChooseAddressPage.clickRadioButton("1")
+
+      Then("User is navigated to Review and confirm Page")
+      ReviewAndConfirmPage.verifyPageHeading() shouldBe true
+      ReviewAndConfirmPage.verifyPage()
+      ReviewAndConfirmPage.confirmAddressButton()
+
       Then(
         "User is navigated to the Enter the amount of Inheritance Tax payable for BeneficiaryFirstName BeneficiaryLastName Page"
       )
@@ -1210,6 +1295,23 @@ class PSAIHTPReportSubmission extends BaseSpec {
       Then("User enters National Insurance Number and continues to next Page")
       EnterNationalInsuranceNumberForBeneficiariesPage.enterNINO()
 
+      Then("User is navigated to the Select Country Page")
+      CountryPickerPage.verifyPage()
+      CountryPickerPage.enterCountry("United Kingdom")
+
+      Then("User is navigated to Look Up Address Page")
+      LookUpPostcodePage.verifyPage()
+      LookUpPostcodePage.enterPostcode("ZZ01 1ZZ")
+
+      And("User is navigated to Choose Address Page")
+      ChooseAddressPage.verifyPage()
+      ChooseAddressPage.clickRadioButton("1")
+
+      Then("User is navigated to Review and confirm Page")
+      ReviewAndConfirmPage.verifyPageHeading() shouldBe true
+      ReviewAndConfirmPage.verifyPage()
+      ReviewAndConfirmPage.confirmAddressButton()
+
       Then(
         "User is navigated to the Enter the amount of Inheritance Tax payable for BeneficiaryFirstName BeneficiaryLastName Page"
       )
@@ -1258,6 +1360,23 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       Then("User enters National Insurance Number and continues to next Page")
       EnterAnotherNationalInsuranceNumberForBeneficiariesPage.enterNINO()
+
+      Then("User is navigated to the Select Country Page")
+      CountryPickerPage.verifyPage()
+      CountryPickerPage.enterCountry("United Kingdom")
+
+      Then("User is navigated to Look Up Address Page")
+      LookUpPostcodePage.verifyPage()
+      LookUpPostcodePage.enterPostcode("ZZ01 1ZZ")
+
+      And("User is navigated to Choose Address Page")
+      ChooseAddressPage.verifyPage()
+      ChooseAddressPage.clickRadioButton("1")
+
+      Then("User is navigated to Review and confirm Page")
+      ReviewAndConfirmPage.verifyPageHeading() shouldBe true
+      ReviewAndConfirmPage.verifyPage()
+      ReviewAndConfirmPage.confirmAddressButton()
 
       Then(
         "User is navigated to the Enter the amount of Inheritance Tax payable for BeneficiaryFirstName BeneficiarySurnameName Page"
