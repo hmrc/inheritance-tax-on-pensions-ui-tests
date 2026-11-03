@@ -25,7 +25,7 @@ object PaidReportsPage extends BasePage {
   val pageHeading: String        = "Paid Inheritance Tax on a pension reports"
 
   val deceasedNameMrPaidMiddlenameSurnameLink: By =
-    By.xpath("//a[@id='deceased-name-Some(119000004362)' and contains(., 'Mr Paid Middlename Surname')]")
+    By.xpath("//a[@id='deceased-name-Some(119000004362)' and contains(., 'Paid Surname')]")
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
