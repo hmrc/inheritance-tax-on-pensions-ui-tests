@@ -27,7 +27,7 @@ object OverviewPage extends BasePage {
   val deceasedNameLinkForUniqueDeceasedName: By =
     By.xpath("//a[@id='deceased-name-None' and contains(., 'UniqueDeceasedFirstName UniqueDeceasedSurnameName')]")
   val deceasedNameDrViewOrChangeLink: By        =
-    By.xpath("//a[@id='deceased-name-Some(119000004320)' and contains(., 'Dr View Or Change')]")
+    By.xpath("//a[@id='deceased-name-Some(119000004320)' and contains(., 'View Change')]")
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
