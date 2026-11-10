@@ -34,7 +34,6 @@ class PSAIHTPPaidReport extends BaseSpec {
 
       Then("User clicks on View paid reports link and navigates to the View Paid Reports Page")
       OverviewPage.clickViewPaidReportsLink()
-      OverviewPage.navigateTo(PaidReportsPage.pageUrl)
       PaidReportsPage.verifyPageDetails() shouldBe true
       PaidReportsPage.verifyPageHeading() shouldBe true
 
@@ -59,7 +58,6 @@ class PSAIHTPPaidReport extends BaseSpec {
 
       Then("User clicks on View paid reports link and navigates to the View Paid Reports Page")
       OverviewPage.clickViewPaidReportsLink()
-      OverviewPage.navigateTo(PaidReportsPage.pageUrl)
       PaidReportsPage.verifyPageDetails() shouldBe true
       PaidReportsPage.verifyPageHeading() shouldBe true
 
@@ -124,7 +122,6 @@ class PSAIHTPPaidReport extends BaseSpec {
       ViewChangeSubmittedReportPage.clickSaveAndContinueButton()
 
       Then("User should be able to Navigate to Psa-Declaration Page")
-      CheckYourAnswersPage.navigateTo(PSADeclarationPage.pageUrl)
       PSADeclarationPage.verifyPageDetails() shouldBe true
       PSADeclarationPage.verifyPageHeading() shouldBe true
 
@@ -132,7 +129,6 @@ class PSAIHTPPaidReport extends BaseSpec {
       PSADeclarationPage.AgreeAndSubmitButton()
 
       Then("User should be able to Navigates to Submission Page")
-      PSADeclarationPage.navigateTo(ReportSubmittedPage.pageUrl)
       ReportSubmittedPage.verifyPageDetails() shouldBe true
       ReportSubmittedPage.verifyPageHeading() shouldBe true
 
@@ -333,7 +329,6 @@ class PSAIHTPPaidReport extends BaseSpec {
       AddBeneficiaryPage.clickRadioButton("No")
 
       And("User will be on CYA page")
-      AddBeneficiaryPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 

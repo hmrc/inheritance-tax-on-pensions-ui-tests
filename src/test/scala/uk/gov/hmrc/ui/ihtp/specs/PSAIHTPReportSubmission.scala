@@ -38,7 +38,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       WhatYouWillNeedPage.clickSaveAndContinueButton()
 
       Then("the user is navigated to the Enter the Inheritance Tax reference number Page")
-      WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageDetails() shouldBe true
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
@@ -47,7 +46,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       // Deceased name page
       Then("User is navigated to the Deceased Name Page")
-      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
       DeceasedNamePage.verifyPageDetails() shouldBe true
       DeceasedNamePage.verifyPageHeading() shouldBe true
 
@@ -60,7 +58,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       )
 
       Then("User is navigated to the National Insurance Number Page")
-      DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
       NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
       NationalInsuranceNumberPage.verifyPageHeading() shouldBe true
 
@@ -68,7 +65,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NationalInsuranceNumberPage.clickRadioButton("No")
 
       Then("User will navigates to Enter reason for no NI number Page")
-      NationalInsuranceNumberPage.navigateTo(NoNationalInsuranceNumberReasonPage.pageUrl)
       NoNationalInsuranceNumberReasonPage.verifyPageDetails() shouldBe true
       NoNationalInsuranceNumberReasonPage.verifyPageHeading() shouldBe true
 
@@ -76,7 +72,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NoNationalInsuranceNumberReasonPage.enterReason("the deceased was not a UK citizen")
 
       Then("User is navigated to the Enter the birth and death dates of the user Page")
-      NoNationalInsuranceNumberReasonPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
       And("User enters Date of Birth and Date of Death then continues to the next page")
@@ -92,7 +87,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       PRTypePage.clickRadioButton("Individual")
 
       Then("User is navigated to the PR Name Page")
-      PRTypePage.navigateTo(PRNamePage.pageUrl)
       PRNamePage.verifyPageDetails() shouldBe true
       PRNamePage.verifyPageHeading() shouldBe true
 
@@ -134,19 +128,16 @@ class PSAIHTPReportSubmission extends BaseSpec {
       Then(
         "User is navigated to the Are the beneficiaries known Page and clicks on Yes Radio button and continues to next page"
       )
-      AreBeneficiariesKnownPage.navigateTo(AreBeneficiariesKnownPage.pageUrl)
       AreBeneficiariesKnownPage.verifyPageDetails() shouldBe true
       AreBeneficiariesKnownPage.clickRadioButton("Yes")
 
       Then("User is navigated to the Select the type of beneficiary to add Page")
-      SelectTypeOfBeneficiaryToAdd.navigateTo(SelectTypeOfBeneficiaryToAdd.pageUrl)
       SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
 
       And("User Clicks on An individual option and continues to the next Page")
       SelectTypeOfBeneficiaryToAdd.clickRadioButton("An individual")
 
       Then("User is navigated to the Enter the full name of the beneficiary Page")
-      EnterNameOfBeneficiaryPage.navigateTo(EnterNameOfBeneficiaryPage.pageUrl)
       EnterNameOfBeneficiaryPage.verifyPageDetails() shouldBe true
 
       And("User is able to enter Details of the Beneficiary and continues to next Page")
@@ -204,7 +195,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterAmountOfInterestPayableIndividualBeneficiary.enterAmountOfIHTInterestPayable("10")
 
       And("User will be on Add Beneficiary page and selects Yes for Do you need to add another beneficiary")
-      BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
       AddBeneficiaryPage.clickRadioButton("Yes")
 
@@ -270,12 +260,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterAmountOfInterestPayableForAnotherIndividualBeneficiary.enterAmountOfIHTTaxPayable("10")
 
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
-      BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
       AddBeneficiaryPage.clickRadioButton("No")
 
       And("User will be on CYA page")
-      AddBeneficiaryPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
@@ -283,12 +271,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
       CheckYourAnswersPage.ClickChangeLink()
 
       And("When User Clicks on Change Link Button it will navigates to enter the Inheritance Tax reference number Page")
-      CheckYourAnswersPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.newUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyNewUrl() shouldBe true
 
       When("User clicks on Save and continue it navigates to the Check and submit the report Page")
       EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
-      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails()
 
       // Verify if fields on the Check and Submit Page
@@ -326,7 +312,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       CheckYourAnswersPage.SaveAndContinueButton()
 
       And("User should be able to Navigates to Psa-Declaration Page")
-      CheckYourAnswersPage.navigateTo(PSADeclarationPage.pageUrl)
       PSADeclarationPage.verifyPageDetails() shouldBe true
       PSADeclarationPage.verifyPageHeading() shouldBe true
 
@@ -334,7 +319,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       PSADeclarationPage.AgreeAndSubmitButton()
 
       And("User should be able to Navigates to Submission Page")
-      PSADeclarationPage.navigateTo(ReportSubmittedPage.pageUrl)
       ReportSubmittedPage.verifyPageDetails() shouldBe true
       ReportSubmittedPage.verifyPageHeading() shouldBe true
 
@@ -361,7 +345,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       WhatYouWillNeedPage.clickSaveAndContinueButton()
 
       Then("the user is navigated to the Enter the Inheritance Tax reference number Page")
-      WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageDetails() shouldBe true
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
@@ -472,7 +455,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterAmountOfInterestPayableForNoBeneficiary.enterAmountOfIHTInterestPayable("10")
 
       Then("User will be on CYA page")
-      CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
@@ -480,19 +462,16 @@ class PSAIHTPReportSubmission extends BaseSpec {
       CheckYourAnswersPage.ClickChangeLink()
 
       And("When User Clicks on Change Link Button it will navigates to enter the Inheritance Tax reference number Page")
-      CheckYourAnswersPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.newUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyNewUrl() shouldBe true
 
       When("user clicks on Save and continue it navigates to the Check and submit the report page")
       EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
-      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails()
 
       Then("User clicks on Save and Continue button on the Check and submit the report page")
       CheckYourAnswersPage.SaveAndContinueButton()
 
       And("User should be able to Navigates to Psa-Declaration Page")
-      CheckYourAnswersPage.navigateTo(PSADeclarationPage.pageUrl)
       PSADeclarationPage.verifyPageDetails() shouldBe true
       PSADeclarationPage.verifyPageHeading() shouldBe true
 
@@ -500,7 +479,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       PSADeclarationPage.AgreeAndSubmitButton()
 
       And("User should be able to Navigates to Submission Page")
-      PSADeclarationPage.navigateTo(ReportSubmittedPage.pageUrl)
       ReportSubmittedPage.verifyPageDetails() shouldBe true
       ReportSubmittedPage.verifyPageHeading() shouldBe true
 
@@ -527,7 +505,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       WhatYouWillNeedPage.clickSaveAndContinueButton()
 
       Then("the user is navigated to the Enter the Inheritance Tax reference number Page")
-      WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageDetails() shouldBe true
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
@@ -536,7 +513,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       // Deceased name page
       Then("User is navigated to the Deceased Name Page")
-      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
       DeceasedNamePage.verifyPageDetails() shouldBe true
       DeceasedNamePage.verifyPageHeading() shouldBe true
 
@@ -549,14 +525,12 @@ class PSAIHTPReportSubmission extends BaseSpec {
       )
 
       Then("User is navigated to the National Insurance Number Page")
-      DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
       NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
 
       And("User selects No for Does DeceasedFirstName DeceasedSurnameName have a National Insurance number?")
       NationalInsuranceNumberPage.clickRadioButton("No")
 
       Then("User will navigates to Enter reason for no NI number Page")
-      NationalInsuranceNumberPage.navigateTo(NoNationalInsuranceNumberReasonPage.pageUrl)
       NoNationalInsuranceNumberReasonPage.verifyPageDetails() shouldBe true
       NoNationalInsuranceNumberReasonPage.verifyPageHeading() shouldBe true
 
@@ -564,7 +538,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NoNationalInsuranceNumberReasonPage.enterReason("the deceased was not a UK citizen")
 
       Then("User is navigated to the Enter the birth and death dates of the user Page")
-      NoNationalInsuranceNumberReasonPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
       And("User enters Date of Birth and Date of Death then continues to the next page")
@@ -578,7 +551,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       PRTypePage.clickRadioButton("Individual")
 
       Then("User is navigated to the Individual PR Name Page")
-      PRTypePage.navigateTo(PRNamePage.pageUrl)
       PRNamePage.verifyPageDetails() shouldBe true
       PRNamePage.verifyPageHeading() shouldBe true
 
@@ -686,7 +658,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       CheckYourAnswersPage.SaveAndContinueButton()
 
       And("User should be able to Navigates to Psa-Declaration Page")
-      CheckYourAnswersPage.navigateTo(PSADeclarationPage.pageUrl)
       PSADeclarationPage.verifyPageDetails() shouldBe true
       PSADeclarationPage.verifyPageHeading() shouldBe true
 
@@ -694,7 +665,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       PSADeclarationPage.AgreeAndSubmitButton()
 
       And("User should be able to Navigates to Submission Page")
-      PSADeclarationPage.navigateTo(ReportSubmittedPage.pageUrl)
       ReportSubmittedPage.verifyPageDetails() shouldBe true
       ReportSubmittedPage.verifyPageHeading() shouldBe true
 
@@ -721,7 +691,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       WhatYouWillNeedPage.clickSaveAndContinueButton()
 
       Then("the user is navigated to the Enter the Inheritance Tax reference number Page")
-      WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
+
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageDetails() shouldBe true
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
@@ -729,8 +699,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber("A123456/25A")
 
       // Deceased name page
-      And("User should be able to Navigate to Deceased Name Page")
-      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
 
       Then("User is navigated to the Deceased Name Page")
       DeceasedNamePage.verifyPageDetails() shouldBe true
@@ -745,14 +713,12 @@ class PSAIHTPReportSubmission extends BaseSpec {
       )
 
       Then("User is navigated to the National Insurance Number Page")
-      DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
       NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
 
       And("User selects No for Does DeceasedFirstName DeceasedSurnameName have a National Insurance number?")
       NationalInsuranceNumberPage.clickRadioButton("No")
 
       Then("User will navigates to Enter reason for no NI number Page")
-      NationalInsuranceNumberPage.navigateTo(NoNationalInsuranceNumberReasonPage.pageUrl)
       NoNationalInsuranceNumberReasonPage.verifyPageDetails() shouldBe true
       NoNationalInsuranceNumberReasonPage.verifyPageHeading() shouldBe true
 
@@ -760,7 +726,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NoNationalInsuranceNumberReasonPage.enterReason("the deceased was not a UK citizen")
 
       Then("User is navigated to the Enter the birth and death dates of the user Page")
-      NoNationalInsuranceNumberReasonPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
       And("User enters Date of Birth and Date of Death then continues to the next page")
@@ -882,7 +847,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       AddBeneficiaryPage.clickRadioButton("No")
 
       Then("User will be on CYA page")
-      CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
@@ -890,12 +854,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
       CheckYourAnswersPage.ClickChangeLink()
 
       And("When User Clicks on Change Link Button it will navigates to enter the Inheritance Tax reference number Page")
-      CheckYourAnswersPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.newUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyNewUrl() shouldBe true
 
       When("User clicks on Save and continue it navigates to the Check and submit the report Page")
       EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
-      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails()
 
       // Verify if fields on the Check and Submit Page
@@ -933,7 +895,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       CheckYourAnswersPage.SaveAndContinueButton()
 
       Then("User should be able to Navigates to Psa-Declaration Page")
-      CheckYourAnswersPage.navigateTo(PSADeclarationPage.pageUrl)
       PSADeclarationPage.verifyPageDetails() shouldBe true
       PSADeclarationPage.verifyPageHeading() shouldBe true
 
@@ -941,7 +902,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       PSADeclarationPage.AgreeAndSubmitButton()
 
       Then("User should be able to Navigates to Submission Page")
-      PSADeclarationPage.navigateTo(ReportSubmittedPage.pageUrl)
       ReportSubmittedPage.verifyPageDetails() shouldBe true
       ReportSubmittedPage.verifyPageHeading() shouldBe true
 
@@ -968,7 +928,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       WhatYouWillNeedPage.clickSaveAndContinueButton()
 
       Then("the user is navigated to the Enter the Inheritance Tax reference number Page")
-      WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageDetails() shouldBe true
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
@@ -1105,7 +1064,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterAmountOfInterestPayableTrustBeneficiary.enterAmountOfIHTInterestPayable("10")
 
       Then("User will be on CYA page")
-      BeneficiaryOrganisationDetailsPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
@@ -1124,7 +1082,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       CheckYourAnswersPage.SaveAndContinueButton()
 
       Then("User should be able to Navigates to Psa-Declaration Page")
-      CheckYourAnswersPage.navigateTo(PSADeclarationPage.pageUrl)
       PSADeclarationPage.verifyPageDetails() shouldBe true
       PSADeclarationPage.verifyPageHeading() shouldBe true
 
@@ -1132,7 +1089,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       PSADeclarationPage.AgreeAndSubmitButton()
 
       Then("User should be able to Navigates to Submission Page")
-      PSADeclarationPage.navigateTo(ReportSubmittedPage.pageUrl)
       ReportSubmittedPage.verifyPageDetails() shouldBe true
       ReportSubmittedPage.verifyPageHeading() shouldBe true
 
@@ -1159,7 +1115,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       WhatYouWillNeedPage.clickSaveAndContinueButton()
 
       Then("the user is navigated to the Enter the Inheritance Tax reference number Page")
-      WhatYouWillNeedPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.pageUrl)
+
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageDetails() shouldBe true
       EnterTheInheritanceTaxReferenceNumberPage.verifyPageHeading() shouldBe true
 
@@ -1167,8 +1123,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterTheInheritanceTaxReferenceNumberPage.enterReferenceNumber(" A123456/25A ")
 
       // Deceased name page
-      And("User should be able to Navigate to Deceased Name Page")
-      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(DeceasedNamePage.pageUrl)
 
       Then("User is navigated to the Deceased Name Page")
       DeceasedNamePage.verifyPageDetails() shouldBe true
@@ -1183,14 +1137,12 @@ class PSAIHTPReportSubmission extends BaseSpec {
       )
 
       Then("User is navigated to the National Insurance Number Page")
-      DeceasedNamePage.navigateTo(NationalInsuranceNumberPage.pageUrl)
       NationalInsuranceNumberPage.verifyPageDetails() shouldBe true
 
       And("User selects No for Does DeceasedFirstName DeceasedSurnameName have a National Insurance number?")
       NationalInsuranceNumberPage.clickRadioButton("No")
 
       Then("User will navigates to Enter reason for no NI number Page")
-      NationalInsuranceNumberPage.navigateTo(NoNationalInsuranceNumberReasonPage.pageUrl)
       NoNationalInsuranceNumberReasonPage.verifyPageDetails() shouldBe true
       NoNationalInsuranceNumberReasonPage.verifyPageHeading() shouldBe true
 
@@ -1198,7 +1150,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       NoNationalInsuranceNumberReasonPage.enterReason("the deceased was not a UK citizen")
 
       Then("User is navigated to the Enter the birth and death dates of the user Page")
-      NoNationalInsuranceNumberReasonPage.navigateTo(EnterBirthDeathPage.pageUrl)
       EnterBirthDeathPage.verifyPageDetails() shouldBe true
 
       And("User enters Date of Birth and Date of Death then continues to next page")
@@ -1269,7 +1220,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And(
         "User is navigated to Select the type of beneficiary to add Page and Clicks on Individual option and clicks on Save and continue button"
       )
-      SelectTypeOfBeneficiaryToAdd.navigateTo(SelectTypeOfBeneficiaryToAdd.pageUrl)
       SelectTypeOfBeneficiaryToAdd.verifyPageDetails() shouldBe true
       SelectTypeOfBeneficiaryToAdd.clickRadioButton("An individual")
 
@@ -1331,7 +1281,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterAmountOfInterestPayableIndividualBeneficiary.enterAmountOfIHTInterestPayable("10")
 
       And("User will be on Add Beneficiary page and selects Yes for Do you need to add another beneficiary")
-      BeneficiaryNationalInsuranceNumberPage.navigateTo(AddBeneficiaryPage.pageUrl)
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
       AddBeneficiaryPage.clickRadioButton("Yes")
 
@@ -1398,14 +1347,13 @@ class PSAIHTPReportSubmission extends BaseSpec {
 
       And("User will be on Add Beneficiary page and selects remove Hyperlink for first Beneficiary to removed")
       AddBeneficiaryPage.selectHyperlink("Remove Hyperlink")
-
       RemoveBeneficiaryPage.remove(false)
+
       And("User will be on Add Beneficiary page and selects No for Do you need to add another beneficiary")
       AddBeneficiaryPage.verifyPageDetails() shouldBe true
       AddBeneficiaryPage.clickRadioButton("No")
 
       And("User will be on CYA page")
-      CheckYourAnswersPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
 
@@ -1413,12 +1361,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
       CheckYourAnswersPage.ClickChangeLink()
 
       And("When User Clicks on Change Link Button it will navigates to enter the Inheritance Tax reference number Page")
-      CheckYourAnswersPage.navigateTo(EnterTheInheritanceTaxReferenceNumberPage.newUrl)
       EnterTheInheritanceTaxReferenceNumberPage.verifyNewUrl() shouldBe true
 
       Then("user click On save and Continue it navigates to the Check and submit the report page")
       EnterTheInheritanceTaxReferenceNumberPage.SaveAndContinueButton()
-      EnterTheInheritanceTaxReferenceNumberPage.navigateTo(CheckYourAnswersPage.pageUrl)
       CheckYourAnswersPage.verifyPageDetails()
 
       And("User click on Save As Draft button on the CYA page and Navigates to Overview Page")
@@ -1427,13 +1373,12 @@ class PSAIHTPReportSubmission extends BaseSpec {
       OverviewPage.verifyPageHeading() shouldBe true
 
       When("User Navigates to CYA Page and Click on Save and continue CTA")
-      OverviewPage.navigateTo(CheckYourAnswersPage.pageUrl)
+      OverviewPage.clickLinkByIdAndTextForDeceasedFirstName()
       CheckYourAnswersPage.verifyPageDetails() shouldBe true
       CheckYourAnswersPage.verifyPageHeading() shouldBe true
       CheckYourAnswersPage.clickSaveAndContinueButton()
 
       Then("User should be able to Navigates to Psa-Declaration Page")
-      CheckYourAnswersPage.navigateTo(PSADeclarationPage.pageUrl)
       PSADeclarationPage.verifyPageDetails() shouldBe true
       PSADeclarationPage.verifyPageHeading() shouldBe true
 
@@ -1441,7 +1386,6 @@ class PSAIHTPReportSubmission extends BaseSpec {
       PSADeclarationPage.AgreeAndSubmitButton()
 
       Then("User should be able to Navigates to Submission Page")
-      PSADeclarationPage.navigateTo(ReportSubmittedPage.pageUrl)
       ReportSubmittedPage.verifyPageDetails() shouldBe true
       ReportSubmittedPage.verifyPageHeading() shouldBe true
 

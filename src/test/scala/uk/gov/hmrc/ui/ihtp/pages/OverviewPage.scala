@@ -28,6 +28,8 @@ object OverviewPage extends BasePage {
     By.xpath("//a[@id='deceased-name-None' and contains(., 'UniqueDeceasedFirstName UniqueDeceasedSurnameName')]")
   val deceasedNameDrViewOrChangeLink: By        =
     By.xpath("//a[@id='deceased-name-Some(119000004320)' and contains(., 'View Change')]")
+  val deceasedNameDeceasedFirstNameLink: By     =
+    By.xpath("//a[@id='deceased-name-None' and contains(., 'DeceasedFirstName DeceasedSurnameName')]")
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
@@ -35,12 +37,14 @@ object OverviewPage extends BasePage {
   def clickLinkBackToReport(): Unit =
     click(By.id("deceased-name-None"))
 
-//Add this back in deceasedNameLink has been changed and uncommented
   def clickLinkByIdAndTextForUniqueDeceasedName(): Unit =
     click(deceasedNameLinkForUniqueDeceasedName)
 
   def clickLinkByIdAndTextForDrViewOrChange(): Unit =
     click(deceasedNameDrViewOrChangeLink)
+
+  def clickLinkByIdAndTextForDeceasedFirstName(): Unit =
+    click(deceasedNameDeceasedFirstNameLink)
 
   def verifyRegistrationReminderPage(): Boolean = {
     val mainHeading      = "You need to register as a pension scheme administrator or practitioner"
