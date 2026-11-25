@@ -35,7 +35,7 @@ object LookUpPostcodePage extends BasePage {
     enterText("line3", textToEnter)
 
   def enterAddressLine4(textToEnter: String): Unit =
-    enterText("line4", textToEnter)
+    enterText("town", textToEnter)
 
   def enterPostcode(textToEnter: String): Unit = {
     enterText("postcode", textToEnter)

@@ -103,6 +103,7 @@ class PSAIHTPPaidReport extends BaseSpec {
       LookUpPostcodePage.enterAddressLine1("SOME HIGH STREET ABROAD 1")
       LookUpPostcodePage.enterAddressLine2("SOME HIGH STREET ABROAD 2")
       LookUpPostcodePage.enterAddressLine3("SOME HIGH STREET ABROAD 3")
+      LookUpPostcodePage.enterAddressLine4("Town")
       LookUpPostcodePage.enterPostcode("TE5710")
 
       Then("User is navigated to Review and confirm Page")
@@ -115,7 +116,7 @@ class PSAIHTPPaidReport extends BaseSpec {
       )
       ViewChangeSubmittedReportPage.verifyCountryOfSpain("Spain")
       ViewChangeSubmittedReportPage.verifyAddressOfPr(
-        "SOME HIGH STREET ABROAD 1\nSOME HIGH STREET ABROAD 2\nSOME HIGH STREET ABROAD 3\nTE5710"
+        "SOME HIGH STREET ABROAD 1\nSOME HIGH STREET ABROAD 2\nSOME HIGH STREET ABROAD 3\nTown\nTE5710"
       )
 
       And("User then clicks on Save and continue button")

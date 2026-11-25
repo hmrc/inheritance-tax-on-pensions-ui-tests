@@ -295,6 +295,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       LookUpPostcodePage.enterAddressLine1("SOME HIGH STREET ABROAD 1")
       LookUpPostcodePage.enterAddressLine2("SOME HIGH STREET ABROAD 2")
       LookUpPostcodePage.enterAddressLine3("SOME HIGH STREET ABROAD 3")
+      LookUpPostcodePage.enterAddressLine4("Test")
       LookUpPostcodePage.enterPostcode("TE5710")
 
       Then("User is navigated to Review and confirm Page")
@@ -305,7 +306,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       Then("User verifies if the changed details for Country of PR and Address of PR are correct")
       CheckYourAnswersPage.verifyCountryOfSpain("Spain")
       CheckYourAnswersPage.verifyAddressOfPr(
-        "SOME HIGH STREET ABROAD 1\nSOME HIGH STREET ABROAD 2\nSOME HIGH STREET ABROAD 3\nTE5710"
+        "SOME HIGH STREET ABROAD 1\nSOME HIGH STREET ABROAD 2\nSOME HIGH STREET ABROAD 3\nTest\nTE5710"
       )
 
       Then("User clicks on Save and Continue button on the Check and submit the report page ")
@@ -878,6 +879,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       LookUpPostcodePage.enterAddressLine1("SOME HIGH STREET ABROAD 1")
       LookUpPostcodePage.enterAddressLine2("SOME HIGH STREET ABROAD 2")
       LookUpPostcodePage.enterAddressLine3("SOME HIGH STREET ABROAD 3")
+      LookUpPostcodePage.enterAddressLine4("Town")
       LookUpPostcodePage.enterPostcode("TE5710")
 
       Then("User is navigated to Review and confirm Page")
@@ -888,7 +890,7 @@ class PSAIHTPReportSubmission extends BaseSpec {
       Then("User verifies if the changed details for Country of PR and Address of PR are correct")
       CheckYourAnswersPage.verifyCountryOfSpain("Spain")
       CheckYourAnswersPage.verifyAddressOfOrganisation(
-        "SOME HIGH STREET ABROAD 1\nSOME HIGH STREET ABROAD 2\nSOME HIGH STREET ABROAD 3\nTE5710"
+        "SOME HIGH STREET ABROAD 1\nSOME HIGH STREET ABROAD 2\nSOME HIGH STREET ABROAD 3\nTown\nTE5710"
       )
 
       And("User click on Save and Continue button on the Check and submit the report page ")
