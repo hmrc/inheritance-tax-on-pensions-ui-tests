@@ -78,6 +78,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
+      When("User is Navigated to Who represents estate Page, select a Personal Representative(PR) and Continue to next Page")
+      WhoRepresentsEstatePage.verifyPageDetails() shouldBe true
+      WhoRepresentsEstatePage.clickRadioButton("a personal representative (PR)")
+
       Then(
         "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page"
       )
@@ -386,6 +390,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
+      When("User is Navigated to Who represents estate Page, select a Personal Representative(PR) and Continue to next Page")
+      WhoRepresentsEstatePage.verifyPageDetails() shouldBe true
+      WhoRepresentsEstatePage.clickRadioButton("a personal representative (PR)")
+
       Then(
         "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page"
       )
@@ -544,6 +552,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User enters Date of Birth and Date of Death then continues to the next page")
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
+
+      When("User is Navigated to Who represents estate Page, select a prospective Personal Representative(PPR) and Continue to next Page")
+      WhoRepresentsEstatePage.verifyPageDetails() shouldBe true
+      WhoRepresentsEstatePage.clickRadioButton("a prospective personal representative (PPR)")
 
       Then(
         "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page selects Individual for PR Type "
@@ -732,6 +744,11 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User enters Date of Birth and Date of Death then continues to the next page")
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
+
+      When("User is Navigated to Who represents estate Page, select a Personal Representative(PR) and Continue to next Page")
+      WhoRepresentsEstatePage.verifyPageDetails() shouldBe true
+      WhoRepresentsEstatePage.clickRadioButton("a personal representative (PR)")
+      
 
       Then(
         "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page"
@@ -965,6 +982,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
+      When("User is Navigated to Who represents estate Page, select a Personal Representative(PR) and Continue to next Page")
+      WhoRepresentsEstatePage.verifyPageDetails() shouldBe true
+      WhoRepresentsEstatePage.clickRadioButton("a personal representative (PR)")
+
       Then(
         "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page and selects Organisation for PR Type and continues to next Page"
       )
@@ -1157,6 +1178,10 @@ class PSAIHTPReportSubmission extends BaseSpec {
       And("User enters Date of Birth and Date of Death then continues to next page")
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
+
+      When("User is Navigated to Who represents estate Page, select a prospective Personal Representative(PPR) and Continue to next Page")
+      WhoRepresentsEstatePage.verifyPageDetails() shouldBe true
+      WhoRepresentsEstatePage.clickRadioButton("a prospective personal representative (PPR)")
 
       Then(
         "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page"
