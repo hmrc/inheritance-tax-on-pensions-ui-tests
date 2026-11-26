@@ -18,9 +18,9 @@ package uk.gov.hmrc.ui.ihtp.specs
 
 import uk.gov.hmrc.ui.ihtp.pages.*
 
-class PSAIHTPPaidReport extends BaseSpec {
+class PSAIHTPOverviewAndPaidReport extends BaseSpec {
 
-  Feature("Paid reports page for a PSA") {
+  Feature("Overview and Paid reports page for a PSA") {
 
     Scenario("1. PSA User Can go to the View Paid Reports page from the Overview Page") {
 
@@ -352,6 +352,43 @@ class PSAIHTPPaidReport extends BaseSpec {
 
       And("the Sign out link should be displayed")
       AuthLoginPage.verifySignOutLinkText() shouldBe true
+    }
+
+    Scenario(
+      "4.PSA User can use the search bar to find a report by searching for the Inheritance Tax or Payment reference for both active and paid reports"
+    ) {
+
+      Given("the user is logged in as an organisation user")
+      AuthLoginPage.loginAsPsaOrgUserForSubmission()
+
+      And("User is navigated to the Report Inheritance Tax on a pension (Overview) Page")
+      OverviewPage.verifyPageDetails() shouldBe true
+      OverviewPage.verifyPageHeading() shouldBe true
+
+      Then("User searches for the Dr View Or Change report using the Payment reference")
+      OverviewPage.searchForReportByPaymentReferenceForActiveReport()
+      OverviewPage.verifyReportForDrViewAndChange() shouldBe true
+      OverviewPage.clickOnClearLinkForActiveReports()
+
+      Then("User searches for the Dr View Or Change report using the Inheritance Tax ReferenceNumber")
+      OverviewPage.searchForReportByInheritanceTaxReferenceNumberForActiveReport()
+      OverviewPage.verifyReportForDrViewAndChange() shouldBe true
+      OverviewPage.clickOnClearLinkForActiveReports()
+
+      Then("User clicks on View paid reports link and navigates to the View Paid Reports Page")
+      OverviewPage.clickViewPaidReportsLink()
+      PaidReportsPage.verifyPageDetails() shouldBe true
+      PaidReportsPage.verifyPageHeading() shouldBe true
+
+      Then("User searches for the Paid Surname report using the Payment reference")
+      OverviewPage.searchForReportByPaymentReferenceForPaidReport()
+      OverviewPage.verifyPaidReportForPaidSurname() shouldBe true
+      OverviewPage.clickOnClearLinkForPaidReports()
+
+      Then("User searches for the Paid Surname report using the Inheritance Tax ReferenceNumber")
+      OverviewPage.searchForReportByInheritanceTaxReferenceNumberForPaidReport()
+      OverviewPage.verifyPaidReportForPaidSurname() shouldBe true
+      OverviewPage.clickOnClearLinkForPaidReports()
     }
   }
 }
