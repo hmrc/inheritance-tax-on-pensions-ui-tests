@@ -26,8 +26,8 @@ object WhoRepresentsEstatePage extends BasePage {
 
   def clickRadioButton(text: String): Unit =
     text match {
-      case "a personal representative (PR)" => click(By.id("value_0"))
-      case "a prospective personal representative (PPR)"       => click(By.id("value_1"))
+      case "a personal representative (PR)"              => click(By.id("value_0"))
+      case "a prospective personal representative (PPR)" => click(By.id("value_1"))
     }
     clickSaveAndContinueButton()
 

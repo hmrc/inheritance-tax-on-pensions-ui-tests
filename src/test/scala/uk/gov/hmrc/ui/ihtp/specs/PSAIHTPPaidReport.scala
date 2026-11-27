@@ -194,6 +194,12 @@ class PSAIHTPPaidReport extends BaseSpec {
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
+      When(
+        "User is Navigated to Who represents estate Page, select a prospective Personal Representative(PPR) and Continue to next Page"
+      )
+      //WhoRepresentsEstatePage.verifyPageDetails() shouldBe true
+      WhoRepresentsEstatePage.clickRadioButton("a prospective personal representative (PPR)")
+
       Then(
         "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page"
       )

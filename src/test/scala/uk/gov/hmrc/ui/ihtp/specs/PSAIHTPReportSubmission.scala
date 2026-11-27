@@ -78,7 +78,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
-      When("User is Navigated to Who represents estate Page, select a Personal Representative(PR) and Continue to next Page")
+      When(
+        "User is Navigated to Who represents estate Page, select a Personal Representative(PR) and Continue to next Page"
+      )
       WhoRepresentsEstatePage.verifyPageDetails() shouldBe true
       WhoRepresentsEstatePage.clickRadioButton("a personal representative (PR)")
 
@@ -390,7 +392,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
-      When("User is Navigated to Who represents estate Page, select a Personal Representative(PR) and Continue to next Page")
+      When(
+        "User is Navigated to Who represents estate Page, select a Personal Representative(PR) and Continue to next Page"
+      )
       WhoRepresentsEstatePage.verifyPageDetails() shouldBe true
       WhoRepresentsEstatePage.clickRadioButton("a personal representative (PR)")
 
@@ -553,7 +557,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
-      When("User is Navigated to Who represents estate Page, select a prospective Personal Representative(PPR) and Continue to next Page")
+      When(
+        "User is Navigated to Who represents estate Page, select a prospective Personal Representative(PPR) and Continue to next Page"
+      )
       WhoRepresentsEstatePage.verifyPageDetails() shouldBe true
       WhoRepresentsEstatePage.clickRadioButton("a prospective personal representative (PPR)")
 
@@ -745,10 +751,11 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
-      When("User is Navigated to Who represents estate Page, select a Personal Representative(PR) and Continue to next Page")
+      When(
+        "User is Navigated to Who represents estate Page, select a Personal Representative(PR) and Continue to next Page"
+      )
       WhoRepresentsEstatePage.verifyPageDetails() shouldBe true
       WhoRepresentsEstatePage.clickRadioButton("a personal representative (PR)")
-      
 
       Then(
         "User is navigated to the Is the personal representative (PR) an individual or a member of an organisation? Page"
@@ -982,7 +989,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
-      When("User is Navigated to Who represents estate Page, select a Personal Representative(PR) and Continue to next Page")
+      When(
+        "User is Navigated to Who represents estate Page, select a Personal Representative(PR) and Continue to next Page"
+      )
       WhoRepresentsEstatePage.verifyPageDetails() shouldBe true
       WhoRepresentsEstatePage.clickRadioButton("a personal representative (PR)")
 
@@ -1179,7 +1188,9 @@ class PSAIHTPReportSubmission extends BaseSpec {
       EnterBirthDeathPage.enterBirthDate("01", "01", "1990")
       EnterBirthDeathPage.enterDeathDate("11", "12", "2025")
 
-      When("User is Navigated to Who represents estate Page, select a prospective Personal Representative(PPR) and Continue to next Page")
+      When(
+        "User is Navigated to Who represents estate Page, select a prospective Personal Representative(PPR) and Continue to next Page"
+      )
       WhoRepresentsEstatePage.verifyPageDetails() shouldBe true
       WhoRepresentsEstatePage.clickRadioButton("a prospective personal representative (PPR)")
 
