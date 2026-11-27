@@ -97,6 +97,9 @@ trait BasePage extends Matchers with PageObject {
       fluentWait.until(ExpectedConditions.urlToBe(pageUrl))
     }
 
+  def verifyReportById(reportId: String): Boolean =
+    isElementPresent(By.id(reportId))
+
   def verifyCountryOfUnitedKingdom(expectedCountryOfPr: String): Unit = {
     val actualCountryOfPr = getText(countryOfPRValueUnitedKingdom)
     actualCountryOfPr shouldBe expectedCountryOfPr
@@ -137,6 +140,9 @@ trait BasePage extends Matchers with PageObject {
 
   def clickChangeCountryOfPrLink(): Unit =
     click(By.cssSelector("a[href*='change-pr-address']"))
+
+  def clickSearchButton(): Unit =
+    click(By.cssSelector("button[type='submit'].govuk-button"))
 
   def enterText(id: String, textToEnter: String): Unit =
     sendKeys(By.id(id), textToEnter)

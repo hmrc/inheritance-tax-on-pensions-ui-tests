@@ -19,17 +19,21 @@ package uk.gov.hmrc.ui.ihtp.pages
 import org.openqa.selenium.By
 
 object OverviewPage extends BasePage {
-  override val pageUrl: String                  = s"$baseUrl/report-inheritance-tax-on-pension"
-  val mpsPageUrl: String                        = "http://localhost:8204/manage-pension-schemes/you-need-to-register"
-  override val pageTitle: String                = "Report Inheritance Tax on a pension - Report inheritance tax on a pension - GOV.UK"
-  val pageHeading: String                       = "Report Inheritance Tax on a pension"
-  // Make deceasedNameLink specific once the test is integrated back into the code
-  val deceasedNameLinkForUniqueDeceasedName: By =
+  override val pageUrl: String                                       = s"$baseUrl/report-inheritance-tax-on-pension"
+  val mpsPageUrl: String                                             = "http://localhost:8204/manage-pension-schemes/you-need-to-register"
+  override val pageTitle: String                                     = "Report Inheritance Tax on a pension - Report inheritance tax on a pension - GOV.UK"
+  val pageHeading: String                                            = "Report Inheritance Tax on a pension"
+  val deceasedNameLinkForUniqueDeceasedName: By                      =
     By.xpath("//a[@id='deceased-name-None' and contains(., 'UniqueDeceasedFirstName UniqueDeceasedSurnameName')]")
-  val deceasedNameDrViewOrChangeLink: By        =
+  val deceasedNameDrViewOrChangeLink: By                             =
     By.xpath("//a[@id='deceased-name-Some(119000004320)' and contains(., 'View Change')]")
-  val deceasedNameDeceasedFirstNameLink: By     =
+  val deceasedPaymentReferenceForDrViewOrChange: String              = "A123456/25A629671"
+  val deceasedInheritanceTaxReferenceNumberForDrViewOrChange: String = "A123456/25A"
+  val deceasedNameDeceasedFirstNameLink: By                          =
     By.xpath("//a[@id='deceased-name-None' and contains(., 'DeceasedFirstName DeceasedSurnameName')]")
+  val searchBar: By                                                  = By.id("value")
+  val paidReportPaymentReferenceForPaidSurname: String               = "F246810/26B999999"
+  val paidReportInheritanceTaxReferenceNumberForPaidSurname: String  = "F246810/26B"
 
   def verifyPageHeading(): Boolean =
     getPageSource.contains(pageHeading)
@@ -45,6 +49,42 @@ object OverviewPage extends BasePage {
 
   def clickLinkByIdAndTextForDeceasedFirstName(): Unit =
     click(deceasedNameDeceasedFirstNameLink)
+
+  def searchForReportByPaymentReferenceForActiveReport(): Unit = {
+    click(searchBar)
+    enterText("value", deceasedPaymentReferenceForDrViewOrChange)
+    clickSearchButton()
+  }
+
+  def searchForReportByPaymentReferenceForPaidReport(): Unit = {
+    click(searchBar)
+    enterText("value", paidReportPaymentReferenceForPaidSurname)
+    clickSearchButton()
+  }
+
+  def searchForReportByInheritanceTaxReferenceNumberForActiveReport(): Unit = {
+    click(searchBar)
+    enterText("value", deceasedInheritanceTaxReferenceNumberForDrViewOrChange)
+    clickSearchButton()
+  }
+
+  def searchForReportByInheritanceTaxReferenceNumberForPaidReport(): Unit = {
+    click(searchBar)
+    enterText("value", paidReportInheritanceTaxReferenceNumberForPaidSurname)
+    clickSearchButton()
+  }
+
+  def clickOnClearLinkForActiveReports(): Unit =
+    click(By.cssSelector("a[href='/inheritance-tax-on-pensions/S2400000001/report-inheritance-tax-on-pension']"))
+
+  def clickOnClearLinkForPaidReports(): Unit =
+    click(By.cssSelector("a[href='/inheritance-tax-on-pensions/S2400000001/paid-reports']"))
+
+  def verifyReportForDrViewAndChange(): Boolean =
+    verifyReportById("deceased-name-Some(119000004320)")
+
+  def verifyPaidReportForPaidSurname(): Boolean =
+    verifyReportById("deceased-name-Some(119000004362)")
 
   def verifyRegistrationReminderPage(): Boolean = {
     val mainHeading      = "You need to register as a pension scheme administrator or practitioner"
