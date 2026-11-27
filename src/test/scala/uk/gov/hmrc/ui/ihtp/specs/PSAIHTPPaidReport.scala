@@ -197,7 +197,7 @@ class PSAIHTPPaidReport extends BaseSpec {
       When(
         "User is Navigated to Who represents estate Page, select a prospective Personal Representative(PPR) and Continue to next Page"
       )
-      //WhoRepresentsEstatePage.verifyPageDetails() shouldBe true
+      // WhoRepresentsEstatePage.verifyPageDetails() shouldBe true
       WhoRepresentsEstatePage.clickRadioButton("a prospective personal representative (PPR)")
 
       Then(
