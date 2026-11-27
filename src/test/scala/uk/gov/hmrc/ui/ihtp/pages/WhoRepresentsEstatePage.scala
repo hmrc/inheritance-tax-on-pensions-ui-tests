@@ -21,7 +21,7 @@ import org.openqa.selenium.By
 object WhoRepresentsEstatePage extends BasePage {
   override val pageUrl: String   = s"$baseUrl/who-represents-estate"
   override val pageTitle: String =
-    "Who is representing the estate of DeceasedFirstName DeceasedSurnameName? - Report Inheritance Tax on a pension - GOV.UK"
+    "Who is representing the estate of the deceased - Report Inheritance Tax on a pension - GOV.UK"
 
   val pageHeading: String = "Who is representing the estate of DeceasedFirstName DeceasedSurnameName?"
 
